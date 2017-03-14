@@ -1,4 +1,4 @@
-# Fonctionnalités impélmentées 14/03/2017
+# Fonctionnalités implémentées 14/03/2017
 
 Cette implémentation suit les règles suivantes :
 
