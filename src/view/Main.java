@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  * @author Krokro
  */
 public class Main extends Application {
-    
+  
     @Override
     public void start(Stage primaryStage) {
         Button btn = new Button();
@@ -24,6 +24,7 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Hello World!");
+        
             }
         });
         
