@@ -12,19 +12,23 @@ import java.util.NoSuchElementException;
 public class PlayerIterator implements Iterator<Player> {
 
     /**
-     *
+     * a container for all players
      */
     protected List<Player> players;
 
+
     /**
-     *
+     * the index of the current player
      */
     protected int current;
 
+
     /**
-     *
+     * Index used to place a starting delimitor for searching and looking into
+     * the list of players
      */
     protected int startIndex;
+
 
     /**
      *
@@ -32,10 +36,15 @@ public class PlayerIterator implements Iterator<Player> {
     protected int buttonIndex;
 
     /**
+     * Create a new instance of PlayerIterator
      *
-     * @param players
+     * @param players the list of players.
      * @throws GameException
      */
+    //TODO Faut-il toujours mettre une description pour le throws ?
+    //Pcq il a pas l'air de vouloir générer la javadoc sans description 
+    //mais je vois pas très bien l'utilité ou comment je pourrais faire car 
+    //c'est un constructeur, les exceptions sont lancées plus bas dans le code 
     public PlayerIterator(List<Player> players) throws GameException {
         this.players = players;
         this.buttonIndex = findButton();
@@ -44,8 +53,8 @@ public class PlayerIterator implements Iterator<Player> {
     }
 
     /**
-     *
-     * @param other
+     * Create a new instance of PlayerIterator based on an existying one .
+     * @param other the existying PlayerIterator 
      * @throws GameException
      */
     public PlayerIterator(PlayerIterator other) throws GameException {
@@ -56,8 +65,10 @@ public class PlayerIterator implements Iterator<Player> {
     }
 
     /**
+     * Find the index of the player who have the button
      *
-     * @return @throws GameException
+     * @return the player's index
+     * @throws GameException if the button was not given
      */
     protected final int findButton() throws GameException {
         int index = -1;
@@ -92,13 +103,17 @@ public class PlayerIterator implements Iterator<Player> {
     }
 
     /**
+     * Find who will be the next player to play
      *
-     * @param build
+     * @param build the current player's index
      * @return
      */
+    //TODO compléter la javadoc après avoir fait le todo ci-dessous
     protected int findNext(int build) {
         int index;
         do {
+            //TODO C'est quoi un attribut en protected ? (voir current)
+            //chercher pourquoi ce truc est en orange ? Dans la méthode au dessus on passe current en paramètre donc  build=current mais ça veut dire quoi un attribut protected ?
             build++;
             index = (build + startIndex) % players.size();
         } while (hasNext() && !players.get(index).canPlay());
@@ -106,8 +121,9 @@ public class PlayerIterator implements Iterator<Player> {
     }
 
     /**
+     * Check if there's only one player remaining.
      *
-     * @return
+     * @return true if it remains only one player, false otherwise
      */
     public boolean onlyOne() {
         Iterator<Player> iterator = players.iterator();

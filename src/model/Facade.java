@@ -101,7 +101,7 @@ public interface Facade {
     /**
      * Return the game's status.
      * <ul>
-     * <li>INIT/li>
+     * <li>INIT </li>
      * <li>BLIND</li>
      * <li>PREFLOP</li>
      * <li>FLOP</li>
@@ -122,7 +122,7 @@ public interface Facade {
      *
      * @param amount increasing amount
      * @throws model.GameException if the match is in Blind State, or if the
-     * player does not own enough money, or if the amount is not > 0
+     * player does not own enough money, or if the amount is not greater than 0
      */
     void raise(int amount) throws GameException;
 

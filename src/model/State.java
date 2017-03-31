@@ -35,7 +35,7 @@ interface State {
      * @param amount bet's amount
      * @param pot betting pot
      * @throws model.GameException if the match is in Blind State, or if the
-     * player does not own enough money, or if the amount is not > 0
+     * player does not own enough money, or if the amount is not greater than 0
      */
     void raise(Player currentPlayer, int minimum, int amount, Pots pot) throws GameException;
 

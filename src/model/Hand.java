@@ -52,6 +52,7 @@ public class Hand implements Comparable<Hand> {
         return this.category.getOrdrer();
     }
 
+    
     @Override
     public int compareTo(Hand other) {
         int result = this.getOrder() - other.getOrder();

@@ -132,7 +132,7 @@ public class Player {
      * Make the bet. Add the amount to the currentBet and withdraw the amount
      * from the money
      *
-     * @param amount
+     * @param amount the desired bet's amount.
      */
     public void makeBet(int amount) {
         money = this.money - amount;
