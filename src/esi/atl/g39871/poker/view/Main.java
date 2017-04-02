@@ -1,13 +1,13 @@
 package esi.atl.g39871.poker.view;
 
+import esi.atl.g39871.poker.model.Game;
+import esi.atl.g39871.poker.model.GameException;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import esi.atl.g39871.poker.model.Game;
-import esi.atl.g39871.poker.model.GameException;
 
 /**
  *
@@ -28,6 +28,7 @@ public class Main extends Application implements Observer {
         MainTestController mainTest = new MainTestController();
 
         root.getChildren().addAll(mainTest);
+
 
         Scene scene = new Scene(root, 300, 250);
 
