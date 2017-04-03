@@ -14,7 +14,7 @@ public class Main extends Application   {
 
 
 
-    Game game;
+    private Game game;
 
     @Override
     public void start(Stage primaryStage)  {

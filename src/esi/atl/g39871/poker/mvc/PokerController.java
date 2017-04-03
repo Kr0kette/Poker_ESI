@@ -26,7 +26,7 @@ public class PokerController implements Observer {
      * @param name  the player's name
      * @param money the player's amount of money
      */
-    public void addPlayer(String name, int money) {
+    public void addPlayer(String name, int money) { //TODO ne doit pas forcément être un int , si ??? 
         model.addPlayer(name, money);
         view.addLayoutPlayer(model.getPlayers().get(model.getPlayers().size() - 1));
 

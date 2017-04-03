@@ -1,8 +1,10 @@
 package esi.atl.g39871.poker.model;
 
+import esi.atl.g39871.poker.model.cards.Card;
+import esi.atl.g39871.poker.model.cards.Color;
+import esi.atl.g39871.poker.model.cards.Value;
 import java.util.List;
 import java.util.Objects;
-import esi.atl.g39871.poker.model.cards.Card;
 
 /**
  * Poker's player.
@@ -31,6 +33,8 @@ public class Player {
         this.name = name;
         this.money = money;
         cards = new PlayerCards();
+        this.add(new Card(Color.CLUB,Value.EIGHT)); //TODO virer ces 2 lignes la , c'est juste pour tester des joueurs avec déja des cartes dès la création
+        this.add(new Card(Color.CLUB,Value.NINE));
     }
 
     /**
