@@ -1,7 +1,7 @@
 package esi.atl.g39871.poker.model;
 
-import java.util.List;
 import esi.atl.g39871.poker.model.cards.Card;
+import java.util.List;
 
 /**
  * Facade of Poker model.
@@ -13,7 +13,7 @@ public interface Facade {
     /**
      * Add a player to the game.
      *
-     * @param name name of the player
+     * @param name  name of the player
      * @param money amount of player's chips
      */
     void addPlayer(String name, int money);
@@ -22,15 +22,18 @@ public interface Facade {
      * Bet the given amount.
      *
      * @param amount amount of the bet
-     * @throws esi.atl.g39871.poker.model.GameException if the amount is not twice the smallblind or
-     * if the match is not in the Blind State
+     * @throws esi.atl.g39871.poker.model.GameException if the amount is not
+     *                                                  twice the smallblind or
+     *                                                  if the match is not in
+     *                                                  the Blind State
      */
     void bigBlind(int amount) throws GameException;
 
     /**
      * Match a bet/raise.
      *
-     * @throws esi.atl.g39871.poker.model.GameException if the match is in Blind State
+     * @throws esi.atl.g39871.poker.model.GameException if the match is in Blind
+     *                                                  State
      */
     void call() throws GameException;
 
@@ -45,7 +48,7 @@ public interface Facade {
      * Bet all player's chips.
      *
      * @throws GameException if the match is in Blind State or if the player
-     * owns enough chips to call
+     *                       owns enough chips to call
      */
     void allIn() throws GameException;
 
@@ -121,8 +124,11 @@ public interface Facade {
      * Increase the size of an existing bet in the same betting round.
      *
      * @param amount increasing amount
-     * @throws esi.atl.g39871.poker.model.GameException if the match is in Blind State, or if the
-     * player does not own enough money, or if the amount is not greater than 0
+     * @throws esi.atl.g39871.poker.model.GameException if the match is in Blind
+     *                                                  State, or if the player
+     *                                                  does not own enough
+     *                                                  money, or if the amount
+     *                                                  is not greater than 0
      */
     void raise(int amount) throws GameException;
 
@@ -130,15 +136,17 @@ public interface Facade {
      * Bet the given amount.
      *
      * @param amount amount of the bet
-     * @throws esi.atl.g39871.poker.model.GameException if the match is not in the Blind State
+     * @throws esi.atl.g39871.poker.model.GameException if the match is not in
+     *                                                  the Blind State
      */
     void smallBlind(int amount) throws GameException;
 
     /**
      * Start a gameof poker.
      *
-     * @throws esi.atl.g39871.poker.model.GameException if there is not enough players or if a match
-     * is in progress
+     * @throws esi.atl.g39871.poker.model.GameException if there is not enough
+     *                                                  players or if a match is
+     *                                                  in progress
      */
     void start() throws GameException;
 
@@ -156,6 +164,7 @@ public interface Facade {
 
     /**
      * Return the small blind value.
+     *
      * @return the small blind value
      */
     int getSmallBlindValue();

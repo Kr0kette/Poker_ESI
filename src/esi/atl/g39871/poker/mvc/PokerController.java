@@ -28,18 +28,37 @@ public class PokerController implements Observer {
      */
     public void addPlayer(String name, int money) { //TODO ne doit pas forcément être un int , si ??? 
         model.addPlayer(name, money);
-        view.addLayoutPlayer(model.getPlayers().get(model.getPlayers().size() - 1));
+        view.addPlayerInLayout(model.getPlayers().get(model.getPlayers().size() - 1));
 
     }
 
     /**
-     * Start de game and set the start button to invisible
+     * Start de game.
+     * <p>
+     * Disable the start button.
+     * <p>
+     * Disable the button to add a player.
+     * <p>
+     * Enable the stop button.
      *
      * @throws GameException
      */
     public void start() throws GameException {
         model.start();
         view.enableStartButton(false);
+        view.enableAddPlayerButton(false);
+        view.enableStopButton(true); //TODO a changer, il faut terminer le match en cours avant de pouvoir stopper la partie.
+    }
+
+    /**
+     * Stop de game and set the stop button to invisible
+     *
+     * @throws GameException
+     */
+    public void stop() throws GameException {
+        model.stop();
+        view.enableStartButton(true);
+        view.enableAddPlayerButton(true);
     }
 
     /**
