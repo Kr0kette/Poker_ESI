@@ -1,7 +1,6 @@
 package esi.atl.g39871.poker.view;
 
 import esi.atl.g39871.poker.model.Game;
-import esi.atl.g39871.poker.model.GameException;
 import esi.atl.g39871.poker.model.Player;
 import esi.atl.g39871.poker.model.cards.Card;
 import esi.atl.g39871.poker.mvc.PokerController;
@@ -11,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -116,13 +116,23 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
     }
 
     @FXML
-    private void start() throws GameException {
+    private void start() {
         controller.start();
     }
 
     @FXML
-    private void stop() throws GameException {
+    private void stop() {
         controller.stop();
+    }
+
+    public void alert(String message) {
+        Alert alertMessage = new Alert(Alert.AlertType.ERROR);
+        alertMessage.setTitle("Attention");
+        alertMessage.setHeaderText("Poker - something's wrong");
+        alertMessage.setContentText(message);
+        //helpAlert.initModality(); //does not block interaction
+        alertMessage.show();
+
     }
 
     /**
@@ -249,7 +259,7 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
      * @return the poker table
      */
     public PokerTableView getPokerTable() {
-        return (PokerTableView) pokerTable;
+        return pokerTable;
     }
 
     /**
@@ -271,32 +281,32 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
     }
 
     @FXML
-    private void fold() throws GameException {
+    private void fold() {
         controller.fold();
     }
 
     @FXML
-    private void allIn() throws GameException {
+    private void allIn() {
         controller.allIn();
     }
 
     @FXML
-    private void call() throws GameException {
+    private void call() {
         controller.call();
     }
 
     @FXML
-    private void raise() throws GameException {
+    private void raise() {
         controller.raise();
     }
 
     @FXML
-    private void smallBlind() throws GameException {
+    private void smallBlind() {
         controller.smallBlind();
     }
 
     @FXML
-    private void bigBlind() throws GameException {
+    private void bigBlind() {
         controller.bigBlind();
     }
 

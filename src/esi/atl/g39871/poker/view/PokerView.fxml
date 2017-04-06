@@ -29,13 +29,13 @@
          <children>
             <HBox>
                <children>
-                  <Label disable="true" text="Min bet : " />
+                  <Label text="Min bet : " />
                   <Label fx:id="minBet" />
                </children>
             </HBox>
             <HBox>
                <children>
-                  <Label disable="true" text="SmallBlind :" />
+                  <Label text="SmallBlind :" />
                   <Label fx:id="smallBlindValue" />
                </children>
             </HBox>

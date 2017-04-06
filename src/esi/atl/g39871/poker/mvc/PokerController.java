@@ -43,19 +43,20 @@ public class PokerController implements Observer {
      *
      * @throws GameException
      */
-    public void start() throws GameException {
-        model.start();
-        view.enableStartButton(false);
-        view.enableAddPlayerButton(false);
-        view.enableStopButton(true); //TODO a changer, il faut terminer le match en cours avant de pouvoir stopper la partie.
+    public void start() {
+        try {
+            model.start();
+        } catch (GameException ex) {
+            view.alert(ex.getMessage());
+        }
+
     }
 
     /**
      * Stop de game and set the stop button to invisible
-     *
-     * @throws GameException
+     * <p>
      */
-    public void stop() throws GameException {
+    public void stop() {
         model.stop();
         view.enableStartButton(true);
         view.enableAddPlayerButton(true);
@@ -75,24 +76,46 @@ public class PokerController implements Observer {
      *
      * @throws GameException if the match is in Blind State
      */
-    public void fold() throws GameException {
-        model.fold();
+    public void fold() {
+        try {
+            //TODO GERER LES ERREURS
+
+            model.fold();
+        } catch (GameException ex) {
+            view.alert(ex.getMessage());
+        }
     }
 
-    public void call() throws GameException {
-        model.call();
+    public void call() {
+        try {
+            model.call();
+        } catch (GameException ex) {
+            view.alert(ex.getMessage());
+        }
     }
 
-    public void raise() throws GameException {
-        model.raise(Integer.parseInt(view.getBetAmount()));
+    public void raise() {
+        try {
+            model.raise(Integer.parseInt(view.getBetAmount()));
+        } catch (GameException ex) {
+            view.alert(ex.getMessage());
+        }
     }
 
-    public void smallBlind() throws GameException {
-        model.smallBlind(Integer.parseInt(view.getBetAmount()));
+    public void smallBlind() {
+        try {
+            model.smallBlind(Integer.parseInt(view.getBetAmount()));
+        } catch (GameException ex) {
+            view.alert(ex.getMessage());
+        }
     }
 
-    public void bigBlind() throws GameException {
-        model.bigBlind(Integer.parseInt(view.getBetAmount()));
+    public void bigBlind() {
+        try {
+            model.bigBlind(Integer.parseInt(view.getBetAmount()));
+        } catch (GameException ex) {
+            view.alert(ex.getMessage());
+        }
     }
 
     /**
@@ -100,18 +123,36 @@ public class PokerController implements Observer {
      *
      * @throws esi.atl.g39871.poker.model.GameException
      */
-    public void allIn() throws GameException {
-        model.allIn();
+    public void allIn() {
+        try {
+            model.allIn();
+        } catch (GameException ex) {
+            view.alert(ex.getMessage());
+        }
     }
 
     @Override
     public void update(Observable o, Object o1) {
-        System.out.println(o1.toString());
-        if (model.getPlayers().size() >= 4 && o1 == Status.INIT) {
+        view.getPokerTable().setStatus(o1.toString()); //show the status
+
+        if (o1 == Status.INIT && model.getPlayers().size() >= 4) {
             view.enableStartButton(true);
         }
 
         if (o1 == Status.BLIND) {
+            view.enableStartButton(false);
+            view.enableStopButton(true);
+            view.enableAllInButton(true);
+            view.enableAmountField(true);
+            view.enableBigBlindButton(true);
+            view.enableCallButton(true);
+            view.enableFoldButton(true);
+            view.enableRaiseButton(true);
+            view.enableSmallBlindButton(true);
+
+            view.setSmallBlindValue(Integer.toString(model.getSmallBlindValue()));
+
+            view.getPokerTable().setPot(Integer.toString(model.getPot()));
 
         }
         if (o1 == Status.PREFLOP) {
