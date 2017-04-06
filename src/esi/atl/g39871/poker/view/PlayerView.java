@@ -20,6 +20,8 @@ public class PlayerView extends VBox {
 
     @FXML
     private Label hasButton;
+    
+    
 
 
     @FXML

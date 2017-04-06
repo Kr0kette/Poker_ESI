@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -37,6 +38,27 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
     private VBox centerBox;
 
     @FXML
+    private TextField betAmount;
+
+    @FXML
+    private Button callButton;
+
+    @FXML
+    private Button raiseButton;
+
+    @FXML
+    private Button smallBlindButton;
+
+    @FXML
+    private Button bigBlindButton;
+
+    @FXML
+    private Label minBet;
+
+    @FXML
+    private Button allInButton;
+
+    @FXML
     private HBox playersLayout;
 
     @FXML
@@ -44,6 +66,9 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
 
     @FXML
     private TextField newPlayerMoney;
+
+    @FXML
+    private Label smallBlindValue;
 
     @FXML
     private Button startButton;
@@ -79,7 +104,7 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
     public void initialize(URL location, ResourceBundle resources) {
         pokerTable = new PokerTableView();
         centerBox.getChildren().add(pokerTable);
-        
+
     }
 
     @FXML
@@ -153,7 +178,57 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
     public PokerTableView getPokerTable() {
         return (PokerTableView) pokerTable;
     }
+
+    /**
+     * Sets the minimum bet's value field to the value given in argument
+     *
+     * @param value the value of the minimum bet
+     */
+    public void setMinBet(String value) {
+        this.minBet.setText(value);
+    }
+
+    /**
+     * Sets the smallBlind value field to the value given in argument
+     *
+     * @param value the smallBlind value
+     */
+    public void setSmallBlindValue(String value) {
+        this.smallBlindValue.setText(value);
+    }
+
+    @FXML
+    private void fold() throws GameException {
+        controller.fold();
+    }
+
+    @FXML
+    private void allIn() throws GameException {
+        controller.allIn();
+    }
+
+    @FXML
+    private void call() throws GameException {
+        controller.call();
+    }
+
+    @FXML
+    private void raise() throws GameException {
+        controller.raise();
+    }
+
+    @FXML
+    private void smallBlind() throws GameException {
+        controller.smallBlind();
+    }
+
+    @FXML
+    private void bigBlind() throws GameException {
+        controller.bigBlind();
+    }
     
-    
-    
+    public String getBetAmount(){
+        return betAmount.getText();
+    }
+
 }

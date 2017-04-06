@@ -2,8 +2,6 @@ package esi.atl.g39871.poker.mvc;
 
 import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.model.GameException;
-import esi.atl.g39871.poker.model.cards.Card;
-import esi.atl.g39871.poker.view.CardView;
 import esi.atl.g39871.poker.view.PokerView;
 import java.util.Observable;
 import java.util.Observer;
@@ -71,6 +69,43 @@ public class PokerController implements Observer {
         return view;
     }
 
+    /**
+     * Discard one's hand and forfeit interest in the current pot.
+     *
+     * @throws GameException if the match is in Blind State
+     */
+    public void fold() throws GameException {
+        model.fold();
+    }
+    
+   
+    public void call() throws GameException {
+        model.call();
+    }
+    
+    public void raise() throws GameException {
+        model.raise(Integer.parseInt(view.getBetAmount()));
+    }
+
+  
+    public void smallBlind() throws GameException {
+        model.smallBlind(Integer.parseInt(view.getBetAmount()));
+    }
+
+
+    public void bigBlind() throws GameException {
+        model.bigBlind(Integer.parseInt(view.getBetAmount()));
+    }
+
+    /**
+     * Bet all player's chips.
+     *
+     * @throws esi.atl.g39871.poker.model.GameException
+     */
+    public void allIn() throws GameException {
+        model.allIn();
+    }
+
     @Override
     public void update(Observable o, Object o1) {
 
@@ -78,22 +113,18 @@ public class PokerController implements Observer {
             view.enableStartButton(true);
         }
         //TODO faire plein d'updates différents pcq faire des try c'est vrmt de la merde !!!
-        
-            view.getPokerTable().setStatus(model.getStatus().toString());
-        
 
-    
-            view.getPokerTable().setPot(Integer.toString(model.getPot()));
-        
+       // view.getPokerTable().setStatus(model.getStatus().toString());
 
-        
-            for (Card card : model.getBoard()) {//TODO c'est nul , faut pas  recréer tout le board à chaque fois, faudrait rajouter seulement les nouvelles cartes sur la table.
-                CardView cardView = new CardView();
-                cardView.setColor(card.getColor().toString());
-                cardView.setValue(card.getValue().toString());
-                view.getPokerTable().addCard(cardView);
-            }
-        
+      //  view.getPokerTable().setPot(Integer.toString(model.getPot()));
+
+//        for (Card card : model.getBoard()) {//TODO c'est nul , faut pas  recréer tout le board à chaque fois, faudrait rajouter seulement les nouvelles cartes sur la table.
+//            CardView cardView = new CardView();
+//            cardView.setColor(card.getColor().toString());
+//            cardView.setValue(card.getValue().toString());
+//            view.getPokerTable().addCard(cardView);
+//        }
+
 
         /*
          * @SRV update les différents éléments de la vue via la facade de la
