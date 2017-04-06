@@ -1,9 +1,5 @@
 package esi.atl.g39871.poker.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Observable;
 import static esi.atl.g39871.poker.model.Status.BLIND;
 import static esi.atl.g39871.poker.model.Status.END_GAME;
 import static esi.atl.g39871.poker.model.Status.END_MATCH;
@@ -13,6 +9,10 @@ import static esi.atl.g39871.poker.model.Status.PREFLOP;
 import static esi.atl.g39871.poker.model.Status.RIVER;
 import static esi.atl.g39871.poker.model.Status.TURN;
 import esi.atl.g39871.poker.model.cards.Card;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Observable;
 
 /**
  * The main class of the poker game.
@@ -171,7 +171,7 @@ public class Game extends Observable implements Facade {
 
     private void notifyChange() {
         setChanged();
-        notifyObservers(this);
+        notifyObservers(this.status);
     }
 
     private void updateSatus() {

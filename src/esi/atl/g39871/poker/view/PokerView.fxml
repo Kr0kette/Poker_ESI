@@ -22,30 +22,30 @@
       </VBox>
    </left>
    <bottom>
-      <HBox fx:id="playersLayout" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: red;" BorderPane.alignment="CENTER" />
+      <HBox fx:id="playersLayout" prefHeight="100.0" prefWidth="200.0" spacing="5.0" style="-fx-border-color: red;" BorderPane.alignment="CENTER" />
    </bottom>
    <right>
       <VBox spacing="10.0" style="-fx-border-color: red;" BorderPane.alignment="CENTER">
          <children>
             <HBox>
                <children>
-                  <Label text="Min bet : " />
+                  <Label disable="true" text="Min bet : " />
                   <Label fx:id="minBet" />
                </children>
             </HBox>
             <HBox>
                <children>
-                  <Label text="SmallBlind :" />
+                  <Label disable="true" text="SmallBlind :" />
                   <Label fx:id="smallBlindValue" />
                </children>
             </HBox>
-            <Button fx:id="allInButton" mnemonicParsing="false" onAction="#allIn" text="AllIn" />
-            <Button fx:id="foldButton" mnemonicParsing="false" onAction="#fold" text="Fold" />
-            <Button fx:id="callButton" mnemonicParsing="false" onAction="#call" text="Call" />
-            <Button fx:id="raiseButton" mnemonicParsing="false" onAction="#raise" text="Raise" />
-            <Button fx:id="smallBlindButton" mnemonicParsing="false" onAction="#smallBlind" text="SmallBlind" />
-            <Button fx:id="bigBlindButton" mnemonicParsing="false" onAction="#bigBlind" text="BigBlind" />
-            <TextField fx:id="betAmount" promptText="Amount" />
+            <Button fx:id="allInButton" disable="true" mnemonicParsing="false" onAction="#allIn" text="AllIn" />
+            <Button fx:id="foldButton" disable="true" mnemonicParsing="false" onAction="#fold" text="Fold" />
+            <Button fx:id="callButton" disable="true" mnemonicParsing="false" onAction="#call" text="Call" />
+            <Button fx:id="raiseButton" disable="true" mnemonicParsing="false" onAction="#raise" text="Raise" />
+            <Button fx:id="smallBlindButton" disable="true" mnemonicParsing="false" onAction="#smallBlind" text="SmallBlind" />
+            <Button fx:id="bigBlindButton" disable="true" mnemonicParsing="false" onAction="#bigBlind" text="BigBlind" />
+            <TextField fx:id="betAmount" disable="true" promptText="Amount" />
          </children>
          <BorderPane.margin>
             <Insets />

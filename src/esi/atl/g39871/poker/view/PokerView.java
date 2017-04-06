@@ -41,6 +41,9 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
     private TextField betAmount;
 
     @FXML
+    private Button foldButton;
+
+    @FXML
     private Button callButton;
 
     @FXML
@@ -171,6 +174,76 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
     }
 
     /**
+     * Enable or disable the call button according to the argument. Give true
+     * enable the button and false to disable it.
+     *
+     * @param b the boolean value.
+     */
+    public void enableCallButton(boolean b) {
+        callButton.setDisable(!b);
+    }
+
+    /**
+     * Enable or disable the raise button according to the argument. Give true
+     * enable the button and false to disable it.
+     *
+     * @param b the boolean value.
+     */
+    public void enableRaiseButton(boolean b) {
+        raiseButton.setDisable(!b);
+    }
+
+    /**
+     * Enable or disable the fold button according to the argument. Give true
+     * enable the button and false to disable it.
+     *
+     * @param b the boolean value.
+     */
+    public void enableFoldButton(boolean b) {
+        foldButton.setDisable(!b);
+    }
+
+    /**
+     * Enable or disable the smallBlind button according to the argument. Give
+     * true enable the button and false to disable it.
+     *
+     * @param b the boolean value.
+     */
+    public void enableSmallBlindButton(boolean b) {
+        smallBlindButton.setDisable(!b);
+    }
+
+    /**
+     * Enable or disable the bigBlind button according to the argument. Give
+     * true enable the button and false to disable it.
+     *
+     * @param b the boolean value.
+     */
+    public void enableBigBlindButton(boolean b) {
+        bigBlindButton.setDisable(!b);
+    }
+
+    /**
+     * Enable or disable the allIn button according to the argument. Give true
+     * enable the button and false to disable it.
+     *
+     * @param b the boolean value.
+     */
+    public void enableAllInButton(boolean b) {
+        allInButton.setDisable(!b);
+    }
+
+    /**
+     * Enable or disable the bet's amount input field according to the argument.
+     * Give true enable the button and false to disable it.
+     *
+     * @param b the boolean value.
+     */
+    public void enableAmountField(boolean b) {
+        betAmount.setDisable(!b);
+    }
+
+    /**
      * Returns the poker table.
      *
      * @return the poker table
@@ -226,8 +299,8 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
     private void bigBlind() throws GameException {
         controller.bigBlind();
     }
-    
-    public String getBetAmount(){
+
+    public String getBetAmount() {
         return betAmount.getText();
     }
 
