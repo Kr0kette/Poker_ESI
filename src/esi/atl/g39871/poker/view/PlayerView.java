@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
  */
 public class PlayerView extends VBox {
 
-    private List<CardView> cards;
+    private List<CardView> cards;//TODO je sais pas encore à quoi ça va servir mais il me semble que je vais en avoir besoin, je sais plus pourquoi.
 
 
     @FXML

@@ -6,12 +6,16 @@ import esi.atl.g39871.poker.model.Player;
 import esi.atl.g39871.poker.model.cards.Card;
 import esi.atl.g39871.poker.mvc.PokerController;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 
 /*
@@ -24,34 +28,33 @@ import javafx.scene.layout.HBox;
  * l'utilisateur va interragir (les boutons) seront des composants à priori. Et
  * les éléments interactifs seront déclarés ici, dans la facade de la vue.
  */
-public class PokerView extends BorderPane { //TODO virer initializable ? 
+public class PokerView extends BorderPane implements Initializable { //TODO virer initializable ? 
     //TODO est-ce que c'est bien d'étendre VBox ? faut peut-être rien étendre vu que c'est la facade de la vue 
+
+    private PokerTableView pokerTable;
+
+    @FXML
+    private VBox centerBox;
 
     @FXML
     private HBox playersLayout;
 
-
     @FXML
     private TextField newPlayerName;
-
 
     @FXML
     private TextField newPlayerMoney;
 
-
     @FXML
     private Button startButton;
-    
+
     @FXML
     private Button stopButton;
-
 
     @FXML
     private Button addPlayerButton;
 
-
     private Game model;
-
 
     private PokerController controller;
 
@@ -72,6 +75,13 @@ public class PokerView extends BorderPane { //TODO virer initializable ?
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        pokerTable = new PokerTableView();
+        centerBox.getChildren().add(pokerTable);
+        
+    }
+
     @FXML
     private void addPlayer() {
         controller.addPlayer(newPlayerName.getText(), Integer.parseInt(newPlayerMoney.getText()));
@@ -81,7 +91,7 @@ public class PokerView extends BorderPane { //TODO virer initializable ?
     private void start() throws GameException {
         controller.start();
     }
-    
+
     @FXML
     private void stop() throws GameException {
         controller.stop();
@@ -114,7 +124,7 @@ public class PokerView extends BorderPane { //TODO virer initializable ?
     public void enableStartButton(boolean b) {
         startButton.setDisable(!b);
     }
-    
+
     /**
      * Enable or disable the stop button according to the argument. Give true
      * enable the button and false to disable it.
@@ -135,4 +145,15 @@ public class PokerView extends BorderPane { //TODO virer initializable ?
         addPlayerButton.setDisable(!b);
     }
 
+    /**
+     * Returns the poker table.
+     *
+     * @return the poker table
+     */
+    public PokerTableView getPokerTable() {
+        return (PokerTableView) pokerTable;
+    }
+    
+    
+    
 }

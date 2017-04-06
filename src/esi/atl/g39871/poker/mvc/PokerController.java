@@ -2,6 +2,8 @@ package esi.atl.g39871.poker.mvc;
 
 import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.model.GameException;
+import esi.atl.g39871.poker.model.cards.Card;
+import esi.atl.g39871.poker.view.CardView;
 import esi.atl.g39871.poker.view.PokerView;
 import java.util.Observable;
 import java.util.Observer;
@@ -9,7 +11,6 @@ import java.util.Observer;
 public class PokerController implements Observer {
 
     Game model;
-
 
     PokerView view;
 
@@ -76,6 +77,23 @@ public class PokerController implements Observer {
         if (model.getPlayers().size() >= 4) {
             view.enableStartButton(true);
         }
+        //TODO faire plein d'updates différents pcq faire des try c'est vrmt de la merde !!!
+        
+            view.getPokerTable().setStatus(model.getStatus().toString());
+        
+
+    
+            view.getPokerTable().setPot(Integer.toString(model.getPot()));
+        
+
+        
+            for (Card card : model.getBoard()) {//TODO c'est nul , faut pas  recréer tout le board à chaque fois, faudrait rajouter seulement les nouvelles cartes sur la table.
+                CardView cardView = new CardView();
+                cardView.setColor(card.getColor().toString());
+                cardView.setValue(card.getValue().toString());
+                view.getPokerTable().addCard(cardView);
+            }
+        
 
         /*
          * @SRV update les différents éléments de la vue via la facade de la
