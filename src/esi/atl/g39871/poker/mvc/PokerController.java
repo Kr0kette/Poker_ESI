@@ -96,7 +96,7 @@ public class PokerController implements Observer {
 
     public void raise() {
         try {
-            model.raise(Integer.parseInt(view.getBetAmount()));
+            model.raise(view.getBetAmount());
         } catch (GameException ex) {
             view.alert(ex.getMessage());
         }
@@ -104,7 +104,7 @@ public class PokerController implements Observer {
 
     public void smallBlind() {
         try {
-            model.smallBlind(Integer.parseInt(view.getBetAmount()));
+            model.smallBlind(view.getBetAmount());
         } catch (GameException ex) {
             view.alert(ex.getMessage());
         }
@@ -112,7 +112,7 @@ public class PokerController implements Observer {
 
     public void bigBlind() {
         try {
-            model.bigBlind(Integer.parseInt(view.getBetAmount()));
+            model.bigBlind(view.getBetAmount());
         } catch (GameException ex) {
             view.alert(ex.getMessage());
         }
@@ -153,6 +153,8 @@ public class PokerController implements Observer {
             view.setSmallBlindValue(Integer.toString(model.getSmallBlindValue()));
 
             view.getPokerTable().setPot(Integer.toString(model.getPot()));
+            
+            
 
         }
         if (o1 == Status.PREFLOP) {

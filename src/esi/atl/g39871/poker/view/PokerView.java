@@ -128,8 +128,7 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
     public void alert(String message) {
         Alert alertMessage = new Alert(Alert.AlertType.ERROR);
         alertMessage.setTitle("Attention");
-        alertMessage.setHeaderText("Poker - something's wrong");
-        alertMessage.setContentText(message);
+        alertMessage.setHeaderText(message);
         //helpAlert.initModality(); //does not block interaction
         alertMessage.show();
 
@@ -171,6 +170,7 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
      */
     public void enableStopButton(boolean b) {
         stopButton.setDisable(!b);
+
     }
 
     /**
@@ -310,8 +310,8 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
         controller.bigBlind();
     }
 
-    public String getBetAmount() {
-        return betAmount.getText();
+    public int getBetAmount() {
+        return !betAmount.getText().isEmpty()? Integer.parseInt(betAmount.getText()) : 0;
     }
 
 }
