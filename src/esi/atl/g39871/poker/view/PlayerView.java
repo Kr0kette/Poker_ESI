@@ -18,11 +18,11 @@ public class PlayerView extends VBox {
     private List<CardView> cards;//TODO je sais pas encore à quoi ça va servir mais il me semble que je vais en avoir besoin, je sais plus pourquoi.
 
 
+    private int index;
+    
     @FXML
     private Label hasButton;
     
-    
-
 
     @FXML
     private Label folded;
@@ -103,5 +103,6 @@ public class PlayerView extends VBox {
     public void setName(String name) {
         this.name.setText(name);
     }
+
 
 }

@@ -139,8 +139,10 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
      *
      * @param player the new player
      */
-    public void addPlayerInLayout(Player player) {
+    public void addPlayerInLayout(Player player) { //TODO refaire ccette méthode, il y a trop de logique dedans, il vaudrait mieux la séparer et/ou passer directement les attributs en paramètre plutot que le joueur.
         PlayerView playerView = new PlayerView(player.getName(), player.getMoney());
+        playerView.setFolded(player.isFold());
+        playerView.setHasButton(player.hasButton());
         playersLayout.getChildren().add(playerView);
 
         for (Card card : player.getCards()) {//TODO virer ces lignes ca doit se faire via des updates spécifiques, ici c'estj uste pour tester.
@@ -150,6 +152,13 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
             playerView.addCard(cardView);
         }
 
+    }
+
+    /**
+     * Clear all elements in the players layout.
+     */
+    public void clearPlayersLayout() {
+        playersLayout.getChildren().clear();
     }
 
     /**
@@ -311,7 +320,7 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
     }
 
     public int getBetAmount() {
-        return !betAmount.getText().isEmpty()? Integer.parseInt(betAmount.getText()) : 0;
+        return !betAmount.getText().isEmpty() ? Integer.parseInt(betAmount.getText()) : 0;
     }
 
 }

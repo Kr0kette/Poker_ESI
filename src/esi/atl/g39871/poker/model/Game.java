@@ -17,7 +17,7 @@ import java.util.Observable;
 /**
  * The main class of the poker game.
  *
- * @author esiProfs
+ * @author g39871
  */
 public class Game extends Observable implements Facade {
 
@@ -158,6 +158,7 @@ public class Game extends Observable implements Facade {
             }
         }
         players.get(indexNextButton).giveButtton();
+        players.get(indexNextButton-1).removeButton(); 
         match = new Match(players);
         updateSatus();
         notifyChange();

@@ -2,6 +2,7 @@ package esi.atl.g39871.poker.mvc;
 
 import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.model.GameException;
+import esi.atl.g39871.poker.model.Player;
 import esi.atl.g39871.poker.model.Status;
 import esi.atl.g39871.poker.view.PokerView;
 import java.util.Observable;
@@ -28,6 +29,7 @@ public class PokerController implements Observer {
      */
     public void addPlayer(String name, int money) { //TODO ne doit pas forcément être un int , si ??? 
         model.addPlayer(name, money);
+
         view.addPlayerInLayout(model.getPlayers().get(model.getPlayers().size() - 1));
 
     }
@@ -153,29 +155,35 @@ public class PokerController implements Observer {
             view.setSmallBlindValue(Integer.toString(model.getSmallBlindValue()));
 
             view.getPokerTable().setPot(Integer.toString(model.getPot()));
-            
-            
+            updatePlayers();
 
         }
         if (o1 == Status.PREFLOP) {
+            updatePlayers();
 
         }
         if (o1 == Status.FLOP) {
+            updatePlayers();
 
         }
         if (o1 == Status.TURN) {
+            updatePlayers();
 
         }
         if (o1 == Status.RIVER) {
+            updatePlayers();
 
         }
         if (o1 == Status.SHOWDOWN) {
+            updatePlayers();
 
         }
         if (o1 == Status.SPLITPOT) {
+            updatePlayers();
 
         }
         if (o1 == Status.END_MATCH) {
+            updatePlayers();
 
         }
         if (o1 == Status.END_GAME) {
@@ -196,5 +204,14 @@ public class PokerController implements Observer {
          * vue( PokerView), je mettrai probablement des updates dans chaque vue,
          * qui seront appelés depuis la classe facade PokerView
          */
+    }
+
+    private void updatePlayers() {
+
+        view.clearPlayersLayout();
+
+        for (Player player : model.getPlayers()) {
+            view.addPlayerInLayout(player);
+        }
     }
 }
