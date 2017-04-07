@@ -24,6 +24,9 @@ public class PlayerView extends VBox {
   @FXML
   private Label hasButton;
 
+  @FXML
+  private Label profit;
+
   private int index;
 
   @FXML
@@ -89,7 +92,16 @@ public class PlayerView extends VBox {
    * @param money the player's money
    */
   public void setMoney(int money) {
-    this.money.setText(this.money.getText() + Integer.toString(money));
+    this.money.setText(this.money.getText() + Integer.toString(money) + "$");
+  }
+
+  /**
+   * Update the player's profit.
+   *
+   * @param profit the player's profit
+   */
+  public void setProfit(int profit) {
+    this.profit.setText(this.profit.getText() + Integer.toString(profit) + "$ ");
   }
 
   /**
