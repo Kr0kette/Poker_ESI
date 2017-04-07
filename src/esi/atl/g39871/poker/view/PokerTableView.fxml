@@ -3,19 +3,25 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-
+<?import javafx.scene.text.Font?>
 
 <fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <HBox fx:id="cards" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <HBox fx:id="board" alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER" />
    </left>
    <top>
-      <Label fx:id="status" BorderPane.alignment="CENTER" />
+      <Label fx:id="status" text="BLIND" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font></Label>
    </top>
    <bottom>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Pot: " />
+            <Label text="Pot: ">
+               <font>
+                  <Font size="25.0" />
+               </font></Label>
             <Label fx:id="pot" />
          </children>
       </HBox>

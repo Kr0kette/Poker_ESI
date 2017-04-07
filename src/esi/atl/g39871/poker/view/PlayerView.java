@@ -17,23 +17,19 @@ public class PlayerView extends VBox {
 
     private List<CardView> cards;//TODO je sais pas encore à quoi ça va servir mais il me semble que je vais en avoir besoin, je sais plus pourquoi.
 
-
-    private int index;
-    
-    @FXML
-    private Label hasButton;
-    
-
     @FXML
     private Label folded;
 
-
     @FXML
-    private Label name;
+    private Label hasButton;
 
+    private int index;
 
     @FXML
     private Label money;
+
+    @FXML
+    private Label name;
 
     public PlayerView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PlayerView.fxml"));
@@ -56,13 +52,14 @@ public class PlayerView extends VBox {
     }
 
     /**
-     * Sets the visual element to represent if a player has the button or not.
-     * It's advised to set true when the player has the button.
+     * Add a card to the player.
      *
-     * @param b true to show the element, false otherwise.
+     * @param card the card to add
      */
-    public void setHasButton(boolean b) {
-        hasButton.setVisible(b);
+    public void addCard(CardView card) {
+        cards.add(card);
+        this.getChildren().add(card);
+
     }
 
     /**
@@ -76,14 +73,13 @@ public class PlayerView extends VBox {
     }
 
     /**
-     * Add a card to the player.
+     * Sets the visual element to represent if a player has the button or not.
+     * It's advised to set true when the player has the button.
      *
-     * @param card the card to add
+     * @param b true to show the element, false otherwise.
      */
-    public void addCard(CardView card) {
-        cards.add(card);
-        this.getChildren().add(card);
-
+    public void setHasButton(boolean b) {
+        hasButton.setVisible(b);
     }
 
     /**
@@ -103,8 +99,17 @@ public class PlayerView extends VBox {
     public void setName(String name) {
         this.name.setText(name);
     }
-    
-    
-    
+
+    /**
+     * Display a visual effect player to show the current. The visual effect
+     * depends on the argument player.
+     *
+     * @param css the css rules, if more than one rule, they must be separated
+     *            by the traditional semicolon
+     */
+    public void setCurrentPlayerEffect(String css) {
+        this.setStyle(css);
+
+    }
 
 }

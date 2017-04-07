@@ -4,7 +4,7 @@ import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.model.GameException;
 import esi.atl.g39871.poker.view.PokerView;
 
-public class PokerController{
+public class PokerController {
 
     Game model;
 
@@ -15,6 +15,12 @@ public class PokerController{
         view = new PokerView(this, model);
         model.addObserver(view);
 
+        //TODO virer les addPlayer, c'est juste pour tester
+        model.addPlayer("Kuroketto", 10000);
+        model.addPlayer("Imo", 5000);
+        model.addPlayer("ViniVidiVici", 40000);
+        model.addPlayer("Tex", 100);
+
     }
 
     /**
@@ -23,11 +29,12 @@ public class PokerController{
      * @param name  the player's name
      * @param money the player's amount of money
      */
-    public void addPlayer(String name, int money) { //TODO ne doit pas forcément être un int , si ??? 
-        model.addPlayer(name, money);
+    public void addPlayer(String name, String money) { //TODO ne doit pas forcément être un int , si ??? 
+        if (!money.equals("") && !name.equals("")) {
+            model.addPlayer(name, Integer.parseInt(money));
 
-        view.addPlayerInLayout(model.getPlayers().get(model.getPlayers().size() - 1));
-
+            view.addPlayerInLayout(model.getPlayers().get(model.getPlayers().size() - 1));
+        }
     }
 
     /**
@@ -129,91 +136,4 @@ public class PokerController{
         }
     }
 
-//    @Override //TODO changer ca, c'est pas du tout MVC ça !! voir https://www.google.fr/search?q=mvc&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjYoay1_ZLTAhXIrRoKHfaiCM4Q_AUICCgB&biw=1229&bih=548#tbm=isch&q=mvc+java&imgrc=QPgdEDnOC9Bu9M:
-//    public void update(Observable o, Object o1) {
-//        view.getPokerTable().setStatus(o1.toString()); //show the status
-//
-//        if (o1 == Status.INIT && model.getPlayers().size() >= 4) {
-//            view.enableStartButton(true);
-//        }
-//
-//        if (o1 == Status.BLIND) {
-//            view.enableStartButton(false);
-//            view.enableStopButton(true);
-//            view.enableAllInButton(true);
-//            view.enableAmountField(true);
-//            view.enableBigBlindButton(true);
-//            view.enableCallButton(true);
-//            view.enableFoldButton(true);
-//            view.enableRaiseButton(true);
-//            view.enableSmallBlindButton(true);
-//
-//            view.setSmallBlindValue(Integer.toString(model.getSmallBlindValue()));
-//
-//            view.getPokerTable().setPot(Integer.toString(model.getPot()));
-//            updatePlayers();
-//
-//        }
-//        if (o1 == Status.PREFLOP) {
-//            updatePlayers();
-//
-//        }
-//        if (o1 == Status.FLOP) {
-//            updatePlayers();
-//
-//        }
-//        if (o1 == Status.TURN) {
-//            updatePlayers();
-//
-//        }
-//        if (o1 == Status.RIVER) {
-//            updatePlayers();
-//
-//        }
-//        if (o1 == Status.SHOWDOWN) {
-//            updatePlayers();
-//
-//        }
-//        if (o1 == Status.SPLITPOT) {
-//            updatePlayers();
-//
-//        }
-//        if (o1 == Status.END_MATCH) {
-//            updatePlayers();
-//
-//        }
-//        if (o1 == Status.END_GAME) {
-//
-//        }
-//
-//
-//        /*
-//         * @SRV update les différents éléments de la vue via la facade de la
-//         * vue( PokerView), je mettrai probablement des updates dans chaque vue,
-//         * qui seront appelés depuis la classe facade PokerView
-//         */
-//    }
-
-//    private void updatePlayers() {
-//
-//        view.clearPlayersLayout();
-//
-//        for (Player player : model.getPlayers()) {
-//            view.addPlayerInLayout(player);
-//        }
-//    }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
