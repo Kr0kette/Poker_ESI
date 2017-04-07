@@ -7,8 +7,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="650.0" prefWidth="1000.0" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: linear-gradient(to right, #ffd89b, #19547b);;" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <VBox spacing="10.0" style="-fx-border-color: red;" BorderPane.alignment="CENTER">
          <children>
@@ -29,13 +30,21 @@
          <children>
             <HBox>
                <children>
-                  <Label text="Min bet : " />
+                  <Label text="Min bet : ">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
                   <Label fx:id="minBet" />
                </children>
             </HBox>
             <HBox>
                <children>
-                  <Label text="SmallBlind :" />
+                  <Label text="SmallBlind :">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
                   <Label fx:id="smallBlindValue" />
                </children>
             </HBox>

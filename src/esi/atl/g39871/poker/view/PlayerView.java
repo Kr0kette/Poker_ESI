@@ -103,6 +103,8 @@ public class PlayerView extends VBox {
     public void setName(String name) {
         this.name.setText(name);
     }
-
+    
+    
+    
 
 }

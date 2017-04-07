@@ -2,10 +2,13 @@ package esi.atl.g39871.poker.view;
 
 import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.model.Player;
+import esi.atl.g39871.poker.model.Status;
 import esi.atl.g39871.poker.model.cards.Card;
 import esi.atl.g39871.poker.mvc.PokerController;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +32,7 @@ import javafx.scene.layout.VBox;
  * l'utilisateur va interragir (les boutons) seront des composants à priori. Et
  * les éléments interactifs seront déclarés ici, dans la facade de la vue.
  */
-public class PokerView extends BorderPane implements Initializable { //TODO virer initializable ? 
+public class PokerView extends BorderPane implements Initializable,Observer { //TODO virer initializable ? 
     //TODO est-ce que c'est bien d'étendre VBox ? faut peut-être rien étendre vu que c'est la facade de la vue 
 
     private PokerTableView pokerTable;
@@ -321,6 +324,74 @@ public class PokerView extends BorderPane implements Initializable { //TODO vire
 
     public int getBetAmount() {
         return !betAmount.getText().isEmpty() ? Integer.parseInt(betAmount.getText()) : 0;
+    }
+
+    @Override
+    public void update(Observable o, Object o1) {
+        getPokerTable().setStatus(o1.toString()); //show the status
+
+        if (o1 == Status.INIT && model.getPlayers().size() >= 4) {
+            enableStartButton(true);
+        }
+
+        if (o1 == Status.BLIND) {
+            enableStartButton(false);
+            enableStopButton(true);
+            enableAllInButton(true);
+            enableAmountField(true);
+            enableBigBlindButton(true);
+            enableCallButton(true);
+            enableFoldButton(true);
+            enableRaiseButton(true);
+            enableSmallBlindButton(true);
+
+            setSmallBlindValue(Integer.toString(model.getSmallBlindValue()));
+
+            getPokerTable().setPot(Integer.toString(model.getPot()));
+            updatePlayers();
+
+        }
+        if (o1 == Status.PREFLOP) {
+            updatePlayers();
+
+        }
+        if (o1 == Status.FLOP) {
+            updatePlayers();
+
+        }
+        if (o1 == Status.TURN) {
+            updatePlayers();
+
+        }
+        if (o1 == Status.RIVER) {
+            updatePlayers();
+
+        }
+        if (o1 == Status.SHOWDOWN) {
+            updatePlayers();
+
+        }
+        if (o1 == Status.SPLITPOT) {
+            updatePlayers();
+
+        }
+        if (o1 == Status.END_MATCH) {
+            updatePlayers();
+
+        }
+        if (o1 == Status.END_GAME) {
+
+        }
+
+    }
+
+    private void updatePlayers() {
+
+        clearPlayersLayout();
+
+        for (Player player : model.getPlayers()) {
+            addPlayerInLayout(player);
+        }
     }
 
 }
