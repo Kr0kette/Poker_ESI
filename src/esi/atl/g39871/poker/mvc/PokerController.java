@@ -6,6 +6,7 @@ import esi.atl.g39871.poker.view.PokerView;
 
 public class PokerController {
 
+  // TODO essayer de respecter https://sourcemaking.com/refactoring/smells
   Game model;
 
   PokerView view;

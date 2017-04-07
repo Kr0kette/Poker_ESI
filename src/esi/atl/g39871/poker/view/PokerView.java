@@ -125,7 +125,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
 
     if (player.equals(model.getCurrentPlayer())) {
       playerView.setCurrentPlayerEffect("-fx-border-style:solid;" + "-fx-border-radius:3;"
-          + "-fx-border-color:orange;" + "-fo-border-width:4;");
+          + "-fx-border-color:orange;" + "-fx-border-width:4;");
     }
 
     for (Card card : player.getCards()) {// TODO virer ces lignes ca doit se faire via des updates
@@ -302,7 +302,6 @@ public class PokerView extends BorderPane implements Initializable, Observer {
     }
 
     if (o1 == Status.BLIND) {
-      setMinBet(Integer.toString(model.getMinimium()));
       // TODO peut-être mettre une méthode qui appelle model.getAvaible pour faire les disable des
       // boutons , sinon on utilise pas la méthode du model :/
       enableStartButton(false);
@@ -319,6 +318,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
 
       getPokerTable().setPot(Integer.toString(model.getPot()));
       updatePlayers();
+      updateTable();
     }
 
     if (o1 == Status.PREFLOP) {
@@ -425,6 +425,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
       cardView.setValue(card.getValue().toString());
       getPokerTable().addCard(cardView);
     }
+    setMinBet(Integer.toString(model.getMinimium()));
 
     getPokerTable().setPot(Integer.toString(model.getPot()));
 
