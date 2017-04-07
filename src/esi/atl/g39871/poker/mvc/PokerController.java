@@ -19,9 +19,9 @@ public class PokerController {
 
     // TODO virer les addPlayer, c'est juste pour tester
     model.addPlayer("Kuroketto", 10000);
-    model.addPlayer("Imo", 5000);
-    model.addPlayer("ViniVidiVici", 40000);
-    model.addPlayer("Tex", 100);
+    model.addPlayer("Imo", 10000);
+    model.addPlayer("ViniVidiVici", 10000);
+    model.addPlayer("Tex", 10000);
 
   }
 

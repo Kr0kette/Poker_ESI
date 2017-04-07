@@ -51,6 +51,7 @@ abstract class AbstrState implements State {
           "Raise impossible " + currentPlayer.getMoney() + " " + amount + " " + minimum);
     }
     currentPlayer.makeBet(amount + minimum);
+    match.setMinimum(amount + minimum);
     match.setRaiseIterator();
     nextState();
   }
