@@ -6,26 +6,27 @@ package esi.atl.g39871.poker.model;
  */
 public enum Bet {
 
-    /**
-     *
-     *//**
-     *
-     */
-    SMALLBLIND,
-    /**
-     *
-     */
-    BIGBLIND,
-    /**
-     *
-     */
-    CALL,
-    /**
-     *
-     */
-    RAISE,
-    /**
-     *
-     */
-    FOLD;
+  /**
+   *
+   */
+  /**
+   *
+   */
+  SMALLBLIND,
+  /**
+   *
+   */
+  BIGBLIND,
+  /**
+   *
+   */
+  CALL,
+  /**
+   *
+   */
+  RAISE,
+  /**
+   *
+   */
+  FOLD;
 }

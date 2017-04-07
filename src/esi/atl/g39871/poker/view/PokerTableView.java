@@ -9,59 +9,59 @@ import javafx.scene.layout.HBox;
 
 public class PokerTableView extends BorderPane {
 
-    @FXML
-    private HBox board;
+  @FXML
+  private HBox board;
 
-    @FXML
-    private Label pot;
+  @FXML
+  private Label pot;
 
-    @FXML
-    private Label status;
+  @FXML
+  private Label status;
 
-    public PokerTableView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PokerTableView.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
+  public PokerTableView() {
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PokerTableView.fxml"));
+    fxmlLoader.setRoot(this);
+    fxmlLoader.setController(this);
 
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
+    try {
+      fxmlLoader.load();
+    } catch (IOException exception) {
+      throw new RuntimeException(exception);
     }
+  }
 
-    /**
-     * Add a card to the board.
-     *
-     * @param card the card to add
-     */
-    public void addCard(CardView card) {
-        board.getChildren().add(card);
-    }
+  /**
+   * Add a card to the board.
+   *
+   * @param card the card to add
+   */
+  public void addCard(CardView card) {
+    board.getChildren().add(card);
+  }
 
-    /**
-     * Sets the status field to the value given in argument
-     *
-     * @param value the new value
-     */
-    public void setStatus(String value) {
-        this.status.setText(value);
-    }
+  /**
+   * Sets the status field to the value given in argument
+   *
+   * @param value the new value
+   */
+  public void setStatus(String value) {
+    this.status.setText(value);
+  }
 
-    /**
-     * Sets the pot's value field to the value given in argument
-     *
-     * @param value the new value for the pot
-     */
-    public void setPot(String value) {
-        this.pot.setText(value);
-    }
+  /**
+   * Sets the pot's value field to the value given in argument
+   *
+   * @param value the new value for the pot
+   */
+  public void setPot(String value) {
+    this.pot.setText(value);
+  }
 
-    /**
-     * Clears all board's elements.
-     */
-    public void clearBoard() {
-        board.getChildren().clear();
-    }
+  /**
+   * Clears all board's elements.
+   */
+  public void clearBoard() {
+    board.getChildren().clear();
+  }
 
 }

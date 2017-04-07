@@ -1,50 +1,50 @@
 package esi.atl.g39871.poker.model;
 
+import esi.atl.g39871.poker.model.cards.Card;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import esi.atl.g39871.poker.model.cards.Card;
 
 /**
  * Each player owns two cards. These cards are dealt during the preflop.
+ *
  * @author esiProfs
  */
 class PlayerCards {
 
-    private final List<Card> cards;
+  private final List<Card> cards;
 
-    /**
-     * At first the player has no card.
-     */
-    PlayerCards() {
-        cards = new ArrayList<>();
-    }
+  /**
+   * At first the player has no card.
+   */
+  PlayerCards() {
+    cards = new ArrayList<>();
+  }
 
-    /**
-     * Add a card to the player's hand.
-     *
-     * @param card the card to add
-     */
-    void add(Card card) {
-        cards.add(card);
-    }
-    
-    /**
-     * Show all the card to the player.
-     */
-    void show() {
-        for (Card card : cards) {
-            card.show();
-        }
-    }
+  /**
+   * Add a card to the player's hand.
+   *
+   * @param card the card to add
+   */
+  void add(Card card) {
+    cards.add(card);
+  }
 
-    /**
-     * Return an unmodifiableList of cards.
-     *
-     * @return an unmodifiableList of cards
-     */
-
-    public List<Card> getCards() {
-        return Collections.unmodifiableList(cards);
+  /**
+   * Show all the card to the player.
+   */
+  void show() {
+    for (Card card : cards) {
+      card.show();
     }
+  }
+
+  /**
+   * Return an unmodifiableList of cards.
+   *
+   * @return an unmodifiableList of cards
+   */
+  public List<Card> getCards() {
+    return Collections.unmodifiableList(cards);
+  }
 }

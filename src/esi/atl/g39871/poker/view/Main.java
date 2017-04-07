@@ -10,34 +10,28 @@ import javafx.stage.Stage;
  *
  * @author Krokro
  */
-public class Main extends Application   {
+public class Main extends Application {
 
+  private Game game;
 
+  @Override
+  public void start(Stage primaryStage) {
 
-    private Game game;
+    game = new Game();
+    PokerController controller = new PokerController(game);
 
-    @Override
-    public void start(Stage primaryStage)  {
+    Scene scene = new Scene(controller.getView());
 
+    primaryStage.setTitle("Poker");
+    primaryStage.setScene(scene);
+    primaryStage.show();
+  }
 
-        game=new Game();
-        PokerController controller=new PokerController(game);
-
-
-
-        Scene scene = new Scene(controller.getView());
-
-        primaryStage.setTitle("Poker");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
+  /**
+   * @param args the command line arguments
+   */
+  public static void main(String[] args) {
+    launch(args);
+  }
 
 }
