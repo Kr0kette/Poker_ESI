@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * The second bet's round, the preflop allow to all players to call, fold, raise or allIn. All
  * players owns two cards and the board has no card.
  *
- * @author esiProfs
+ * @author g39871
  */
 class Preflop extends AbstrState {
 
@@ -33,6 +33,7 @@ class Preflop extends AbstrState {
     } else {
       this.addPot();
       match.setState(match.getFlop());
+      match.resetMinimum(); 
       match.setBetIterator();
       match.showBoard();
       match.dealBoard(1);

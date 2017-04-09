@@ -24,7 +24,7 @@ import java.util.List;
  * which the players reveal cards and evaluate their hands. The player with the best hand wins the
  * pot. A poker hand comprises five cards.
  *
- * @author esiProfs
+ * @author g39871
  */
 class Match {
 
@@ -313,6 +313,15 @@ class Match {
    */
   void setMinimum(int minimum) {
     this.minimum = minimum;
+  }
+  
+  
+  /**
+   * Reset the minimum bet's amount to 0
+   * 
+   */
+  void resetMinimum(){ 
+      this.minimum=0;
   }
 
   /**

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * The fifth and last bet's round, the river allow to all players to call, fold, raise or allIn. All
  * players owns two cards and the board shows five cards.
  *
- * @author esiProfs
+ * @author g39871
  */
 class River extends AbstrState {
 
