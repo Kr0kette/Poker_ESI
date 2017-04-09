@@ -20,6 +20,9 @@ public class PlayerView extends VBox {
 
   @FXML
   private Label folded;
+  
+  @FXML
+  private Label currentBet;
 
   @FXML
   private Label hasButton;
@@ -111,6 +114,16 @@ public class PlayerView extends VBox {
    */
   public void setName(String name) {
     this.name.setText(name);
+  }
+  
+  
+  /**
+   * Sets the player's current bet
+   *
+   * @param name the player's current bet
+   */
+  public void setCurrentBet(String bet) {
+    this.currentBet.setText(this.currentBet.getText()+ bet);
   }
 
   /**

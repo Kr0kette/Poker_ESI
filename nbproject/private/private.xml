@@ -5,9 +5,13 @@
         <group>
             <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/mvc/PokerController.java</file>
             <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Game.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Match.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/AbstrState.java</file>
             <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/view/PokerView.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Player.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/State.java</file>
             <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/view/PlayerView.java</file>
-            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/view/PokerTableView.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Status.java</file>
         </group>
     </open-files>
 </project-private>

@@ -91,6 +91,7 @@ public class Game extends Observable implements Facade {
   @Override
   public Player getCurrentPlayer() {
     return match.getCurrentPlayer();
+      
   }
 
   @Override
