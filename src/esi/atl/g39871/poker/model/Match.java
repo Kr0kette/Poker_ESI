@@ -314,14 +314,13 @@ class Match {
   void setMinimum(int minimum) {
     this.minimum = minimum;
   }
-  
-  
+
   /**
    * Reset the minimum bet's amount to 0
-   * 
+   * <p>
    */
-  void resetMinimum(){ 
-      this.minimum=0;
+  void resetMinimum() {
+    this.minimum = 0;
   }
 
   /**
@@ -401,6 +400,8 @@ class Match {
 
   /**
    * End the ongoing match.
+   * <p>
+   * Note: It also add the players's profit to their money.
    */
   void end() {
     isOver = true;
