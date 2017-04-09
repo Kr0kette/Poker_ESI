@@ -302,8 +302,11 @@ public class PokerView extends BorderPane implements Initializable, Observer {
     public void update(Observable o, Object o1) {
         getPokerTable().setStatus(o1.toString()); // show the status
 
-        if (o1 == Status.INIT && model.getPlayers().size() >= 4) {
-            enableStartButton(true);
+        if (o1 == Status.INIT) {
+            enableAddPlayerButton(true);
+            if (model.getPlayers().size() >= 4) {
+                enableStartButton(true);
+            }
         }
 
         if (o1 == Status.BLIND) {
@@ -311,6 +314,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
             // boutons , sinon on utilise pas la méthode du model :/
             enableStartButton(false);
             enableStopButton(true);
+            enableAddPlayerButton(false);
             enableAmountField(true);
             enableStatusButtons(model.getAvailable());
 
@@ -351,7 +355,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
 
         if (o1 == Status.SHOWDOWN) {
             disableAllBetsButtons();
-            enableStatusButtons(model.getAvailable());
+
             updatePlayers();
             updateTable();
 
@@ -359,7 +363,6 @@ public class PokerView extends BorderPane implements Initializable, Observer {
 
         if (o1 == Status.SPLITPOT) {
             disableAllBetsButtons();
-            enableStatusButtons(model.getAvailable());
             updatePlayers();
             updateTable();
 
@@ -367,7 +370,6 @@ public class PokerView extends BorderPane implements Initializable, Observer {
 
         if (o1 == Status.END_MATCH) {
             disableAllBetsButtons();
-            enableStatusButtons(model.getAvailable());
             updatePlayers();
             // TODO dans le modele faudrait faire en sorte que quand on est en end-match, on ne puisse pas
             // continuer de faire fold, call etc
@@ -378,6 +380,8 @@ public class PokerView extends BorderPane implements Initializable, Observer {
 
         if (o1 == Status.END_GAME) {
             // TODO faut faire un reset de toute l'interface
+            updatePlayers();
+            updateTable();
         }
     }
 

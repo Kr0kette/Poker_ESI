@@ -13,7 +13,7 @@
    <left>
       <VBox spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="addPlayerButton" mnemonicParsing="false" onAction="#addPlayer" text="addPlayer">
+            <Button fx:id="addPlayerButton" disable="true" mnemonicParsing="false" onAction="#addPlayer" text="addPlayer">
                <VBox.margin>
                   <Insets />
                </VBox.margin></Button>
