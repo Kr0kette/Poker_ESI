@@ -15,7 +15,6 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Label fx:id="currentBet" text="CurrentBet: " />
    </children>
    <padding>
       <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />

@@ -123,8 +123,6 @@ public class PokerView extends BorderPane implements Initializable, Observer {
         playerView.setFolded(player.isFold());
         playerView.setHasButton(player.hasButton());
         playerView.setProfit(player.getCurrentProfit());
-        playerView.setCurrentBet(Integer.toString(player.getCurrentBet()));// TODO c'est juste pour
-        // tester
 
         playersLayout.getChildren().add(playerView);
 

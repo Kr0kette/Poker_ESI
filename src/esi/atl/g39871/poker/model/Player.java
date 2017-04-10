@@ -265,7 +265,7 @@ public class Player {
    *
    * @return the amount in the current bet
    */
-  public int getCurrentBet() { //TODO VIRER le public, il y en avait pas de base c'est juste pour tester
+  int getCurrentBet() {
     return currentBet;
   }
 
