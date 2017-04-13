@@ -299,9 +299,11 @@ public class PokerView extends BorderPane implements Initializable, Observer {
     @Override
     public void update(Observable o, Object o1) {
         getPokerTable().setStatus(o1.toString()); // show the status
-
+  
+        
         if (o1 == Status.INIT) {
-            enableAddPlayerButton(true);
+            
+            
             if (model.getPlayers().size() >= 4) {
                 enableStartButton(true);
             }

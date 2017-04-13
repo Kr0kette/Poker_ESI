@@ -7,7 +7,7 @@ import java.util.List;
  * The first bet's round, the blind contains two part : the small and the big blind. No card has
  * been dealt yet.
  * 
- * @author esiProfs
+ * @author g39871
  */
 class Blind extends AbstrState {
 
@@ -29,7 +29,6 @@ class Blind extends AbstrState {
     match.setState(match.getPreFlop());
     match.setDealIterator();
     match.dealPlayer(2);
-    match.dealBoard(3);
     match.setBetIterator();
     match.nextPlayer();
   }

@@ -17,6 +17,7 @@ public class PokerController {
     view = new PokerView(this, model);
     model.addObserver(view);
 
+
     // TODO virer les addPlayer, c'est juste pour tester
     model.addPlayer("Kuroketto", 10000);
     model.addPlayer("Imo", 10000);
