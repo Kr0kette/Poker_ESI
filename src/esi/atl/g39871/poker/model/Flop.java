@@ -33,6 +33,7 @@ public class Flop extends AbstrState {
     } else {
       this.addPot();
       match.setState(match.getTurn());
+      match.resetMinimum(); 
       match.setBetIterator();
       match.showBoard();
       match.dealBoard(1);

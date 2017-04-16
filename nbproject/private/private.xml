@@ -8,9 +8,13 @@
             <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Game.java</file>
             <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/view/PokerView.java</file>
             <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/PlayerIterator.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Preflop.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Turn.java</file>
             <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Player.java</file>
             <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Blind.java</file>
-            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/view/PlayerView.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/view/Main.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Flop.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/River.java</file>
         </group>
     </open-files>
 </project-private>
