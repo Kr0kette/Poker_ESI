@@ -61,7 +61,7 @@ public class PlayerView extends VBox {
    *
    * @param card the card to add
    */
-  public void addCard(CardView card) {
+  public <T extends VBox> void addCard(T card) {
 
     cardsBox.getChildren().add(card);
 
