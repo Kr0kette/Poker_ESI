@@ -1,8 +1,6 @@
 package esi.atl.g39871.poker.view;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -15,11 +13,11 @@ import javafx.scene.layout.VBox;
  */
 public class PlayerView extends VBox {
 
-  private List<CardView> cards;// TODO je sais pas encore à quoi ça va servir mais il me semble que
-  // je vais en avoir besoin, je sais plus pourquoi.
-
   @FXML
   private Label folded;
+  
+  @FXML
+  private VBox cardsBox;
 
   @FXML
   private Label currentBet;
@@ -43,7 +41,7 @@ public class PlayerView extends VBox {
     fxmlLoader.setRoot(this);
     fxmlLoader.setController(this);
 
-    cards = new ArrayList<CardView>();
+
 
     try {
       fxmlLoader.load();
@@ -52,7 +50,7 @@ public class PlayerView extends VBox {
     }
   }
 
-  PlayerView(String name, int money) {
+  PlayerView(String name, String money) { //money is a String, for more component's versatility
     this();
     this.setMoney(money);
     this.setName(name);
@@ -64,10 +62,15 @@ public class PlayerView extends VBox {
    * @param card the card to add
    */
   public void addCard(CardView card) {
-    cards.add(card);
-    this.getChildren().add(card);
+
+    cardsBox.getChildren().add(card);
 
   }
+  
+  public void clearCards(){
+      cardsBox.getChildren().clear();
+  }
+  
 
   /**
    * Sets the visual element to represent if a player is folded or not. It's advised to set true
@@ -94,8 +97,8 @@ public class PlayerView extends VBox {
    *
    * @param money the player's money
    */
-  public void setMoney(int money) {
-    this.money.setText(this.money.getText() + Integer.toString(money) + "$");
+  public void setMoney(String money) {
+    this.money.setText("Money: " + money + "$");
   }
 
   /**
@@ -103,8 +106,8 @@ public class PlayerView extends VBox {
    *
    * @param profit the player's profit
    */
-  public void setProfit(int profit) {
-    this.profit.setText(this.profit.getText() + Integer.toString(profit) + "$ ");
+  public void setProfit(String profit) {
+    this.profit.setText("Profit: "+ profit + "$ ");
   }
 
   /**

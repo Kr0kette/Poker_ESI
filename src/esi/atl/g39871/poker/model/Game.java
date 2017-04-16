@@ -90,7 +90,7 @@ public class Game extends Observable implements Facade {
 
   @Override
   public Player getCurrentPlayer() {
-    return match.getCurrentPlayer();
+    return (Player)match.getCurrentPlayer();
       
   }
 
@@ -143,7 +143,7 @@ public class Game extends Observable implements Facade {
   @Override
   public void start() throws GameException {
     if (players.size() < NB_MIN) {
-      throw new IllegalArgumentException("Il manque des joueurs");
+      throw new IllegalArgumentException("Il manque des joueurs. Minimum: "+NB_MIN);
     }
     startMatch();
   }

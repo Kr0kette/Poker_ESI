@@ -5,9 +5,6 @@ import java.util.List;
 
 /**
  * Facade of Poker model.
- * <p>
- * <p>
- * <p>
  * 
  * @link https://en.wikipedia.org/wiki/Facade_pattern
  * @author g39871
@@ -41,7 +38,7 @@ public interface Facade {
   /**
    * Match a check.
    *
-   * @throws GameException
+   * @throws esi.atl.g39871.poker.model.GameException if the match is in Blind State
    */
   void check() throws GameException;
 

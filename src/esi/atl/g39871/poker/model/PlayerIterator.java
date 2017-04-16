@@ -35,12 +35,8 @@ public class PlayerIterator implements Iterator<Player> {
    * Create a new instance of PlayerIterator
    *
    * @param players the list of players.
-   * @throws GameException
+   * @throws GameException if the button was not given
    */
-  // TODO Faut-il toujours mettre une description pour le throws ?
-  // Pcq il a pas l'air de vouloir générer la javadoc sans description
-  // mais je vois pas très bien l'utilité ou comment je pourrais faire car
-  // c'est un constructeur, les exceptions sont lancées plus bas dans le code
   public PlayerIterator(List<Player> players) throws GameException {
     this.players = players;
     this.buttonIndex = findButton();
@@ -52,7 +48,7 @@ public class PlayerIterator implements Iterator<Player> {
    * Create a new instance of PlayerIterator based on an existying one .
    *
    * @param other the existying PlayerIterator
-   * @throws GameException
+   * @throws GameException if the button was not given
    */
   public PlayerIterator(PlayerIterator other) throws GameException {
     this.players = other.players;
@@ -103,15 +99,11 @@ public class PlayerIterator implements Iterator<Player> {
    * Find who will be the next player to play
    *
    * @param build the current player's index
-   * @return
+   * @return the next player to play
    */
-  // TODO compléter la javadoc après avoir fait le todo ci-dessous
   protected int findNext(int build) {
     int index;
     do {
-      // TODO C'est quoi un attribut en protected ? (voir current)
-      // chercher pourquoi ce truc est en orange ? Dans la méthode au dessus on passe current en
-      // paramètre donc build=current mais ça veut dire quoi un attribut protected ?
       build++;
       index = (build + startIndex) % players.size();
     } while (hasNext() && !players.get(index).canPlay());

@@ -14,15 +14,15 @@ public class PokerController {
   public PokerController(Game model) { // TODO changer la déclaration par les interfaces facade par
     // ex ?
     this.model = model;
+
     view = new PokerView(this, model);
     model.addObserver(view);
 
-
     // TODO virer les addPlayer, c'est juste pour tester
-    model.addPlayer("Kuroketto", 10000);
-    model.addPlayer("Imo", 10000);
-    model.addPlayer("ViniVidiVici", 10000);
-    model.addPlayer("Tex", 10000);
+    addPlayer("Kuroketto", Integer.toString(10000));
+    addPlayer("Imo", Integer.toString(10000));
+    addPlayer("ViniVidiVici", Integer.toString(10000));
+    addPlayer("Tex", Integer.toString(10000));
 
   }
 
@@ -32,11 +32,11 @@ public class PokerController {
    * @param name the player's name
    * @param money the player's amount of money
    */
-  public void addPlayer(String name, String money) { // TODO ne doit pas forcément être un int , si
-    // ???
+  public void addPlayer(String name, String money) {
+    
     if (!money.equals("") && !name.equals("")) {
+       
       model.addPlayer(name, Integer.parseInt(money));
-
       view.addPlayerInLayout(model.getPlayers().get(model.getPlayers().size() - 1));
     }
   }
@@ -50,7 +50,6 @@ public class PokerController {
    * <p>
    * Enable the stop button.
    *
-   * @throws GameException
    */
   public void start() {
     try {
@@ -63,7 +62,7 @@ public class PokerController {
 
   /**
    * Stop de game and set the stop button to invisible
-   * <p>
+   * 
    */
   public void stop() {
     model.stop();
@@ -83,19 +82,15 @@ public class PokerController {
   /**
    * Discard one's hand and forfeit interest in the current pot.
    *
-   * @throws GameException if the match is in Blind State
    */
   public void fold() {
     try {
-      // TODO GERER LES ERREURS
-
       model.fold();
     } catch (GameException ex) {
       view.alert(ex.getMessage());
     }
   }
 
-  
   /**
    * Match a call.
    */
@@ -106,22 +101,20 @@ public class PokerController {
       view.alert(ex.getMessage());
     }
   }
-  
-  
+
   /**
    * Match a check.
    */
-  public void check(){
-     try {
+  public void check() {
+    try {
       model.check();
     } catch (GameException ex) {
       view.alert(ex.getMessage());
-    } 
+    }
   }
 
-  
   /**
-   * Match a raise 
+   * Match a raise
    */
   public void raise() {
     try {
@@ -131,7 +124,6 @@ public class PokerController {
     }
   }
 
-  
   /**
    * Match a smallBlind.
    */
@@ -143,7 +135,6 @@ public class PokerController {
     }
   }
 
-  
   /**
    * Match a bigBlind.
    */
@@ -157,8 +148,7 @@ public class PokerController {
 
   /**
    * Bet all player's chips.
-   *
-   * @throws esi.atl.g39871.poker.model.GameException
+   * 
    */
   public void allIn() {
     try {

@@ -2,7 +2,7 @@ package esi.atl.g39871.poker.model.cards;
 
 /**
  * A classic playing card.
- * <p>
+ * 
  */
 public class Card implements Comparable<Card> {
 
@@ -59,7 +59,7 @@ public class Card implements Comparable<Card> {
    * the card's color
    *
    * @param other the other card
-   * @return
+   * @return true if the card is the card is the next one of another card, false otherwise
    */
   public boolean isNext(Card other) {
     return this.getColor().equals(other.getColor()) && isNextValue(other);

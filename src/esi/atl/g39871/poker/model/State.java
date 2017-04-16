@@ -97,7 +97,6 @@ interface State {
   /**
    * Add all the chips to the pot. If a player is all in, add thje chips to a another pot.
    *
-   * @throws GameException
    */
   void addPot();
 }
