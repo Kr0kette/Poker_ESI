@@ -24,7 +24,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-// TODO essayer de respecter les google java style ( dans toutes les classes )
 /*
  * @SRV Cette classe sera une "facade" de la vue, c'est à dire qu'elle comprendra des composants(
  * table, joueur, cartes, etc) mais le controlleur PokerController interagira avec cette facade,
@@ -75,8 +74,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
 
   @FXML
   private HBox playersLayout;
-  // TODO est-ce que c'est bien d'étendre VBox ? faut peut-être rien étendre vu que c'est la facade
-  // de la vue
+
 
   private PokerTableView pokerTable;
 
@@ -97,8 +95,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
 
   private HashMap<Player, PlayerView> players;
 
-  public PokerView(PokerController controller, Game model) { // TODO passer des interface plutot que
-    // des classes concrètes ?
+  public PokerView(PokerController controller, Game model) { 
     this.model = model;
     this.controller = controller;
     players = new HashMap<Player, PlayerView>();
@@ -272,8 +269,6 @@ public class PokerView extends BorderPane implements Initializable, Observer {
     }
 
     if (o1 == Status.BLIND) {
-      // TODO peut-être mettre une méthode qui appelle model.getAvaible pour faire les disable des
-      // boutons , sinon on utilise pas la méthode du model :/
       disableAllBetsButtons();
       setAvailableBlindButtons();
       enableStatusButtons(model.getAvailable());
@@ -334,7 +329,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
     }
 
     if (o1 == Status.END_GAME) {
-      // TODO faut faire un reset de toute l'interface
+      // TODO ca sert a quoi le end_GAME ???
       updatePlayers();
       updateTable();
     }

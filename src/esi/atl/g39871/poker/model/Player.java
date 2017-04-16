@@ -195,7 +195,7 @@ public class Player {
       return false;
     }
     final Player other = (Player) obj;
-    return Objects.equals(this.name, other.getName());
+    return Objects.equals(this.name, other.getName()); //TODO c'est pas top top  , les gens ont le droit d'avoir le même nom ._. si j'ai 5 min je changerai ca en rajoutant un autre attribut unique
   }
 
   /**

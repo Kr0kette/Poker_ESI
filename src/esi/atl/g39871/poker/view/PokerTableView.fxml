@@ -10,7 +10,7 @@
       <HBox fx:id="board" alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER" />
    </left>
    <top>
-      <Label fx:id="status" text="BLIND" BorderPane.alignment="CENTER">
+      <Label fx:id="status" BorderPane.alignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font></Label>
