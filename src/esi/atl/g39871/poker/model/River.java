@@ -18,10 +18,11 @@ class River extends AbstrState {
   River(Match match) {
     this.match = match;
     availableBet = new ArrayList<>();
-    availableBet.add(Bet.CALL);
+    availableBet.add(Bet.CHECK);
     availableBet.add(Bet.FOLD);
     availableBet.add(Bet.RAISE);
   }
+
 
   @Override
   public void nextState() throws GameException {

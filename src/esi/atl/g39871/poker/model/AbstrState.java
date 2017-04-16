@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  *
- * @author esiProfs
+ * @author g39871
  */
 abstract class AbstrState implements State {
 
@@ -35,6 +35,11 @@ abstract class AbstrState implements State {
   }
 
   @Override
+  public void check() throws GameException {
+    nextState();
+  }
+
+  @Override
   public void fold(Player currentPlayer) throws GameException {
     currentPlayer.fold();
     nextState();
@@ -44,7 +49,7 @@ abstract class AbstrState implements State {
   public void raise(Player currentPlayer, int minimum, int amount, Pots pot) throws GameException {
     if (amount == 0) {
       throw new GameException(
-          "Raise doit être strictement suérieure à 0 " + amount + " " + minimum);
+          "Raise doit être strictement supérieure à 0 " + amount + " " + minimum);
     }
     if (currentPlayer.getMoney() < amount + minimum) {
       throw new GameException(
@@ -53,6 +58,10 @@ abstract class AbstrState implements State {
     currentPlayer.makeBet(amount + minimum);
     match.setMinimum(amount + minimum);
     match.setRaiseIterator();
+    availableBet.remove(Bet.CHECK);
+    if (!availableBet.contains(Bet.CALL)) {
+      availableBet.add(Bet.CALL);
+    }
     nextState();
   }
 
@@ -73,6 +82,7 @@ abstract class AbstrState implements State {
     currentBet = Bet.BIGBLIND;
     availableBet.clear();
     availableBet.add(Bet.BIGBLIND);
+    availableBet.remove(Bet.SMALLBLIND);
   }
 
   @Override

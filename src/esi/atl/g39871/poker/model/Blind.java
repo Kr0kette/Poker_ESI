@@ -32,6 +32,10 @@ class Blind extends AbstrState {
     match.setBetIterator();
     match.nextPlayer();
   }
+  @Override
+  public void check() throws GameException {
+    throw new GameException("Call Impossible");
+  }
 
   @Override
   public void call(Player currentPlayer, int minimum, Pots pot) throws GameException {

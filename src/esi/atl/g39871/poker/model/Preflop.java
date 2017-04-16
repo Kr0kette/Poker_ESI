@@ -33,13 +33,27 @@ class Preflop extends AbstrState {
     } else {
       this.addPot();
       match.setState(match.getFlop());
-      match.resetMinimum(); 
+      match.resetMinimum();
       match.setBetIterator();
       match.showBoard();
       match.dealBoard(3);
       match.nextPlayer();
 
     }
+  }
+
+  @Override
+  public void call(Player currentPlayer, int minimum, Pots pot) throws GameException {
+    if (currentPlayer.getMoney() < minimum) {
+      throw new GameException("Call impossible " + currentPlayer.getMoney() + " " + minimum);
+    }
+    currentPlayer.makeBet(minimum);
+    if (currentPlayer.hasButton()) {
+      availableBet.remove(Bet.CALL);
+      availableBet.add(Bet.CHECK);
+
+    }
+    nextState();
   }
 
   @Override

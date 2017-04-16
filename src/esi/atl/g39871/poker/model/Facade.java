@@ -5,9 +5,12 @@ import java.util.List;
 
 /**
  * Facade of Poker model.
+ * <p>
+ * <p>
+ * <p>
  * 
  * @link https://en.wikipedia.org/wiki/Facade_pattern
- * @author esiProfs
+ * @author g39871
  */
 public interface Facade {
 
@@ -34,6 +37,13 @@ public interface Facade {
    * @throws esi.atl.g39871.poker.model.GameException if the match is in Blind State
    */
   void call() throws GameException;
+
+  /**
+   * Match a check.
+   *
+   * @throws GameException
+   */
+  void check() throws GameException;
 
   /**
    * Discard one's hand and forfeit interest in the current pot.

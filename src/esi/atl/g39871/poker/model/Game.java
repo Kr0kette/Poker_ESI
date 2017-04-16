@@ -125,6 +125,13 @@ public class Game extends Observable implements Facade {
     updateSatus();
     notifyChange();
   }
+  
+  @Override
+  public void check() throws GameException {
+    match.check();
+    updateSatus();
+    notifyChange();
+  }
 
   @Override
   public void smallBlind(int amount) throws GameException {

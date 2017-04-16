@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * The fourth bet's round, the turn allow to all players to call, fold, raise or allIn. All players
  * owns two cards and the board shows four cards.
  *
- * @author esiProfs
+ * @author g39871
  */
 class Turn extends AbstrState {
 
@@ -18,7 +18,7 @@ class Turn extends AbstrState {
   Turn(Match match) {
     this.match = match;
     availableBet = new ArrayList<>();
-    availableBet.add(Bet.CALL);
+    availableBet.add(Bet.CHECK);
     availableBet.add(Bet.FOLD);
     availableBet.add(Bet.RAISE);
   }

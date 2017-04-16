@@ -95,6 +95,10 @@ public class PokerController {
     }
   }
 
+  
+  /**
+   * Match a call.
+   */
   public void call() {
     try {
       model.call();
@@ -102,7 +106,23 @@ public class PokerController {
       view.alert(ex.getMessage());
     }
   }
+  
+  
+  /**
+   * Match a check.
+   */
+  public void check(){
+     try {
+      model.check();
+    } catch (GameException ex) {
+      view.alert(ex.getMessage());
+    } 
+  }
 
+  
+  /**
+   * Match a raise 
+   */
   public void raise() {
     try {
       model.raise(view.getBetAmount());
@@ -111,6 +131,10 @@ public class PokerController {
     }
   }
 
+  
+  /**
+   * Match a smallBlind.
+   */
   public void smallBlind() {
     try {
       model.smallBlind(view.getBetAmount());
@@ -119,6 +143,10 @@ public class PokerController {
     }
   }
 
+  
+  /**
+   * Match a bigBlind.
+   */
   public void bigBlind() {
     try {
       model.bigBlind(view.getBetAmount());

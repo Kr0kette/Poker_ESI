@@ -165,6 +165,15 @@ class Match {
   void call() throws GameException {
     state.call(currentPlayer, minimum, potList);
   }
+  
+  /**
+   * Match a check.
+   *
+   * @throws esi.atl.g39871.poker.model.GameException if the match is in Blind State
+   */
+  void check() throws GameException {
+    state.check();
+  }
 
   /**
    * Bet all player's chips.

@@ -49,6 +49,9 @@ public class PokerView extends BorderPane implements Initializable, Observer {
 
     @FXML
     private Button callButton;
+    
+    @FXML
+    private Button checkButton;
 
     @FXML
     private VBox centerBox;
@@ -312,10 +315,8 @@ public class PokerView extends BorderPane implements Initializable, Observer {
         if (o1 == Status.BLIND) {
             // TODO peut-être mettre une méthode qui appelle model.getAvaible pour faire les disable des
             // boutons , sinon on utilise pas la méthode du model :/
-            enableStartButton(false);
-            enableStopButton(true);
-            enableAddPlayerButton(false);
-            enableAmountField(true);
+            disableAllBetsButtons();
+            setAvailableBlindButtons();
             enableStatusButtons(model.getAvailable());
 
             setSmallBlindValue(Integer.toString(model.getSmallBlindValue()));
@@ -386,13 +387,31 @@ public class PokerView extends BorderPane implements Initializable, Observer {
     }
 
     /**
-     * Enable the right avaible bets buttons that the player is authorized to use.
+     * Enable or disable the check button according to the argument. Give true enable the button and
+     * false to disable it.
      *
-     * @param avaibleBets the avaible bets
+     * @param b the boolean value.
      */
-    public void enableStatusButtons(List<Bet> avaibleBets) {
-        for (Bet avaibleBet : avaibleBets) {
-            switch (avaibleBet) {
+    public void enableCheckButton(boolean b) {
+        checkButton.setDisable(!b);
+    }
+
+    private void setAvailableBlindButtons() {
+        enableStartButton(false);
+        enableStopButton(true);
+        enableAddPlayerButton(false);
+        enableAmountField(true);
+    }
+
+    /**
+     * Enable the right available bets buttons that the player is authorized to use.
+     *
+     * @param availableBets the available bets
+     */
+    public void enableStatusButtons(List<Bet> availableBets) {
+        for (Bet availableBet : availableBets) {
+            System.out.println(availableBet.toString());
+            switch (availableBet) {
                 case SMALLBLIND:
                     enableSmallBlindButton(true);
                     break;
@@ -407,6 +426,9 @@ public class PokerView extends BorderPane implements Initializable, Observer {
                     break;
                 case RAISE:
                     enableRaiseButton(true);
+                    break;
+                case CHECK:
+                    enableCheckButton(true);
                     break;
             }
         }
@@ -423,6 +445,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
         enableCallButton(false);
         enableFoldButton(false);
         enableRaiseButton(false);
+        enableCheckButton(false);
 
     }
 
@@ -444,6 +467,11 @@ public class PokerView extends BorderPane implements Initializable, Observer {
     @FXML
     private void call() {
         controller.call();
+    }
+    
+    @FXML
+    private void check(){
+        controller.check();
     }
 
     @FXML

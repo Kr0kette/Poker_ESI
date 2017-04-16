@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * The third bet's round, the flop allow to all players to call, fold, raise or allIn. All players
  * owns two cards and the board shows three cards.
  *
- * @author esiProfs
+ * @author g39871
  */
 public class Flop extends AbstrState {
 
@@ -18,7 +18,7 @@ public class Flop extends AbstrState {
   Flop(Match match) {
     this.match = match;
     availableBet = new ArrayList<>();
-    availableBet.add(Bet.CALL);
+    availableBet.add(Bet.CHECK);
     availableBet.add(Bet.FOLD);
     availableBet.add(Bet.RAISE);
   }
