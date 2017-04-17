@@ -1,7 +1,7 @@
 package esi.atl.g39871.poker.model;
 
 /**
- * List of all relevant combinaisons.
+ * List of all relevant combinaisons .
  *
  * @author esiProfs
  */
