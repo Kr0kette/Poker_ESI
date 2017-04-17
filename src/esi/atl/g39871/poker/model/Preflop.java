@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * @author g39871
  */
 class Preflop extends AbstrState {
+    private boolean canCheck;
 
   /**
    * The second state of a poker match is the preflop.
@@ -17,6 +18,7 @@ class Preflop extends AbstrState {
    */
   Preflop(Match match) {
     this.match = match;
+    canCheck=true;
     availableBet = new ArrayList<>();
     availableBet.add(Bet.CALL);
     availableBet.add(Bet.FOLD);
@@ -49,11 +51,27 @@ class Preflop extends AbstrState {
       throw new GameException("Call impossible " + currentPlayer.getMoney() + " " + minimum);
     }
     currentPlayer.makeBet(minimum);
-    if (currentPlayer.hasButton() ) {
+    if (currentPlayer.hasButton() &&canCheck ) {
       availableBet.remove(Bet.CALL);
       availableBet.add(Bet.CHECK);
 
     }
+    nextState();
+  }
+  @Override
+  public void raise(Player currentPlayer, int minimum, int amount, Pots pot) throws GameException {
+    if (amount == 0) {
+      throw new GameException(
+          "Raise doit être strictement supérieure à 0 " + amount + " " + minimum);
+    }
+    if (currentPlayer.getMoney() < amount + minimum) {
+      throw new GameException(
+          "Raise impossible " + currentPlayer.getMoney() + " " + amount + " " + minimum);
+    }
+    currentPlayer.makeBet(amount + minimum);
+    match.setMinimum(amount + minimum);
+    match.setRaiseIterator();
+    canCheck=false;
     nextState();
   }
 
