@@ -20,10 +20,7 @@ public class CardView extends VBox implements CardViewInterface {
   private Label labelValue;
 
   
-  @Override
-  public CardView self(){
-      return this;
-  }
+ 
   /**
    * Create a new instance of the FicheSignaletique's component
    */

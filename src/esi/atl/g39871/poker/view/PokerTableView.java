@@ -6,8 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-public class PokerTableView extends BorderPane {
+public class PokerTableView extends BorderPane implements PokerTableViewInterface {
 
   @FXML
   private HBox board;
@@ -35,7 +36,8 @@ public class PokerTableView extends BorderPane {
    *
    * @param card the card to add
    */
-  public void addCard(CardView card) {
+  @Override
+  public void addCard(VBox card) {
     board.getChildren().add(card);
   }
 
@@ -44,6 +46,7 @@ public class PokerTableView extends BorderPane {
    *
    * @param value the new value
    */
+   @Override
   public void setStatus(String value) {
     this.status.setText(value);
   }
@@ -53,6 +56,7 @@ public class PokerTableView extends BorderPane {
    *
    * @param value the new value for the pot
    */
+    @Override
   public void setPot(String value) {
     this.pot.setText(value);
   }
@@ -60,6 +64,7 @@ public class PokerTableView extends BorderPane {
   /**
    * Clears all board's elements.
    */
+    @Override
   public void clearBoard() {
     board.getChildren().clear();
   }

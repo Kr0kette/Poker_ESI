@@ -33,7 +33,7 @@ import javafx.scene.layout.VBox;
  * (les boutons) seront des composants à priori. Et les éléments interactifs seront déclarés ici,
  * dans la facade de la vue.
  */
-public class PokerView extends BorderPane implements Initializable, Observer {
+public class PokerView extends BorderPane implements PokerViewInterface,Initializable,Observer {
 
   @FXML
   private Button addPlayerButton;
@@ -113,18 +113,14 @@ public class PokerView extends BorderPane implements Initializable, Observer {
 
   }
 
-  // /**
-  // * Clear all elements in the players layout.
-  // */
-  // public void clearPlayersLayout() {
-  // playersLayout.getChildren().clear();
-  // }
+
   /**
    * Enable or disable the button to add a player according to the argument. Give true enable the
    * button and false to disable it.
    *
    * @param b the boolean value.
    */
+    @Override
   public void enableAddPlayerButton(boolean b) {
     addPlayerButton.setDisable(!b);
   }
@@ -135,6 +131,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param b the boolean value.
    */
+    @Override
   public void enableAllInButton(boolean b) {
     allInButton.setDisable(!b);
   }
@@ -145,6 +142,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param b the boolean value.
    */
+    @Override
   public void enableAmountField(boolean b) {
     betAmount.setDisable(!b);
   }
@@ -155,6 +153,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param b the boolean value.
    */
+    @Override
   public void enableBigBlindButton(boolean b) {
     bigBlindButton.setDisable(!b);
   }
@@ -165,6 +164,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param b the boolean value.
    */
+    @Override
   public void enableCallButton(boolean b) {
     callButton.setDisable(!b);
   }
@@ -175,6 +175,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param b the boolean value.
    */
+    @Override
   public void enableFoldButton(boolean b) {
     foldButton.setDisable(!b);
   }
@@ -185,6 +186,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param b the boolean value.
    */
+    @Override
   public void enableRaiseButton(boolean b) {
     raiseButton.setDisable(!b);
   }
@@ -195,6 +197,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param b the boolean value.
    */
+    @Override
   public void enableSmallBlindButton(boolean b) {
     smallBlindButton.setDisable(!b);
   }
@@ -205,6 +208,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param b the boolean value.
    */
+    @Override
   public void enableStartButton(boolean b) {
     startButton.setDisable(!b);
   }
@@ -215,11 +219,13 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param b the boolean value.
    */
+    @Override
   public void enableStopButton(boolean b) {
     stopButton.setDisable(!b);
 
   }
 
+    @Override
   public int getBetAmount() {
     return !betAmount.getText().isEmpty() ? Integer.parseInt(betAmount.getText()) : 0;
   }
@@ -229,6 +235,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param value the value of the minimum bet
    */
+    @Override
   public void setMinBet(String value) {
     this.minBet.setText(value);
   }
@@ -238,6 +245,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @return the poker table
    */
+    @Override
   public PokerTableView getPokerTable() {
     return pokerTable;
   }
@@ -247,6 +255,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param value the smallBlind value
    */
+    @Override
   public void setSmallBlindValue(String value) {
     this.smallBlindValue.setText(value);
   }
@@ -341,6 +350,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param b the boolean value.
    */
+    @Override
   public void enableCheckButton(boolean b) {
     checkButton.setDisable(!b);
   }
@@ -357,6 +367,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param availableBets the available bets
    */
+    @Override
   public void enableStatusButtons(List<Bet> availableBets) {
     for (Bet availableBet : availableBets) {
       switch (availableBet) {
@@ -386,6 +397,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
   /**
    * Disable all bets buttons
    */
+    @Override
   public void disableAllBetsButtons() {
     enableSmallBlindButton(false);
     enableBigBlindButton(false);
@@ -455,6 +467,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
    *
    * @param player the new player
    */
+    @Override
   public void addPlayerInLayout(Player player) { // TODO refaire ccette méthode, il y a trop de
     // logique dedans, il vaudrait mieux la séparer
     // et/ou passer directement les attributs en
@@ -468,6 +481,7 @@ public class PokerView extends BorderPane implements Initializable, Observer {
 
   }
 
+    @Override
   public void alert(String message) {
     Alert alertMessage = new Alert(Alert.AlertType.ERROR);
     alertMessage.setTitle("Attention");

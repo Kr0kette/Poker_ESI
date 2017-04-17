@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
  *
  * @author Krokro
  */
-public class PlayerView extends VBox {
+public class PlayerView extends VBox implements PlayerViewInterface {
 
   @FXML
   private Label folded;
@@ -61,12 +61,14 @@ public class PlayerView extends VBox {
    *
    * @param card the card to add
    */
-  public <T extends VBox> void addCard(T card) {
+  @Override
+  public void addCard(VBox card) {
 
     cardsBox.getChildren().add(card);
 
   }
   
+    @Override
   public void clearCards(){
       cardsBox.getChildren().clear();
   }
@@ -78,6 +80,7 @@ public class PlayerView extends VBox {
    *
    * @param b true to show the element, false otherwise
    */
+    @Override
   public void setFolded(boolean b) {
     folded.setVisible(b);
   }
@@ -88,6 +91,7 @@ public class PlayerView extends VBox {
    *
    * @param b true to show the element, false otherwise.
    */
+    @Override
   public void setHasButton(boolean b) {
     hasButton.setVisible(b);
   }
@@ -97,6 +101,7 @@ public class PlayerView extends VBox {
    *
    * @param money the player's money
    */
+    @Override
   public void setMoney(String money) {
     this.money.setText("Money: " + money + "$");
   }
@@ -106,6 +111,7 @@ public class PlayerView extends VBox {
    *
    * @param profit the player's profit
    */
+    @Override
   public void setProfit(String profit) {
     this.profit.setText("Profit: "+ profit + "$ ");
   }
@@ -115,6 +121,7 @@ public class PlayerView extends VBox {
    *
    * @param name the player's name
    */
+    @Override
   public void setName(String name) {
     this.name.setText(name);
   }
@@ -126,6 +133,7 @@ public class PlayerView extends VBox {
    * @param css the css rules, if more than one rule, they must be separated by the traditional
    *        semicolon
    */
+    @Override
   public void setCurrentPlayerEffect(String css) {
     this.setStyle(css);
 

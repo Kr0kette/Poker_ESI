@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
  */
 public interface CardViewInterface<T extends VBox> {
 
-    T self();
+
     /**
      * Set the card's color
      *

@@ -1,6 +1,7 @@
 package esi.atl.g39871.poker.view;
 
 import esi.atl.g39871.poker.model.Game;
+import esi.atl.g39871.poker.mvc.ControllerInterface;
 import esi.atl.g39871.poker.mvc.PokerController;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -18,7 +19,7 @@ public class Main extends Application {
   public void start(Stage primaryStage) {
 
     game = new Game();
-    PokerController controller = new PokerController(game);
+    ControllerInterface controller = new PokerController(game);
 
     Scene scene = new Scene(controller.getView());
 
