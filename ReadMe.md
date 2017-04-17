@@ -49,7 +49,8 @@ Cette implémentation suit les règles suivantes :
   * [Fichier Markdown (.md)](https://fr.wikipedia.org/wiki/Markdown)
 
 # Mise à jour effectuées  17/04/2017
->A compléter
+* Parler (ou faire « parole »)
+* Implémentation du design pattern MVC (ajout de la vue et du controleur)
 
 # Mise à jour effectuées  08/05/2017
 >A compléter
