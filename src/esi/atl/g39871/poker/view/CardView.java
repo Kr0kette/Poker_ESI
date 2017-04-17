@@ -7,9 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 /**
- * FXML Controller class for a CardView
  *
- * @author Krokro
+ * @author g39871
  */
 public class CardView extends VBox implements CardViewInterface {
 
@@ -21,9 +20,6 @@ public class CardView extends VBox implements CardViewInterface {
 
 
 
-  /**
-   * Create a new instance of the FicheSignaletique's component
-   */
   public CardView() {
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CardView.fxml"));
     fxmlLoader.setRoot(this);
@@ -35,40 +31,28 @@ public class CardView extends VBox implements CardViewInterface {
     }
   }
 
-  /**
-   * Set the card's color
-   *
-   * @param color the card's color
-   */
+
   @Override
   public void setColor(String color) {
     labelColor.setText(color);
   }
 
-  /**
-   * Set the card's value
-   *
-   * @param value the card's value
-   */
+
   @Override
   public void setValue(String value) {
     labelValue.setText(value);
   }
 
-  /**
-   * Show the card.
-   */
+
+
+  @Override
+  public void hide() {
+    this.setVisible(false);
+  }
+
   @Override
   public void show() {
     this.setVisible(true);
-  }
-
-  /**
-   * Hide the card.
-   */
-  @Override
-  public void hide() { // TODO essayer d'implémenter si j'ai le temps
-    this.setVisible(false);
   }
 
 }

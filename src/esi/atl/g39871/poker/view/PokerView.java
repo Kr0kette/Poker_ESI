@@ -24,7 +24,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-
+/**
+ * 
+ * @author g39871
+ */
 public class PokerView extends BorderPane implements PokerViewInterface, Initializable, Observer {
 
   @FXML
@@ -135,12 +138,6 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
 
   }
 
-  @FXML
-  private void numKeyEventFilter(KeyEvent event) {
-    if (!event.getCharacter().matches("[0-9]*")) {
-      event.consume();
-    }
-  }
 
 
   @Override
@@ -274,14 +271,9 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
     switch ((Status) o1) {
       case INIT:
         enableStartButton(true);
-
         break;
       case BLIND:
-        // setAvailableBlindButtons();
-        // enableStatusButtons(model.getAvailable());
         setSmallBlindValue(Integer.toString(model.getSmallBlindValue()));
-        // updatePlayers();
-        // updateTable();
       case PREFLOP:
       case FLOP:
       case TURN:
@@ -294,7 +286,6 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
       case END_MATCH:
         enableStartButton(true);
         enableStopButton(true);
-        // TODO le bouton change pas au fur et a mesure des match, uniquement les 2 premiers
       case SHOWDOWN:
         disableAllBetsButtons();
       case SPLITPOT:
@@ -338,6 +329,13 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
   @FXML
   private void fold() {
     controller.fold();
+  }
+
+  @FXML
+  private void numKeyEventFilter(KeyEvent event) {
+    if (!event.getCharacter().matches("[0-9]*")) {
+      event.consume();
+    }
   }
 
   @FXML
@@ -398,7 +396,7 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
       getPokerTable().addCard(cardView);
 
     });
-    setMinBet(Integer.toString(model.getMinimium()));       
+    setMinBet(Integer.toString(model.getMinimium()));
     getPokerTable().setPot(Integer.toString(model.getPot()));
 
   }

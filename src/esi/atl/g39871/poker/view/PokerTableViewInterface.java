@@ -5,7 +5,7 @@ import javafx.scene.layout.VBox;
 
 /**
  *
- * @author Krokro
+ * @author g39871
  */
 public interface PokerTableViewInterface<T extends BorderPane> {
 

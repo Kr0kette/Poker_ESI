@@ -8,6 +8,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * 
+ * @author g39871
+ */
 public class PokerTableView extends BorderPane implements PokerTableViewInterface {
 
   @FXML
@@ -31,42 +35,25 @@ public class PokerTableView extends BorderPane implements PokerTableViewInterfac
     }
   }
 
-  /**
-   * Add a card to the board.
-   *
-   * @param card the card to add
-   */
+
   @Override
   public void addCard(VBox card) {
     board.getChildren().add(card);
   }
 
-  /**
-   * Sets the status field to the value given in argument
-   *
-   * @param value the new value
-   */
-   @Override
-  public void setStatus(String value) {
-    this.status.setText(value);
+  @Override
+  public void clearBoard() {
+    board.getChildren().clear();
   }
 
-  /**
-   * Sets the pot's value field to the value given in argument
-   *
-   * @param value the new value for the pot
-   */
- @Override
+  @Override
   public void setPot(String value) {
     this.pot.setText(value);
   }
 
-  /**
-   * Clears all board's elements.
-   */
-    @Override
-  public void clearBoard() {
-    board.getChildren().clear();
+  @Override
+  public void setStatus(String value) {
+    this.status.setText(value);
   }
 
 }

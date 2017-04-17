@@ -7,7 +7,7 @@ import java.util.Observable;
 
 /**
  *
- * @author Krokro
+ * @author g39871
  */
 public interface PokerViewInterface {
   /**

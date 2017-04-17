@@ -4,7 +4,7 @@ import javafx.scene.layout.VBox;
 
 /**
  *
- * @author Krokro
+ * @author g39871
  */
 public interface CardViewInterface<T extends VBox> {
 

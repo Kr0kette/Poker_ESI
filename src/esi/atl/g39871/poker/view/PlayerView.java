@@ -7,26 +7,23 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 /**
- * FXML Controller class
  *
- * @author Krokro
+ * @author g39871
  */
 public class PlayerView extends VBox implements PlayerViewInterface {
 
-  @FXML
-  private Label folded;
 
   @FXML
   private VBox cardsBox;
 
   @FXML
   private Label currentBet;
+  @FXML
+  private Label folded;
 
   @FXML
   private Label hasButton;
 
-  @FXML
-  private Label profit;
 
   private int index;
 
@@ -35,6 +32,8 @@ public class PlayerView extends VBox implements PlayerViewInterface {
 
   @FXML
   private Label name;
+  @FXML
+  private Label profit;
 
   public PlayerView() {
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PlayerView.fxml"));
@@ -56,11 +55,7 @@ public class PlayerView extends VBox implements PlayerViewInterface {
     this.setName(name);
   }
 
-  /**
-   * Add a card to the player.
-   *
-   * @param card the card to add
-   */
+
   @Override
   public void addCard(VBox card) {
 
@@ -73,70 +68,39 @@ public class PlayerView extends VBox implements PlayerViewInterface {
     cardsBox.getChildren().clear();
   }
 
+  @Override
+  public void setCurrentPlayerEffect(String css) {
+    this.setStyle(css);
 
-  /**
-   * Sets the visual element to represent if a player is folded or not. It's advised to set true
-   * when the player is folded.
-   *
-   * @param b true to show the element, false otherwise
-   */
+  }
+
+
+
   @Override
   public void setFolded(boolean b) {
     folded.setVisible(b);
   }
 
-  /**
-   * Sets the visual element to represent if a player has the button or not. It's advised to set
-   * true when the player has the button.
-   *
-   * @param b true to show the element, false otherwise.
-   */
+
   @Override
   public void setHasButton(boolean b) {
     hasButton.setVisible(b);
   }
 
-  /**
-   * Update the player's money
-   *
-   * @param money the player's money
-   */
+
   @Override
   public void setMoney(String money) {
     this.money.setText("Money: " + money + "$");
   }
 
-  /**
-   * Update the player's profit.
-   *
-   * @param profit the player's profit
-   */
-  @Override
-  public void setProfit(String profit) {
-    this.profit.setText("Profit: " + profit + "$ ");
-  }
-
-  /**
-   * Sets the player's name
-   *
-   * @param name the player's name
-   */
   @Override
   public void setName(String name) {
     this.name.setText(name);
   }
 
-  /**
-   * Display a visual effect player to show the current. The visual effect depends on the argument
-   * player.
-   *
-   * @param css the css rules, if more than one rule, they must be separated by the traditional
-   *        semicolon
-   */
   @Override
-  public void setCurrentPlayerEffect(String css) {
-    this.setStyle(css);
-
+  public void setProfit(String profit) {
+    this.profit.setText("Profit: " + profit + "$ ");
   }
 
 }
