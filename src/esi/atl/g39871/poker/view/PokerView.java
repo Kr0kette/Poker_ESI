@@ -135,12 +135,13 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
     enableCheckButton(false);
 
   }
+
   @FXML
-    private void numKeyEventFilter(KeyEvent event) {
-        if (!event.getCharacter().matches("[0-9]*")){
-            event.consume();
-        }
+  private void numKeyEventFilter(KeyEvent event) {
+    if (!event.getCharacter().matches("[0-9]*")) {
+      event.consume();
     }
+  }
 
 
   @Override
@@ -204,7 +205,6 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
   @Override
   public void enableStatusButtons(List<Bet> availableBets) {
     enableAmountField(true);
-    enableAllInButton(true);
     for (Bet availableBet : availableBets) {
       switch (availableBet) {
         case SMALLBLIND:
@@ -225,6 +225,8 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
         case CHECK:
           enableCheckButton(true);
           break;
+        case ALLIN:
+          enableAllInButton(true);
       }
     }
 
@@ -368,7 +370,7 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
       playerView.setMoney(Integer.toString(player.getMoney())); // I prefer to convert int to String
       // here than inside the component,
       // for more component's versatility
-      
+
       playerView.setHasButton(player.hasButton());
       playerView.setProfit(Integer.toString(player.getCurrentProfit()));// same reason as setMoney
       if (player.equals(model.getCurrentPlayer())) {

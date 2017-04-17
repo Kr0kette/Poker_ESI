@@ -21,6 +21,7 @@ class Preflop extends AbstrState {
     availableBet.add(Bet.CALL);
     availableBet.add(Bet.FOLD);
     availableBet.add(Bet.RAISE);
+    availableBet.add(Bet.ALLIN);
   }
 
   @Override
@@ -48,7 +49,7 @@ class Preflop extends AbstrState {
       throw new GameException("Call impossible " + currentPlayer.getMoney() + " " + minimum);
     }
     currentPlayer.makeBet(minimum);
-    if (currentPlayer.hasButton()) {
+    if (currentPlayer.hasButton() ) {
       availableBet.remove(Bet.CALL);
       availableBet.add(Bet.CHECK);
 

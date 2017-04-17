@@ -32,5 +32,10 @@ public enum Bet {
   /**
    * 
    */
-  CHECK;
+  CHECK,
+ 
+  /**
+   * 
+   */
+  ALLIN;
 }
