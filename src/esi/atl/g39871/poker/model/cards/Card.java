@@ -54,6 +54,8 @@ public class Card implements Comparable<Card> {
     this.hide = false;
   }
 
+
+
   /**
    * Checks if the card is the next one of an other card. It will check both the card's value and
    * the card's color

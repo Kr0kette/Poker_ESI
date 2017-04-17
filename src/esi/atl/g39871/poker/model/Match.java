@@ -165,7 +165,7 @@ class Match {
   void call() throws GameException {
     state.call(currentPlayer, minimum, potList);
   }
-  
+
   /**
    * Match a check.
    *

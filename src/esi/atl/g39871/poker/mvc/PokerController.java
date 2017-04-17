@@ -11,8 +11,7 @@ public class PokerController implements ControllerInterface {
 
   PokerView view;
 
-  public PokerController(Game model) { // TODO changer la déclaration par les interfaces facade par
-    // ex ?
+  public PokerController(Game model) {
     this.model = model;
 
     view = new PokerView(this, model);
@@ -32,11 +31,11 @@ public class PokerController implements ControllerInterface {
    * @param name the player's name
    * @param money the player's amount of money
    */
-    @Override
+  @Override
   public void addPlayer(String name, String money) {
-    
+
     if (!money.equals("") && !name.equals("")) {
-       
+
       model.addPlayer(name, Integer.parseInt(money));
       view.addPlayerInLayout(model.getPlayers().get(model.getPlayers().size() - 1));
     }
@@ -52,7 +51,7 @@ public class PokerController implements ControllerInterface {
    * Enable the stop button.
    *
    */
-    @Override
+  @Override
   public void start() {
     try {
       model.start();
@@ -66,7 +65,7 @@ public class PokerController implements ControllerInterface {
    * Stop de game and set the stop button to invisible
    * 
    */
-    @Override
+  @Override
   public void stop() {
     model.stop();
     view.enableStartButton(true);
@@ -78,7 +77,7 @@ public class PokerController implements ControllerInterface {
    *
    * @return the view's facade
    */
-    @Override
+  @Override
   public PokerView getView() {
     return view;
   }
@@ -87,7 +86,7 @@ public class PokerController implements ControllerInterface {
    * Discard one's hand and forfeit interest in the current pot.
    *
    */
-    @Override
+  @Override
   public void fold() {
     try {
       model.fold();
@@ -99,7 +98,7 @@ public class PokerController implements ControllerInterface {
   /**
    * Match a call.
    */
-    @Override
+  @Override
   public void call() {
     try {
       model.call();
@@ -111,7 +110,7 @@ public class PokerController implements ControllerInterface {
   /**
    * Match a check.
    */
-    @Override
+  @Override
   public void check() {
     try {
       model.check();
@@ -123,7 +122,7 @@ public class PokerController implements ControllerInterface {
   /**
    * Match a raise
    */
-    @Override
+  @Override
   public void raise() {
     try {
       model.raise(view.getBetAmount());
@@ -135,7 +134,7 @@ public class PokerController implements ControllerInterface {
   /**
    * Match a smallBlind.
    */
-    @Override
+  @Override
   public void smallBlind() {
     try {
       model.smallBlind(view.getBetAmount());
@@ -147,7 +146,7 @@ public class PokerController implements ControllerInterface {
   /**
    * Match a bigBlind.
    */
-    @Override
+  @Override
   public void bigBlind() {
     try {
       model.bigBlind(view.getBetAmount());
@@ -160,7 +159,7 @@ public class PokerController implements ControllerInterface {
    * Bet all player's chips.
    * 
    */
-    @Override
+  @Override
   public void allIn() {
     try {
       model.allIn();

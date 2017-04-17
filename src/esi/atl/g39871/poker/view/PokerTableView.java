@@ -56,7 +56,7 @@ public class PokerTableView extends BorderPane implements PokerTableViewInterfac
    *
    * @param value the new value for the pot
    */
-    @Override
+ @Override
   public void setPot(String value) {
     this.pot.setText(value);
   }

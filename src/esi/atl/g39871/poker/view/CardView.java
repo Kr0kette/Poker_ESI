@@ -19,8 +19,8 @@ public class CardView extends VBox implements CardViewInterface {
   @FXML
   private Label labelValue;
 
-  
- 
+
+
   /**
    * Create a new instance of the FicheSignaletique's component
    */
@@ -40,7 +40,7 @@ public class CardView extends VBox implements CardViewInterface {
    *
    * @param color the card's color
    */
-    @Override
+  @Override
   public void setColor(String color) {
     labelColor.setText(color);
   }
@@ -50,7 +50,7 @@ public class CardView extends VBox implements CardViewInterface {
    *
    * @param value the card's value
    */
-    @Override
+  @Override
   public void setValue(String value) {
     labelValue.setText(value);
   }
@@ -58,7 +58,7 @@ public class CardView extends VBox implements CardViewInterface {
   /**
    * Show the card.
    */
-    @Override
+  @Override
   public void show() {
     this.setVisible(true);
   }
@@ -66,8 +66,8 @@ public class CardView extends VBox implements CardViewInterface {
   /**
    * Hide the card.
    */
-    @Override
-  public void hide() { //TODO essayer d'implémenter si j'ai le temps
+  @Override
+  public void hide() { // TODO essayer d'implémenter si j'ai le temps
     this.setVisible(false);
   }
 

@@ -7,10 +7,10 @@ import java.util.List;
  * @author g39871
  */
 interface State {
-    
-   /**
-   * The current player checks. 
-   * He doesn't do anything
+
+  /**
+   * The current player checks. He doesn't do anything
+   * 
    * @throws esi.atl.g39871.poker.model.GameException if the match is in Blind State
    */
   void check() throws GameException;

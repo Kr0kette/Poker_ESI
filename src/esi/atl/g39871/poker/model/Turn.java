@@ -13,6 +13,7 @@ class Turn extends AbstrState {
   /**
    * The fourth state of a poker match is the preflop.
    *
+   * 
    * @param match ongoing match
    */
   Turn(Match match) {

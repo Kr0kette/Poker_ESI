@@ -15,7 +15,7 @@ public class PlayerView extends VBox implements PlayerViewInterface {
 
   @FXML
   private Label folded;
-  
+
   @FXML
   private VBox cardsBox;
 
@@ -50,7 +50,7 @@ public class PlayerView extends VBox implements PlayerViewInterface {
     }
   }
 
-  PlayerView(String name, String money) { //money is a String, for more component's versatility
+  PlayerView(String name, String money) { // money is a String, for more component's versatility
     this();
     this.setMoney(money);
     this.setName(name);
@@ -67,12 +67,12 @@ public class PlayerView extends VBox implements PlayerViewInterface {
     cardsBox.getChildren().add(card);
 
   }
-  
-    @Override
-  public void clearCards(){
-      cardsBox.getChildren().clear();
+
+  @Override
+  public void clearCards() {
+    cardsBox.getChildren().clear();
   }
-  
+
 
   /**
    * Sets the visual element to represent if a player is folded or not. It's advised to set true
@@ -80,7 +80,7 @@ public class PlayerView extends VBox implements PlayerViewInterface {
    *
    * @param b true to show the element, false otherwise
    */
-    @Override
+  @Override
   public void setFolded(boolean b) {
     folded.setVisible(b);
   }
@@ -91,7 +91,7 @@ public class PlayerView extends VBox implements PlayerViewInterface {
    *
    * @param b true to show the element, false otherwise.
    */
-    @Override
+  @Override
   public void setHasButton(boolean b) {
     hasButton.setVisible(b);
   }
@@ -101,7 +101,7 @@ public class PlayerView extends VBox implements PlayerViewInterface {
    *
    * @param money the player's money
    */
-    @Override
+  @Override
   public void setMoney(String money) {
     this.money.setText("Money: " + money + "$");
   }
@@ -111,9 +111,9 @@ public class PlayerView extends VBox implements PlayerViewInterface {
    *
    * @param profit the player's profit
    */
-    @Override
+  @Override
   public void setProfit(String profit) {
-    this.profit.setText("Profit: "+ profit + "$ ");
+    this.profit.setText("Profit: " + profit + "$ ");
   }
 
   /**
@@ -121,7 +121,7 @@ public class PlayerView extends VBox implements PlayerViewInterface {
    *
    * @param name the player's name
    */
-    @Override
+  @Override
   public void setName(String name) {
     this.name.setText(name);
   }
@@ -133,7 +133,7 @@ public class PlayerView extends VBox implements PlayerViewInterface {
    * @param css the css rules, if more than one rule, they must be separated by the traditional
    *        semicolon
    */
-    @Override
+  @Override
   public void setCurrentPlayerEffect(String css) {
     this.setStyle(css);
 

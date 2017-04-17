@@ -9,28 +9,28 @@ import javafx.scene.layout.VBox;
 public interface CardViewInterface<T extends VBox> {
 
 
-    /**
-     * Set the card's color
-     *
-     * @param color the card's color
-     */
-    void setColor(String color);
+  /**
+   * Set the card's color
+   *
+   * @param color the card's color
+   */
+  void setColor(String color);
 
-    /**
-     * Set the card's value
-     *
-     * @param value the card's value
-     */
-    void setValue(String value);
+  /**
+   * Set the card's value
+   *
+   * @param value the card's value
+   */
+  void setValue(String value);
 
-    /**
-     * Hide the card.
-     */
-    void hide();
+  /**
+   * Hide the card.
+   */
+  void hide();
 
-    /**
-     * Show the card.
-     */
-    void show();
-    
+  /**
+   * Show the card.
+   */
+  void show();
+
 }
