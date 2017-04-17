@@ -2,13 +2,10 @@ package esi.atl.g39871.poker.model;
 
 /**
  *
- * @author esiProfs
+ * @author g39871
  */
 public enum Bet {
 
-  /**
-   *
-   */
   /**
    *
    */

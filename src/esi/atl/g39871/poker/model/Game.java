@@ -161,7 +161,9 @@ public class Game extends Observable implements Facade {
       player.initializeMatch();
       if (player.hasButton()) {
         player.removeButton();
-        indexNextButton = (indexNextButton + 1) % players.size();
+          System.out.println("index avant " +indexNextButton);
+        indexNextButton = (index+ 1) % players.size();
+        System.out.println("index apres " +indexNextButton);
       }
     }
     players.get(indexNextButton).giveButtton();

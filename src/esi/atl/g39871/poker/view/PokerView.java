@@ -4,7 +4,6 @@ import esi.atl.g39871.poker.model.Bet;
 import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.model.Player;
 import esi.atl.g39871.poker.model.Status;
-import esi.atl.g39871.poker.model.cards.Card;
 import esi.atl.g39871.poker.mvc.PokerController;
 import java.io.IOException;
 import java.net.URL;
@@ -381,27 +380,25 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
 
       }
       playerView.clearCards();
-      for (Card card : player.getCards()) {// TODO lambda or for ? performances ?
+      player.getCards().forEach(card -> {
         CardView cardView = new CardView();
         cardView.setColor(card.getColor().toString());
         cardView.setValue(card.getValue().toString());
         playerView.addCard(cardView);
-      }
+      });
     });
-
   }
 
   private void updateTable() {
     getPokerTable().clearBoard();
-
-    for (Card card : model.getBoard()) {
+    model.getBoard().forEach(card -> {
       CardView cardView = new CardView();
       cardView.setColor(card.getColor().toString());
       cardView.setValue(card.getValue().toString());
       getPokerTable().addCard(cardView);
-    }
-    setMinBet(Integer.toString(model.getMinimium()));
 
+    });
+    setMinBet(Integer.toString(model.getMinimium()));       
     getPokerTable().setPot(Integer.toString(model.getPot()));
 
   }
