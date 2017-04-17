@@ -55,6 +55,9 @@ public class PokerController implements ControllerInterface {
   public void start() {
     try {
       model.start();
+      view.enableStartButton(false);
+      view.enableStopButton(false);
+      view.enableAddPlayerButton(false);
     } catch (GameException ex) {
       view.alert(ex.getMessage());
     }
@@ -68,8 +71,7 @@ public class PokerController implements ControllerInterface {
   @Override
   public void stop() {
     model.stop();
-    view.enableStartButton(true);
-    view.enableAddPlayerButton(true);
+    
   }
 
   /**

@@ -20,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -126,12 +127,20 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
   public void disableAllBetsButtons() {
     enableSmallBlindButton(false);
     enableBigBlindButton(false);
+    enableAmountField(false);
+    enableAllInButton(false);
     enableCallButton(false);
     enableFoldButton(false);
     enableRaiseButton(false);
     enableCheckButton(false);
 
   }
+  @FXML
+    private void numKeyEventFilter(KeyEvent event) {
+        if (!event.getCharacter().matches("[0-9]*")){
+            event.consume();
+        }
+    }
 
 
   @Override
@@ -194,6 +203,8 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
 
   @Override
   public void enableStatusButtons(List<Bet> availableBets) {
+    enableAmountField(true);
+    enableAllInButton(true);
     for (Bet availableBet : availableBets) {
       switch (availableBet) {
         case SMALLBLIND:
@@ -259,78 +270,40 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
   public void update(Observable o, Object o1) {
     getPokerTable().setStatus(o1.toString()); // show the status
 
-    if (o1 == Status.INIT) {
-      if (model.getPlayers().size() >= 4) {
+    switch ((Status) o1) {
+      case INIT:
         enableStartButton(true);
-      }
-    }
 
-    if (o1 == Status.BLIND) {
-      disableAllBetsButtons();
-      enableAllInButton(true);
-      setAvailableBlindButtons();
-      enableStatusButtons(model.getAvailable());
-
-      setSmallBlindValue(Integer.toString(model.getSmallBlindValue()));
-
-      getPokerTable().setPot(Integer.toString(model.getPot()));
-      updatePlayers();
-      updateTable();
-    }
-
-    if (o1 == Status.PREFLOP) {
-      disableAllBetsButtons();
-      enableStatusButtons(model.getAvailable());
-      updatePlayers();
-      updateTable();
-    }
-
-    if (o1 == Status.FLOP) {
-      disableAllBetsButtons();
-      enableStatusButtons(model.getAvailable());
-      updatePlayers();
-      updateTable();
-    }
-
-    if (o1 == Status.TURN) {
-      disableAllBetsButtons();
-      enableStatusButtons(model.getAvailable());
-      updatePlayers();
-      updateTable();
-    }
-
-    if (o1 == Status.RIVER) {
-      disableAllBetsButtons();
-      enableStatusButtons(model.getAvailable());
-      updatePlayers();
-      updateTable();
-    }
-
-    if (o1 == Status.SHOWDOWN) {
-      disableAllBetsButtons();
-
-      updatePlayers();
-      updateTable();
-    }
-
-    if (o1 == Status.SPLITPOT) {
-      disableAllBetsButtons();
-      updatePlayers();
-      updateTable();
-    }
-
-    if (o1 == Status.END_MATCH) {
-      disableAllBetsButtons();
-      updatePlayers();
-      updateTable();
-
-    }
-
-    if (o1 == Status.END_GAME) {
-      // TODO ca sert a quoi le end_GAME ???
-      System.out.println("lol");
-      updatePlayers();
-      updateTable();
+        break;
+      case BLIND:
+        // setAvailableBlindButtons();
+        // enableStatusButtons(model.getAvailable());
+        setSmallBlindValue(Integer.toString(model.getSmallBlindValue()));
+        // updatePlayers();
+        // updateTable();
+      case PREFLOP:
+      case FLOP:
+      case TURN:
+      case RIVER:
+        disableAllBetsButtons();
+        enableStatusButtons(model.getAvailable());
+        updatePlayers();
+        updateTable();
+        break;
+      case END_MATCH:
+        enableStartButton(true);
+        enableStopButton(true);
+        // TODO le bouton change pas au fur et a mesure des match, uniquement les 2 premiers
+      case SHOWDOWN:
+        disableAllBetsButtons();
+      case SPLITPOT:
+        updatePlayers();
+        updateTable();
+        break;
+      case END_GAME:
+        enableStartButton(false);
+        enableStopButton(false);
+        break;
     }
   }
 
@@ -371,12 +344,6 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
     controller.raise();
   }
 
-  private void setAvailableBlindButtons() {
-    enableStartButton(false);
-    enableStopButton(true);
-    enableAddPlayerButton(false);
-    enableAmountField(true);
-  }
 
   @FXML
   private void smallBlind() {
@@ -401,6 +368,7 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
       playerView.setMoney(Integer.toString(player.getMoney())); // I prefer to convert int to String
       // here than inside the component,
       // for more component's versatility
+      
       playerView.setHasButton(player.hasButton());
       playerView.setProfit(Integer.toString(player.getCurrentProfit()));// same reason as setMoney
       if (player.equals(model.getCurrentPlayer())) {

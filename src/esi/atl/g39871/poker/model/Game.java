@@ -143,9 +143,10 @@ public class Game extends Observable implements Facade {
   @Override
   public void start() throws GameException {
     if (players.size() < NB_MIN) {
-      throw new IllegalArgumentException("Il manque des joueurs. Minimum: " + NB_MIN);
+      throw new GameException("Il manque des joueurs. Minimum: " + NB_MIN);
     }
     startMatch();
+
   }
 
   @Override

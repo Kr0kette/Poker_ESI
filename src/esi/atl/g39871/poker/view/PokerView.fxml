@@ -18,7 +18,7 @@
                   <Insets />
                </VBox.margin></Button>
             <TextField fx:id="newPlayerName" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Player Name" />
-            <TextField fx:id="newPlayerMoney" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Player Money" />
+            <TextField fx:id="newPlayerMoney" maxHeight="-Infinity" maxWidth="-Infinity" onKeyTyped="#numKeyEventFilter" promptText="Player Money" />
          </children>
       </VBox>
    </left>
@@ -55,7 +55,7 @@
             <Button fx:id="raiseButton" disable="true" mnemonicParsing="false" onAction="#raise" text="Raise" />
             <Button fx:id="smallBlindButton" disable="true" mnemonicParsing="false" onAction="#smallBlind" text="SmallBlind" />
             <Button fx:id="bigBlindButton" disable="true" mnemonicParsing="false" onAction="#bigBlind" text="BigBlind" />
-            <TextField fx:id="betAmount" disable="true" promptText="Amount" />
+            <TextField fx:id="betAmount" disable="true" onKeyTyped="#numKeyEventFilter" promptText="Amount" />
          </children>
          <BorderPane.margin>
             <Insets />
@@ -66,8 +66,8 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button fx:id="startButton" disable="true" mnemonicParsing="false" onAction="#start" text="Start" />
-                  <Button fx:id="stopButton" disable="true" mnemonicParsing="false" onAction="#start" text="Stop" />
+                  <Button fx:id="startButton" disable="true" mnemonicParsing="false" onAction="#start" text="Start new match" />
+                  <Button fx:id="stopButton" disable="true" mnemonicParsing="false" onAction="#stop" text="Stop the game" />
                </children>
             </HBox>
          </children>

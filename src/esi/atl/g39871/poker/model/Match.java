@@ -410,10 +410,11 @@ class Match {
   /**
    * End the ongoing match.
    * <p>
-   * Note: It also add the players's profit to their money.
+   * Note: It's also supposed to add the players's profit to their money....
    */
   void end() {
     isOver = true;
+    
   }
 
   /**
