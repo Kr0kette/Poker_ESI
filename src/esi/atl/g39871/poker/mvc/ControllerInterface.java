@@ -3,18 +3,18 @@ package esi.atl.g39871.poker.mvc;
 import esi.atl.g39871.poker.view.PokerView;
 
 /**
- *
- * @author Krokro
+ * A game controller. It receives events from the view, it updates the view and use the model
+ * according to those events
+ * 
+ * @author g39871
  */
 public interface ControllerInterface {
 
   /**
    * Add a player to the game, and create a visual for this player
    *
-   * @param name the player's name
-   * @param money the player's amount of money
    */
-  void addPlayer(String name, String money);
+  void addPlayer();
 
   /**
    * Bet all player's chips.

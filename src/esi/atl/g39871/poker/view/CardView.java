@@ -7,7 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 /**
- *
+ * A card's view 
+ * 
  * @author g39871
  */
 public class CardView extends VBox implements CardViewInterface {
@@ -19,7 +20,9 @@ public class CardView extends VBox implements CardViewInterface {
   private Label labelValue;
 
 
-
+  /**
+   * Creates a new card's view
+   */
   public CardView() {
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CardView.fxml"));
     fxmlLoader.setRoot(this);

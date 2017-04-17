@@ -7,7 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 /**
- *
+ * A player's view 
+ * 
  * @author g39871
  */
 public class PlayerView extends VBox implements PlayerViewInterface {
@@ -25,8 +26,6 @@ public class PlayerView extends VBox implements PlayerViewInterface {
   private Label hasButton;
 
 
-  private int index;
-
   @FXML
   private Label money;
 
@@ -35,6 +34,9 @@ public class PlayerView extends VBox implements PlayerViewInterface {
   @FXML
   private Label profit;
 
+  /**
+   * Creates a new player's view 
+   */
   public PlayerView() {
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PlayerView.fxml"));
     fxmlLoader.setRoot(this);

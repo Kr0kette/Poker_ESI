@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
- *
- * @author esiProfs
+ * A player's iterator
+ * 
+ * @author g39871
  */
 public class PlayerIterator implements Iterator<Player> {
 

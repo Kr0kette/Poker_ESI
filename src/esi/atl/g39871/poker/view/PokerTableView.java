@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
+ *  A poker's table's view 
  * 
  * @author g39871
  */
@@ -23,6 +24,9 @@ public class PokerTableView extends BorderPane implements PokerTableViewInterfac
   @FXML
   private Label status;
 
+  /**
+   * Creates a new poker table's view
+   */
   public PokerTableView() {
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PokerTableView.fxml"));
     fxmlLoader.setRoot(this);

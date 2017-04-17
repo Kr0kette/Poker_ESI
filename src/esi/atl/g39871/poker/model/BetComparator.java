@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.Comparator;
 
 /**
+ * A bet's comparator
  * 
- * @author esiProfs
+ * @author g39871
  */
 public class BetComparator implements Comparator<Player>, Serializable {
 

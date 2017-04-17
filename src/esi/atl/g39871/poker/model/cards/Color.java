@@ -1,5 +1,11 @@
 package esi.atl.g39871.poker.model.cards;
 
+
+/**
+ * Represents a card's color.
+ * 
+ * @author g39871
+ */
 public enum Color {
 
   CLUB("Clubs", 3), DIAMOND("Diamonds", 2), HEART("Hearts", 1), SPADE("Spades", 4);

@@ -4,102 +4,61 @@ import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.model.GameException;
 import esi.atl.g39871.poker.view.PokerView;
 
+/**
+ * Controller for a Poker Game.
+ * 
+ * @author g39871
+ */
 public class PokerController implements ControllerInterface {
 
-  // TODO essayer de respecter https://sourcemaking.com/refactoring/smells
   Game model;
 
   PokerView view;
 
+  /**
+   * Creates a new controller for a Poker Game A view for the game will be generated.
+   * 
+   * @param model the model
+   */
   public PokerController(Game model) {
     this.model = model;
 
     view = new PokerView(this, model);
     model.addObserver(view);
 
-    // TODO virer les addPlayer, c'est juste pour tester
-    addPlayer("Kuroketto", Integer.toString(10000));
-    addPlayer("Imo", Integer.toString(10000));
-    addPlayer("ViniVidiVici", Integer.toString(10000));
-    addPlayer("Tex", Integer.toString(10000));
-
   }
 
-  /**
-   * Add a player to the game, and create a visual for this player
-   *
-   * @param name the player's name
-   * @param money the player's amount of money
-   */
-  @Override
-  public void addPlayer(String name, String money) {
 
+  @Override
+  public void addPlayer() {
+
+    String name = view.getNewPlayerName();
+    String money = view.getNewPlayerMoney();
     if (!money.equals("") && !name.equals("")) {
 
       model.addPlayer(name, Integer.parseInt(money));
       view.addPlayerInLayout(model.getPlayers().get(model.getPlayers().size() - 1));
     }
   }
-
-  /**
-   * Start de game.
-   * <p>
-   * Disable the start button.
-   * <p>
-   * Disable the button to add a player.
-   * <p>
-   * Enable the stop button.
-   *
-   */
   @Override
-  public void start() {
-    try {
-      model.start();
-      view.enableStartButton(false);
-      view.enableStopButton(false);
-      view.enableAddPlayerButton(false);
-    } catch (GameException ex) {
-      view.alert(ex.getMessage());
-    }
-
+  public void allIn() {
+      try {
+          model.allIn();
+      } catch (GameException ex) {
+          view.alert(ex.getMessage());
+      }
+  }
+  @Override
+  public void bigBlind() {
+      try {
+          model.bigBlind(view.getBetAmount());
+      } catch (GameException ex) {
+          view.alert(ex.getMessage());
+      }
   }
 
-  /**
-   * Stop de game and set the stop button to invisible
-   * 
-   */
-  @Override
-  public void stop() {
-    model.stop();
-    
-  }
 
-  /**
-   * Returns the view's facade
-   *
-   * @return the view's facade
-   */
-  @Override
-  public PokerView getView() {
-    return view;
-  }
 
-  /**
-   * Discard one's hand and forfeit interest in the current pot.
-   *
-   */
-  @Override
-  public void fold() {
-    try {
-      model.fold();
-    } catch (GameException ex) {
-      view.alert(ex.getMessage());
-    }
-  }
-
-  /**
-   * Match a call.
-   */
   @Override
   public void call() {
     try {
@@ -109,9 +68,7 @@ public class PokerController implements ControllerInterface {
     }
   }
 
-  /**
-   * Match a check.
-   */
+
   @Override
   public void check() {
     try {
@@ -120,10 +77,20 @@ public class PokerController implements ControllerInterface {
       view.alert(ex.getMessage());
     }
   }
+  @Override
+  public void fold() {
+      try {
+          model.fold();
+      } catch (GameException ex) {
+          view.alert(ex.getMessage());
+      }
+  }
+  @Override
+  public PokerView getView() {
+      return view;
+  }
 
-  /**
-   * Match a raise
-   */
+
   @Override
   public void raise() {
     try {
@@ -133,9 +100,7 @@ public class PokerController implements ControllerInterface {
     }
   }
 
-  /**
-   * Match a smallBlind.
-   */
+
   @Override
   public void smallBlind() {
     try {
@@ -144,30 +109,23 @@ public class PokerController implements ControllerInterface {
       view.alert(ex.getMessage());
     }
   }
-
-  /**
-   * Match a bigBlind.
-   */
   @Override
-  public void bigBlind() {
-    try {
-      model.bigBlind(view.getBetAmount());
-    } catch (GameException ex) {
-      view.alert(ex.getMessage());
-    }
+  public void start() {
+      try {
+          model.start();
+          view.enableStartButton(false);
+          view.enableStopButton(false);
+          view.enableAddPlayerButton(false);
+          view.enableNewPlayerNameField(false);
+          view.enableNewPlayerMoneyField(false);
+      } catch (GameException ex) {
+          view.alert(ex.getMessage());
+      }
   }
-
-  /**
-   * Bet all player's chips.
-   * 
-   */
   @Override
-  public void allIn() {
-    try {
-      model.allIn();
-    } catch (GameException ex) {
-      view.alert(ex.getMessage());
-    }
+  public void stop() {
+      model.stop();
+      
   }
 
 }

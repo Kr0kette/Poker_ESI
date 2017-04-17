@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.Comparator;
 
 /**
- *
- * @author esiProfs
+ * A card's color's comparator
+ * 
+ * @author g39871
  */
 public class ColorComparator implements Comparator<Card>, Serializable {
 

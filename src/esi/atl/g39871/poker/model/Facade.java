@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Facade of Poker model.
  * 
- * @link https://en.wikipedia.org/wiki/Facade_pattern
+ * https://en.wikipedia.org/wiki/Facade_pattern
  * @author g39871
  */
 public interface Facade {

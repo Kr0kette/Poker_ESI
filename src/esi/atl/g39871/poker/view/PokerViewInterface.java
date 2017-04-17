@@ -3,10 +3,11 @@ package esi.atl.g39871.poker.view;
 import esi.atl.g39871.poker.model.Bet;
 import esi.atl.g39871.poker.model.Player;
 import java.util.List;
-import java.util.Observable;
 
 /**
- *
+ * A Poker's view. The user of this Interface has precise control over what to do with each gui's
+ * elements
+ * 
  * @author g39871
  */
 public interface PokerViewInterface {
@@ -17,6 +18,11 @@ public interface PokerViewInterface {
    */
   void addPlayerInLayout(Player player);
 
+  /**
+   * Generates an alert for the given message.
+   * 
+   * @param message the message
+   */
   void alert(String message);
 
   /**
@@ -26,10 +32,9 @@ public interface PokerViewInterface {
 
 
   /**
-   * Enable or disable the button to add a player according to the argument. Give true enable the
-   * button and false to disable it.
-   *
-   * @param b the boolean value.
+   * Enable or disable the button to add a player according to the argument.
+   * 
+   * @param b true enable the button and false disable it.
    */
   void enableAddPlayerButton(boolean b);
 
@@ -37,15 +42,16 @@ public interface PokerViewInterface {
    * Enable or disable the allIn button according to the argument. Give true enable the button and
    * false to disable it.
    *
-   * @param b the boolean value.
+   * @param b true enable the button and false disable it
    */
   void enableAllInButton(boolean b);
+
 
   /**
    * Enable or disable the bet's amount input field according to the argument. Give true enable the
    * button and false to disable it.
    *
-   * @param b the boolean value.
+   * @param b true enable the field and false disable it.
    */
   void enableAmountField(boolean b);
 
@@ -53,7 +59,7 @@ public interface PokerViewInterface {
    * Enable or disable the bigBlind button according to the argument. Give true enable the button
    * and false to disable it.
    *
-   * @param b the boolean value.
+   * @param b true enable the button and false disable it
    */
   void enableBigBlindButton(boolean b);
 
@@ -61,7 +67,7 @@ public interface PokerViewInterface {
    * Enable or disable the call button according to the argument. Give true enable the button and
    * false to disable it.
    *
-   * @param b the boolean value.
+   * @param b true enable the button and false disable it
    */
   void enableCallButton(boolean b);
 
@@ -69,7 +75,7 @@ public interface PokerViewInterface {
    * Enable or disable the check button according to the argument. Give true enable the button and
    * false to disable it.
    *
-   * @param b the boolean value.
+   * @param b true enable the button and false disable it
    */
   void enableCheckButton(boolean b);
 
@@ -77,15 +83,31 @@ public interface PokerViewInterface {
    * Enable or disable the fold button according to the argument. Give true enable the button and
    * false to disable it.
    *
-   * @param b the boolean value.
+   * @param b true enable the button and false disable it
    */
   void enableFoldButton(boolean b);
+
+  /**
+   * Enable or disable the new player's money input field according to the argument. Give true
+   * enable the button and false to disable it.
+   *
+   * @param b true enable the field and false disable it.
+   */
+  void enableNewPlayerMoneyField(boolean b);
+
+  /**
+   * Enable or disable the new player's name input field according to the argument. Give true enable
+   * the button and false to disable it.
+   *
+   * @param b true enable the field and false disable it.
+   */
+  void enableNewPlayerNameField(boolean b);
 
   /**
    * Enable or disable the raise button according to the argument. Give true enable the button and
    * false to disable it.
    *
-   * @param b the boolean value.
+   * @param b true enable the button and false disable it
    */
   void enableRaiseButton(boolean b);
 
@@ -93,7 +115,7 @@ public interface PokerViewInterface {
    * Enable or disable the smallBlind button according to the argument. Give true enable the button
    * and false to disable it.
    *
-   * @param b the boolean value.
+   * @param b true enable the button and false disable it
    */
   void enableSmallBlindButton(boolean b);
 
@@ -101,7 +123,7 @@ public interface PokerViewInterface {
    * Enable or disable the start button according to the argument. Give true enable the button and
    * false to disable it.
    *
-   * @param b the boolean value.
+   * @param b true enable the button and false disable it
    */
   void enableStartButton(boolean b);
 
@@ -116,10 +138,16 @@ public interface PokerViewInterface {
    * Enable or disable the stop button according to the argument. Give true enable the button and
    * false to disable it.
    *
-   * @param b the boolean value.
+   * @param b true enable the button and false disable it
    */
   void enableStopButton(boolean b);
 
+
+  /**
+   * Returns the bet's amount.
+   * 
+   * @return the bet's amount
+   */
   int getBetAmount();
 
   /**
@@ -128,6 +156,22 @@ public interface PokerViewInterface {
    * @param value the value of the minimum bet
    */
   void setMinBet(String value);
+
+
+  /**
+   * Returns the new player's name's field's content.
+   * 
+   * @return the new player's name's field's content
+   */
+  String getNewPlayerMoney();
+
+  /**
+   * Returns the new player's money's field's content.
+   * 
+   * @return the new player's money's field's content
+   */
+  String getNewPlayerName();
+
 
   /**
    * Returns the poker table.
@@ -143,6 +187,5 @@ public interface PokerViewInterface {
    */
   void setSmallBlindValue(String value);
 
-  void update(Observable o, Object o1);
 
 }

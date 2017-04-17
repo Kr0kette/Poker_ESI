@@ -1,5 +1,10 @@
 package esi.atl.g39871.poker.model.cards;
 
+/**
+ * Represents a card's value.
+ * 
+ * @author g39871
+ */
 public enum Value {
 
   ACE("Ace", 14), TWO("Two", 2), THREE("Three", 3), FOUR("Four", 4), FIVE("Five", 5), SIX("Six",

@@ -3,18 +3,25 @@ package esi.atl.g39871.poker.view;
 import javafx.scene.layout.VBox;
 
 /**
- *
+ * A player's view. The user of this Interface has precise control over what to do with each gui's
+ * elements
+ * 
  * @author g39871
+ * @param <T> the type that this player's view should extends or implements
  */
 public interface PlayerViewInterface<T extends VBox> {
 
   /**
    * Add a card to the player.
    *
+   * @param <T> the type this method's argument should extends or implements
    * @param card the card to add
    */
   <T extends VBox> void addCard(T card);
 
+  /**
+   * Clear the player's cards
+   */
   void clearCards();
 
   /**

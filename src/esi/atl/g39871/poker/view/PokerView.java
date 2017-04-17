@@ -25,6 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
+ *  A Poker's view
  * 
  * @author g39871
  */
@@ -91,6 +92,12 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
   private Button stopButton;
 
 
+  /**
+   * Creates a new Poker's view.
+   * 
+   * @param controller the mvc's controller
+   * @param model the model
+   */
   public PokerView(PokerController controller, Game model) {
     this.model = model;
     this.controller = controller;
@@ -179,11 +186,18 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
   public void enableFoldButton(boolean b) {
     foldButton.setDisable(!b);
   }
-
+  @Override
+  public void enableNewPlayerMoneyField(boolean b) {
+      newPlayerMoney.setDisable(!b);
+  }
 
   @Override
+  public void enableNewPlayerNameField(boolean b) {
+    newPlayerName.setDisable(!b);
+  }
+  @Override
   public void enableRaiseButton(boolean b) {
-    raiseButton.setDisable(!b);
+      raiseButton.setDisable(!b);
   }
 
 
@@ -223,6 +237,7 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
           break;
         case ALLIN:
           enableAllInButton(true);
+          break;
       }
     }
 
@@ -232,7 +247,6 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
   @Override
   public void enableStopButton(boolean b) {
     stopButton.setDisable(!b);
-
   }
 
   @Override
@@ -244,6 +258,14 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
   @Override
   public void setMinBet(String value) {
     this.minBet.setText(value);
+  }
+  @Override
+  public String getNewPlayerMoney() {
+      return newPlayerMoney.getText();
+  }
+  @Override
+  public String getNewPlayerName() {
+      return newPlayerName.getText();
   }
 
 
@@ -286,6 +308,9 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
       case END_MATCH:
         enableStartButton(true);
         enableStopButton(true);
+        enableAddPlayerButton(true);
+        enableNewPlayerNameField(true);
+        enableNewPlayerMoneyField(true);
       case SHOWDOWN:
         disableAllBetsButtons();
       case SPLITPOT:
@@ -303,8 +328,9 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
 
   @FXML
   private void addPlayer() {
-    controller.addPlayer(newPlayerName.getText(), newPlayerMoney.getText());
+    controller.addPlayer();
   }
+
 
   @FXML
   private void allIn() {
@@ -361,6 +387,16 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
 
 
 
+  private void updatePlayerCards(Player player, PlayerView playerView) {
+    playerView.clearCards();
+    player.getCards().forEach(card -> {
+      CardView cardView = new CardView();
+      cardView.setColor(card.getColor().toString());
+      cardView.setValue(card.getValue().toString());
+      playerView.addCard(cardView);
+    });
+  }
+
   private void updatePlayers() {
     players.forEach((player, playerView) -> {
       playerView.setFolded(player.isFold());
@@ -375,15 +411,9 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
             + "-fx-border-color:orange;" + "-fx-border-width:4;");
       } else {
         playerView.setCurrentPlayerEffect("");
-
       }
-      playerView.clearCards();
-      player.getCards().forEach(card -> {
-        CardView cardView = new CardView();
-        cardView.setColor(card.getColor().toString());
-        cardView.setValue(card.getValue().toString());
-        playerView.addCard(cardView);
-      });
+
+      updatePlayerCards(player, playerView);
     });
   }
 

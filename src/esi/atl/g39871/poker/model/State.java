@@ -3,7 +3,7 @@ package esi.atl.g39871.poker.model;
 import java.util.List;
 
 /**
- *
+ * A game's state
  * @author g39871
  */
 interface State {

@@ -1,8 +1,9 @@
 package esi.atl.g39871.poker.model;
 
 /**
- *
- * @author esiProfs
+ * A deal's Iterator
+ * 
+ * @author g39871
  */
 public class DealIterator extends PlayerIterator {
 

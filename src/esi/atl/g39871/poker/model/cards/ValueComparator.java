@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.Comparator;
 
 /**
- *
- * @author esiProfs
+ * A card's value's comparator 
+ * 
+ * @author g39871
  */
 public class ValueComparator implements Comparator<Card>, Serializable {
 

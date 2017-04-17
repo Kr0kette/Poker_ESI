@@ -5,23 +5,24 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- *
+ * An abstract game's state
+ * 
  * @author g39871
  */
 abstract class AbstrState implements State {
 
   /**
-   *
+   * the current bet
    */
   protected Bet currentBet;
 
   /**
-   *
+   * the aavailable bets
    */
   protected List<Bet> availableBet;
 
   /**
-   *
+   * the match
    */
   protected Match match;
 
