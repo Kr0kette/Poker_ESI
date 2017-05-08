@@ -1,36 +1,40 @@
 package esi.atl.g39871.poker.persistence.dto;
 
+import java.util.Date;
+
 /**
  * Player Dto's instanciation
+ *
  * @author g39871
  */
-public class PlayerDto extends EntityDto<Integer>{
-
+public class PlayerDto extends EntityDto<Integer> {
 
     private String name;
-    private String lastConnection;
-    private Integer money;
 
-    public PlayerDto(String name, String lastConnection, Integer money) {
+    private Date lastConnection;
+
+    private int money;
+
+    public PlayerDto(String name, int money, Date lastConnection) {
         this.name = name;
         this.lastConnection = lastConnection;
-        this.money=money;
+        this.money = money;
     }
 
-    public PlayerDto(Integer id, String name, String lastConnection,Integer money) {
-        this(name, lastConnection,money);
+    public PlayerDto(Integer id, String name, int money, Date lastConnection) {
+        this(name, money, lastConnection);
         this.id = id;
     }
 
     public String getName() {
         return name;
     }
-    
-    public Integer getMoney(){
+
+    public int getMoney() {
         return money;
     }
 
-    public String getLastConnection() {
+    public Date getLastConnection() {
         return lastConnection;
     }
 
@@ -40,7 +44,13 @@ public class PlayerDto extends EntityDto<Integer>{
         }
     }
 
-    public void setLastConnection(String lastConnection) {
+    public void setMoney(int money) {
+        if (money >= 0) {
+            this.money = money;
+        }
+    }
+
+    public void setLastConnection(Date lastConnection) {
         if ((this.lastConnection == null && lastConnection == null)
                 || (this.lastConnection != null && lastConnection != null)
                 || (this.lastConnection != null && lastConnection != null && !this.lastConnection.equals(lastConnection))) {
@@ -60,12 +70,9 @@ public class PlayerDto extends EntityDto<Integer>{
         if (getLastConnection() != null) {
             res = res + "  " + getLastConnection();
         }
-        
-        if(getMoney() != null){
-            res = res+ "  " + getMoney();
-        }
+
+        res = res + "  " + getMoney();
+
         return res;
     }
 }
-   
-

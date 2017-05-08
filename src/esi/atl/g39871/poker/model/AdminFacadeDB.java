@@ -3,6 +3,7 @@ package esi.atl.g39871.poker.model;
 import esi.atl.g39871.poker.database.DBManager;
 import esi.atl.g39871.poker.exception.PokerDbException;
 import esi.atl.g39871.poker.exception.PokerModelException;
+import esi.atl.g39871.poker.persistence.dto.PlayerDto;
 
 /**
  * Contains functions avaible for administrators.
