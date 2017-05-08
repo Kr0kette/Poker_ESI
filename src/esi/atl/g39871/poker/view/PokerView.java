@@ -4,7 +4,7 @@ import esi.atl.g39871.poker.model.Bet;
 import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.model.Player;
 import esi.atl.g39871.poker.model.Status;
-import esi.atl.g39871.poker.mvc.PokerController;
+import esi.atl.g39871.poker.controller.PokerController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
