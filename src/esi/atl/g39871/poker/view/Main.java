@@ -1,11 +1,12 @@
 package esi.atl.g39871.poker.view;
 
-import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.controller.ControllerInterface;
 import esi.atl.g39871.poker.controller.PokerController;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import esi.atl.g39871.poker.exception.PokerModelException;
+import esi.atl.g39871.poker.model.AdminFacadeDB;
+import esi.atl.g39871.poker.model.Game;
+import esi.atl.g39871.poker.persistence.dto.PlayerDto;
+import java.util.Date;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -34,30 +35,23 @@ public class Main extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args)  {
 
-        Connection conn = null;
+      /*
+     * Etape 9 Ajout et suppression d'une catégorie **********************
+     */
+    System.out.println("");
+    System.out.println("ajout d'un player *****************");
+    System.out.println("");
+    try {
 
-        try {
-           
-            // db parameters
-            String url = "jdbc:sqlite:Poker.sqlite";
-            // create a connection to the database
-            conn = DriverManager.getConnection(url);
+      int catNum = AdminFacadeDB.addPlayer(new PlayerDto("krokro", 100, new Date(2017,12,25)));
 
-            System.out.println("Connection to SQLite has been established.");
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
+    } catch (PokerModelException ex) {
+      System.out.println(ex.getMessage());
+    }
+    System.out.println("");
+    System.out.println("");
         launch(args);
     }
 

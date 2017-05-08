@@ -38,30 +38,6 @@ public class AdminFacadeDB {
     }
     
     
-    /**
-     * Adds the given player to the database manager 
-     *
-     * @param player the player to add
-     * @return id the added player's id 
-     * @throws esi.atl.g39871.poker.exception.PokerModelException when the add fail.
-     */
-    public static int addPlayer(PlayerDto player) throws PokerModelException {
-        try {
-            DBManager.startTransaction();
-            int i = BrandBl.add(brand);
-            DBManager.validateTransaction();
-            return i;
-        } catch (EsaleDbException eDB) {
-            String msg = eDB.getMessage();
-            try {
-                DBManager.cancelTransaction();
-            } catch (EsaleDbException ex) {
-                msg = ex.getMessage() + "\n" + msg;
-            } finally {
-                throw new EsaleBusinessException("Ajout de marque impossible! \n" + msg);
-            }
-        }
-    }
-    
+  
     
 }

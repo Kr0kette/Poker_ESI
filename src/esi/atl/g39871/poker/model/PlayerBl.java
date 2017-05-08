@@ -1,5 +1,6 @@
 package esi.atl.g39871.poker.model;
 
+import esi.atl.g39871.poker.database.PlayerDB;
 import esi.atl.g39871.poker.exception.PokerDbException;
 import esi.atl.g39871.poker.exception.PokerModelException;
 import esi.atl.g39871.poker.persistence.dto.PlayerDto;
@@ -28,7 +29,7 @@ public class PlayerBl {
     }
 
     static Collection<PlayerDto> findAll() throws PokerDbException {
-        return PlayerDB.getAllBrands();
+        return PlayerDB.getAllPlayers();
     }
 
     static Collection<PlayerDto> find(PlayerSel sel) throws PokerDbException {
