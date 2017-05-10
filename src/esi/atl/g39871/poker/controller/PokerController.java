@@ -1,7 +1,7 @@
 package esi.atl.g39871.poker.controller;
 
 import esi.atl.g39871.poker.exception.PokerModelException;
-import esi.atl.g39871.poker.model.AdminFacadeDB;
+import esi.atl.g39871.poker.model.FacadeDB;
 import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.model.GameException;
 import esi.atl.g39871.poker.view.PokerView;
@@ -40,8 +40,8 @@ public class PokerController implements ControllerInterface {
 
       try {
 
-        int id = AdminFacadeDB.addPlayer(name, Integer.parseInt(money));
-        model.addPlayer(name, AdminFacadeDB.getPlayerById(id).getMoney());
+        int id = FacadeDB.addPlayer(name, Integer.parseInt(money));
+        model.addPlayer(name, FacadeDB.getPlayerById(id).getMoney());
         view.addPlayerInLayout(model.getPlayers().get(model.getPlayers().size() - 1));
 
       } catch (PokerModelException ex) {

@@ -14,12 +14,14 @@ create table Player (
 
 
 create table GameHistory(
+        id integer not null,
         idGame integer not null,
         namePlayer text not null,
         gain integer,
         handCategory text,
         constraint npl_FK foreign key(namePlayer) references Player(name),
-        constraint gm_PK primary key (idGame,namePlayer)
+        constraint gm_PK primary key (id),
+        constraint unq unique (idGame,namePlayer)
         );
 
 

@@ -1,7 +1,7 @@
 package esi.atl.g39871.poker.view;
 
 import esi.atl.g39871.poker.exception.PokerModelException;
-import esi.atl.g39871.poker.model.AdminFacadeDB;
+import esi.atl.g39871.poker.model.FacadeDB;
 import esi.atl.g39871.poker.persistence.dto.PlayerDto;
 import esi.atl.g39871.poker.seldto.PlayerSel;
 import java.io.IOException;
@@ -85,7 +85,7 @@ public class DatabaseView extends VBox implements Initializable {
       data.clear();
       // gets corresponding records from the database
       ArrayList<PlayerDto> playersDto =
-          new ArrayList<>(AdminFacadeDB.getSelectedPlayers(new PlayerSel(nameFilter.getText())));
+          new ArrayList<>(FacadeDB.getSelectedPlayers(new PlayerSel(nameFilter.getText())));
 
       // Create playerData for each corresponding record in the database
       playersDto.forEach(p -> {
@@ -107,7 +107,7 @@ public class DatabaseView extends VBox implements Initializable {
           Integer.parseInt(amount.getText()));
 
       try {
-        AdminFacadeDB.updatePlayer(player);
+        FacadeDB.updatePlayer(player);
       } catch (PokerModelException ex) {
         Logger.getLogger(DatabaseView.class.getName()).log(Level.SEVERE, null, ex);
       }
