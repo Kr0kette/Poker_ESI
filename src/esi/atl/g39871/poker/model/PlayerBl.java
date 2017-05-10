@@ -27,10 +27,10 @@ public class PlayerBl {
          * peu de lignes suffiront
          */
     }
-
-    static Collection<PlayerDto> findAll() throws PokerDbException {
-        return PlayerDB.getAllPlayers();
-    }
+//
+//    static Collection<PlayerDto> findAll() throws PokerDbException {
+//        return PlayerDB.getAllPlayers();
+//    }
 
     static Collection<PlayerDto> find(PlayerSel sel) throws PokerDbException {
         return PlayerDB.getCollection(sel);
@@ -58,9 +58,9 @@ public class PlayerBl {
         }
     }
 
-    static void delete(int id) throws PokerModelException {
+    static void delete(String name) throws PokerModelException {
         try {
-            PlayerDB.deleteDb(id);
+            PlayerDB.deleteDb(name);
         } catch (PokerDbException eDB) {
             throw new PokerModelException(eDB.getMessage());
         }

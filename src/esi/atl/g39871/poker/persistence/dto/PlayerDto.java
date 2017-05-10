@@ -61,6 +61,7 @@ public class PlayerDto extends EntityDto<Integer> {
     @Override
     public String toString() {
         String res = "[PlayerDTO] ";
+   
         if (isPersistant()) {
             res = res + "(" + getId() + ") ";
         } else {

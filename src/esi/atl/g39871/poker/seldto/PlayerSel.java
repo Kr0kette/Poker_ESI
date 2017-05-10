@@ -17,7 +17,7 @@ public class PlayerSel {
 
     private Date lastConnection;
 
-    private int money;
+    private int money=-1;
 
     private final int id;
 
