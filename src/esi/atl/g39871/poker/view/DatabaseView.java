@@ -48,7 +48,31 @@ public class DatabaseView extends VBox implements Initializable {
   @FXML
   private TableColumn<PlayerData, Date> lastConnectionColumn;
 
-  private ObservableList<PlayerData> data = FXCollections.observableArrayList();
+  private ObservableList<PlayerData> dataPlayers = FXCollections.observableArrayList();
+  
+  
+  
+  @FXML
+  private TableView<GameHistoryData> games;
+
+  @FXML
+  private TableColumn<GameHistoryData, String> idGameColumn;
+
+  @FXML
+  private TableColumn<GameHistoryData, String> namePlayerColumn;
+
+  @FXML
+  private TableColumn<GameHistoryData, String> gainColumn;
+  
+  @FXML
+  private TableColumn<GameHistoryData, String> handCategoryColumn;
+
+  private ObservableList<GameHistoryData> dataHistory = FXCollections.observableArrayList();
+  
+  
+  
+  
+  
 
   public DatabaseView() {
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DatabaseView.fxml"));
@@ -75,14 +99,14 @@ public class DatabaseView extends VBox implements Initializable {
     lastConnectionColumn
         .setCellValueFactory(cellData -> cellData.getValue().lastConnectionProperty());
 
-    players.setItems(data);
+    players.setItems(dataPlayers);
 
   }
 
   @FXML
-  private void search() { // todo move cette methode dans un controleur
+  private void searchInPlayers() { // todo move cette methode dans un controleur
     try {
-      data.clear();
+      dataPlayers.clear();
       // gets corresponding records from the database
       ArrayList<PlayerDto> playersDto =
           new ArrayList<>(FacadeDB.getSelectedPlayers(new PlayerSel(nameFilter.getText())));
@@ -90,7 +114,7 @@ public class DatabaseView extends VBox implements Initializable {
       // Create playerData for each corresponding record in the database
       playersDto.forEach(p -> {
         PlayerData playerData = new PlayerData(p.getName(), p.getMoney(), p.getLastConnection());
-        data.add(playerData);
+        dataPlayers.add(playerData);
 
       });
 
@@ -99,6 +123,29 @@ public class DatabaseView extends VBox implements Initializable {
     }
 
   }
+  
+   @FXML
+  private void searchInHistory() { // todo move cette methode dans un controleur
+    try {
+      dataHistory.clear();
+      // gets corresponding records from the database
+      ArrayList<PlayerDto> playersDto =
+          new ArrayList<>(FacadeDB.getSelectedPlayers(new PlayerSel(nameFilter.getText())));
+
+      // Create playerData for each corresponding record in the database
+      playersDto.forEach(p -> {
+        PlayerData playerData = new PlayerData(p.getName(), p.getMoney(), p.getLastConnection());
+        dataPlayers.add(playerData);
+
+      });
+
+    } catch (PokerModelException ex) {
+      Logger.getLogger(DatabaseView.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+  }
+  
+  
 
   @FXML
   private void addMoney() { // todo passer ca dans un controleur
