@@ -2,7 +2,9 @@ package esi.atl.g39871.poker.view;
 
 import esi.atl.g39871.poker.exception.PokerModelException;
 import esi.atl.g39871.poker.model.FacadeDB;
+import esi.atl.g39871.poker.persistence.dto.GameHistoryDto;
 import esi.atl.g39871.poker.persistence.dto.PlayerDto;
+import esi.atl.g39871.poker.seldto.GameHistorySel;
 import esi.atl.g39871.poker.seldto.PlayerSel;
 import java.io.IOException;
 import java.net.URL;
@@ -49,9 +51,7 @@ public class DatabaseView extends VBox implements Initializable {
   private TableColumn<PlayerData, Date> lastConnectionColumn;
 
   private ObservableList<PlayerData> dataPlayers = FXCollections.observableArrayList();
-  
-  
-  
+
   @FXML
   private TableView<GameHistoryData> games;
 
@@ -63,16 +63,11 @@ public class DatabaseView extends VBox implements Initializable {
 
   @FXML
   private TableColumn<GameHistoryData, String> gainColumn;
-  
+
   @FXML
   private TableColumn<GameHistoryData, String> handCategoryColumn;
 
   private ObservableList<GameHistoryData> dataHistory = FXCollections.observableArrayList();
-  
-  
-  
-  
-  
 
   public DatabaseView() {
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DatabaseView.fxml"));
@@ -93,13 +88,21 @@ public class DatabaseView extends VBox implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
-    // initialize columns
+    // initialize columns players list
     nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
     moneyColumn.setCellValueFactory(cellData -> cellData.getValue().moneyProperty());
     lastConnectionColumn
         .setCellValueFactory(cellData -> cellData.getValue().lastConnectionProperty());
 
     players.setItems(dataPlayers);
+
+    // initialize columns games history
+    idGameColumn.setCellValueFactory(cellData -> cellData.getValue().idGameProperty());
+    namePlayerColumn.setCellValueFactory(cellData -> cellData.getValue().namePlayerProperty());
+    gainColumn.setCellValueFactory(cellData -> cellData.getValue().gainProperty());
+    handCategoryColumn.setCellValueFactory(cellData -> cellData.getValue().handCategoryProperty());
+
+    games.setItems(dataHistory);
 
   }
 
@@ -123,19 +126,20 @@ public class DatabaseView extends VBox implements Initializable {
     }
 
   }
-  
-   @FXML
+
+  @FXML
   private void searchInHistory() { // todo move cette methode dans un controleur
     try {
       dataHistory.clear();
       // gets corresponding records from the database
-      ArrayList<PlayerDto> playersDto =
-          new ArrayList<>(FacadeDB.getSelectedPlayers(new PlayerSel(nameFilter.getText())));
+      ArrayList<GameHistoryDto> gameHistoryDto = new ArrayList<>(
+          FacadeDB.getSelectedGamesHistory(new GameHistorySel(nameFilter.getText())));
 
       // Create playerData for each corresponding record in the database
-      playersDto.forEach(p -> {
-        PlayerData playerData = new PlayerData(p.getName(), p.getMoney(), p.getLastConnection());
-        dataPlayers.add(playerData);
+      gameHistoryDto.forEach(p -> {
+        GameHistoryData gameHistoryData =
+            new GameHistoryData(p.getIdGame(), p.getNamePlayer(), p.getGain(), p.getHandCategory());
+        dataHistory.add(gameHistoryData);
 
       });
 
@@ -144,8 +148,6 @@ public class DatabaseView extends VBox implements Initializable {
     }
 
   }
-  
-  
 
   @FXML
   private void addMoney() { // todo passer ca dans un controleur

@@ -47,7 +47,7 @@ public class FacadeDB {
   }
   
   
-  public static Collection<GameHistoryDto> getGameHistoryDto(GameHistorySel sel) throws PokerModelException {
+  public static Collection<GameHistoryDto> getSelectedGamesHistory(GameHistorySel sel) throws PokerModelException {
     try {
       DBManager.startTransaction();
       Collection<GameHistoryDto> col = GameHistoryBl.find(sel);
