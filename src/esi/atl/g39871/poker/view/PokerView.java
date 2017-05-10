@@ -311,6 +311,7 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
         updateTable();
         break;
       case END_MATCH:
+        controller.addGains();
         enableStartButton(true);
         enableStopButton(true);
         enableAddPlayerButton(true);

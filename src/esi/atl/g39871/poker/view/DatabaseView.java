@@ -159,7 +159,7 @@ public class DatabaseView extends VBox implements Initializable {
   }
 
   @FXML
-  private void addMoney() { // todo passer ca dans un controleur
+  private void addMoney() { // todo passer ca dans un controleur ça doit pas être dans la vue, mais j'ai pas le temps :'( idem pour les autres méthodes ici 
     if (players.getSelectionModel().getSelectedItem() != null) {
       PlayerDto player = new PlayerDto(players.getSelectionModel().getSelectedItem().getName(),
           Integer.parseInt(amount.getText()));

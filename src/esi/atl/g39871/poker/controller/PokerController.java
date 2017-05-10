@@ -4,7 +4,10 @@ import esi.atl.g39871.poker.exception.PokerModelException;
 import esi.atl.g39871.poker.model.FacadeDB;
 import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.model.GameException;
+import esi.atl.g39871.poker.persistence.dto.PlayerDto;
 import esi.atl.g39871.poker.view.PokerView;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Controller for a Poker Game.
@@ -16,6 +19,8 @@ public class PokerController implements ControllerInterface {
   Game model;
 
   PokerView view;
+
+  int idGame;
 
   /**
    * Creates a new controller for a Poker Game A view for the game will be generated.
@@ -31,12 +36,20 @@ public class PokerController implements ControllerInterface {
   }
 
   @Override
-    public void addGains() {
-        model.getPlayers().forEach(p -> {
-                FacadeDB.addGameHistory(0, namePlayer, 0, handCategory)
-        });
-        
-    }
+  public void addGains() {
+    model.getPlayers().forEach(p -> {
+      try {
+        FacadeDB.updatePlayer(new PlayerDto(p.getName(), p.getCurrentProfit()));
+        FacadeDB.addGameHistory(idGame, p.getName(), p.getCurrentProfit(),
+            p.getCategory().toString());
+
+      } catch (PokerModelException ex) {
+        Logger.getLogger(PokerController.class.getName()).log(Level.SEVERE, null, ex);
+      }
+
+    });
+
+  }
 
   @Override
   public void addPlayer() {
@@ -131,7 +144,10 @@ public class PokerController implements ControllerInterface {
 
   @Override
   public void start() {
+
+    idGame = FacadeDB.getNewIdGame();
     try {
+
       model.start();
       view.enableStartButton(false);
       view.enableStopButton(false);
