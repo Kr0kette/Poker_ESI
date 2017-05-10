@@ -1,6 +1,7 @@
 package esi.atl.g39871.poker.model;
 
 import esi.atl.g39871.poker.database.DBManager;
+import esi.atl.g39871.poker.database.SequenceDB;
 import esi.atl.g39871.poker.exception.PokerDbException;
 import esi.atl.g39871.poker.exception.PokerModelException;
 import esi.atl.g39871.poker.persistence.dto.GameHistoryDto;
@@ -17,9 +18,9 @@ import java.util.Collection;
  */
 public class FacadeDB {
 
-  public static int getNewIdGame() {
-    int id = 0;// todo a faire
-    return id;
+  public static int getNewIdGame() throws PokerDbException {
+    return SequenceDB.getNextNum(SequenceDB.GAMEHISTORY);
+ 
   }
 
   public static int addGameHistory(int idGame, String namePlayer, int gain, String handCategory)

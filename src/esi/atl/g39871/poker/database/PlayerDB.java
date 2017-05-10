@@ -39,7 +39,7 @@ public class PlayerDB {
       update = connection
           .prepareStatement("Update player set " + "money=money + ?, lastConnection=?" + "where name= ?");
 
-        System.out.println(player.getMoney());
+
         update.setInt(1, player.getMoney());
       
 

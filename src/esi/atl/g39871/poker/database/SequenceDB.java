@@ -9,13 +9,13 @@ import esi.atl.g39871.poker.exception.PokerDbException;
  */
 public class SequenceDB {
 
-    static final String PLAYER = "Player";
+    public static final String PLAYER = "Player";
 
-    static final String GAMEHISTORY = "GameHistory";
+    public static final String GAMEHISTORY = "GameHistory";
 
 
 
-    static synchronized int getNextNum(String sequence) throws PokerDbException {
+    public static synchronized int getNextNum(String sequence) throws PokerDbException {
         try {
             java.sql.Connection connexion = DBManager.getConnection();
             String query = "Update SEQUENCES set sValue = sValue+1 where id='" + sequence + "'";

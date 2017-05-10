@@ -88,12 +88,7 @@ public class DatabaseView extends VBox implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
       
-      //todo A VIRER 
-      try {
-          FacadeDB.addGameHistory(2, "pol", 100, "flush");
-      } catch (PokerModelException ex) {
-          Logger.getLogger(DatabaseView.class.getName()).log(Level.SEVERE, null, ex);
-      }
+     
 
     // initialize columns players list
     nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());

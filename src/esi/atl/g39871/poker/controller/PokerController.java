@@ -40,7 +40,7 @@ public class PokerController implements ControllerInterface {
     model.getPlayers().forEach(p -> {
       try {
         FacadeDB.updatePlayer(new PlayerDto(p.getName(), p.getCurrentProfit()));
-        FacadeDB.addGameHistory(idGame, p.getName(), p.getCurrentProfit(),
+       FacadeDB.addGameHistory(idGame, p.getName(), p.getCurrentProfit(),
             p.getCategory().toString());
 
       } catch (PokerModelException ex) {
