@@ -19,6 +19,7 @@
                </VBox.margin></Button>
             <TextField fx:id="newPlayerName" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Player Name" />
             <TextField fx:id="newPlayerMoney" maxHeight="-Infinity" maxWidth="-Infinity" onKeyTyped="#numKeyEventFilter" promptText="Player Money" />
+            <Button fx:id="dataButton" mnemonicParsing="false" onAction="#showDatabase" text="Database" />
          </children>
       </VBox>
    </left>

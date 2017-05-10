@@ -25,6 +25,10 @@ public class PlayerSel {
         this.id = id;
         this.name = name;
     }
+    
+    public PlayerSel(){
+        this(0);
+    }
 
     public PlayerSel(String name) {
         this(0, name);

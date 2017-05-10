@@ -4,7 +4,23 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/database/SequenceDB.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Facade.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/database/DBManager.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/VisitorFacadeDB.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/seldto/PlayerSel.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/persistence/dto/EntityDto.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Player.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/view/CardView.fxml</file>
             <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/view/Main.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/view/PlayerView.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/controller/PokerController.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/database/PlayerDB.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/Game.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/view/PlayerView.fxml</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/persistence/dto/PlayerDto.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/controller/ControllerInterface.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/AdminFacadeDB.java</file>
+            <file>file:/C:/Users/Christophe/Documents/NetBeansProjects/Poker/src/esi/atl/g39871/poker/model/PlayerBl.java</file>
         </group>
     </open-files>
 </project-private>

@@ -39,9 +39,14 @@ public class Game extends Observable implements Facade {
   }
 
   @Override
-  public void addPlayer(String name, int money) {
+  public void addPlayer(String name, int money) throws GameException {
+    
     Player player = new Player(name, money);
+    if (!players.contains(player)){
     players.add(player);
+    }else{
+      throw new GameException("It already exists a " + name +" in the game ");
+  }
     notifyChange();
   }
 

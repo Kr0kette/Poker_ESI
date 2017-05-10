@@ -20,6 +20,17 @@ public class PlayerDto extends EntityDto<Integer> {
         this.lastConnection = lastConnection;
         this.money = money;
     }
+    
+    public PlayerDto(String name, int money) {
+        this.name = name;
+        this.money = money;
+        this.lastConnection=new Date();
+    }
+    
+    public PlayerDto(String name, Date lastConnection) {
+        this.name = name;
+        this.lastConnection = lastConnection;
+    }
 
     public PlayerDto(Integer id, String name, int money, Date lastConnection) {
         this(name, money, lastConnection);

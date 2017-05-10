@@ -50,6 +50,12 @@ public class PlayerBl {
 
     }
 
+    
+    /**
+     * Update the player in the database with the given player
+     * @param player the given player
+     * @throws PokerModelException 
+     */
     static void update(PlayerDto player) throws PokerModelException {
         try {
             PlayerDB.updateDb(player);

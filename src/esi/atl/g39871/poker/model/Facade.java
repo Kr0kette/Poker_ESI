@@ -5,8 +5,9 @@ import java.util.List;
 
 /**
  * Facade of Poker model.
- * 
+ * <p>
  * https://en.wikipedia.org/wiki/Facade_pattern
+ *
  * @author g39871
  */
 public interface Facade {
@@ -16,8 +17,9 @@ public interface Facade {
    *
    * @param name name of the player
    * @param money amount of player's chips
+   * @throws esi.atl.g39871.poker.model.GameException if the player already exists in this game
    */
-  void addPlayer(String name, int money);
+  void addPlayer(String name, int money) throws GameException;
 
   /**
    * Bet the given amount.

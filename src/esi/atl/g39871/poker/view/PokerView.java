@@ -1,10 +1,10 @@
 package esi.atl.g39871.poker.view;
 
+import esi.atl.g39871.poker.controller.PokerController;
 import esi.atl.g39871.poker.model.Bet;
 import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.model.Player;
 import esi.atl.g39871.poker.model.Status;
-import esi.atl.g39871.poker.controller.PokerController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,6 +24,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  *  A Poker's view
@@ -34,6 +36,9 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
   @FXML
   private Button addPlayerButton;
 
+  @FXML
+  private Button dataButton;
+  
   @FXML
   private Button allInButton;
 
@@ -329,6 +334,13 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
   @FXML
   private void addPlayer() {
     controller.addPlayer();
+  }
+  
+  @FXML
+  private void showDatabase(){
+     Stage dbStage=new Stage();
+     dbStage.setScene(new Scene(new SearchingPlayers()));
+     dbStage.showAndWait();
   }
 
 

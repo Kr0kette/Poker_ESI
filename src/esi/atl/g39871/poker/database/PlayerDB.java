@@ -35,15 +35,23 @@ public class PlayerDB {
             java.sql.Connection connection = DBManager.getConnection();
 
             java.sql.PreparedStatement update;
+          
             update = connection
-                    .prepareStatement("Update player set " + " name=?, money=?, " + "where id= ?");
-            update.setString(1, player.getName());
+                    .prepareStatement("Update player set " + "money=?, lastConnection=?" + "where name= ?");
+            
+            if (player.getMoney() == -1) { // quite equivallent to null 
+                update.setNull(1, Types.INTEGER);
+            } else {
+                update.setInt(1, player.getMoney());
+            }
+            
+            
             if (player.getLastConnection() == null) {
-                update.setNull(2, Types.VARCHAR);
+                update.setNull(2,Types.VARCHAR);
             } else {
                 update.setString(2, player.getLastConnection().toString());
             }
-            update.setInt(3, player.getId());
+            update.setString(3, player.getName());
             update.executeUpdate();
         } catch (Exception ex) {
             throw new PokerDbException("Player, unable to modify :\n" + ex.getMessage());
@@ -51,8 +59,7 @@ public class PlayerDB {
     }
 
     public static int insertDb(PlayerDto player) throws PokerDbException {
-        // throw new PokerDbException("!!!!!!!!!!!!!!Fonctionnalité non encore implémentée
-        // !!!!!!!!!!!!");
+
         try {
             int num = SequenceDB.getNextNum(SequenceDB.PLAYER);
             java.sql.Connection connexion = DBManager.getConnection();

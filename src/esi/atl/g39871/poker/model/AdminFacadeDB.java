@@ -5,28 +5,42 @@ import esi.atl.g39871.poker.exception.PokerDbException;
 import esi.atl.g39871.poker.exception.PokerModelException;
 import esi.atl.g39871.poker.persistence.dto.PlayerDto;
 import esi.atl.g39871.poker.seldto.PlayerSel;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
  * Contains functions avaible for administrators.
+ *
  * @author g39871
  */
 public class AdminFacadeDB {
-   
-    
+
     /**
-     * Adds the given player to the database manager 
+     * Adds a player with the given arguments to the database manager if it doesn't already exist
      *
-     * @param player the player to add
-     * @return id the added player's id 
-     * @throws esi.atl.g39871.poker.exception.PokerModelException when the add fail.
+     * @param name the player's name
+     * @param money the player's money
+     * @return id the added player's id
+     * @throws esi.atl.g39871.poker.exception.PokerModelException when the add fails.
      */
-    public static int addPlayer(PlayerDto player) throws PokerModelException {
+    public static int addPlayer(String name, int money) throws PokerModelException {
+        int i;
         try {
-            DBManager.startTransaction();
-            int i = PlayerBl.add(player);
-            DBManager.validateTransaction();
+            Collection<PlayerDto> playerFound = PlayerBl.find(new PlayerSel(name));
+            
+            if (playerFound.isEmpty()) {
+                PlayerDto player = new PlayerDto(name, money);
+                DBManager.startTransaction();
+                i = PlayerBl.add(player);
+                DBManager.validateTransaction();
+       
+            }else{
+                ArrayList<PlayerDto> al=new ArrayList<>(playerFound);
+                i=al.get(0).getId();
+            }
             return i;
+           
+
         } catch (PokerDbException pDB) {
             String msg = pDB.getMessage();
             try {
@@ -38,7 +52,7 @@ public class AdminFacadeDB {
             }
         }
     }
-    
+
     public static Collection<PlayerDto> getSelectedPlayers(PlayerSel sel) throws PokerModelException {
         try {
             DBManager.startTransaction();
@@ -57,18 +71,18 @@ public class AdminFacadeDB {
         }
 
     }
-    
-    
-     /**
+
+    /**
      * Returns the player by its name as a <code>PlayerDto</code>
-     * @param id the player's id to find 
+     *
+     * @param id the player's id to find
      * @return PlayerDto the player if found, null otherwise.
      * @throws esi.atl.g39871.poker.exception.PokerModelException
      */
     public static PlayerDto getPlayerById(int id) throws PokerModelException {
         try {
             DBManager.startTransaction();
-            PlayerDto player =PlayerBl.findById(id);
+            PlayerDto player = PlayerBl.findById(id);
             DBManager.validateTransaction();
             return player;
         } catch (PokerDbException eDB) {
@@ -82,8 +96,7 @@ public class AdminFacadeDB {
             }
         }
     }
-    
-    
+
     /**
      * update the player in the database manager with the given player
      *
@@ -92,7 +105,6 @@ public class AdminFacadeDB {
      */
     public static void updatePlayer(PlayerDto player) throws PokerModelException {
         try {
-            System.out.println("maj");
             DBManager.startTransaction();
             PlayerBl.update(player);
             DBManager.validateTransaction();
@@ -107,8 +119,5 @@ public class AdminFacadeDB {
             }
         }
     }
-    
-    
-  
-    
+
 }

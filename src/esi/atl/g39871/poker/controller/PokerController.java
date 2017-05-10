@@ -1,12 +1,14 @@
 package esi.atl.g39871.poker.controller;
 
+import esi.atl.g39871.poker.exception.PokerModelException;
+import esi.atl.g39871.poker.model.AdminFacadeDB;
 import esi.atl.g39871.poker.model.Game;
 import esi.atl.g39871.poker.model.GameException;
 import esi.atl.g39871.poker.view.PokerView;
 
 /**
  * Controller for a Poker Game.
- * 
+ *
  * @author g39871
  */
 public class PokerController implements ControllerInterface {
@@ -17,7 +19,7 @@ public class PokerController implements ControllerInterface {
 
   /**
    * Creates a new controller for a Poker Game A view for the game will be generated.
-   * 
+   *
    * @param model the model
    */
   public PokerController(Game model) {
@@ -28,7 +30,6 @@ public class PokerController implements ControllerInterface {
 
   }
 
-
   @Override
   public void addPlayer() {
 
@@ -36,28 +37,41 @@ public class PokerController implements ControllerInterface {
     String money = view.getNewPlayerMoney();
     if (!money.equals("") && !name.equals("")) {
 
-      model.addPlayer(name, Integer.parseInt(money));
-      view.addPlayerInLayout(model.getPlayers().get(model.getPlayers().size() - 1));
+      try {
+        int id = AdminFacadeDB.addPlayer(name, Integer.parseInt(money));
+
+
+
+        model.addPlayer(name, AdminFacadeDB.getPlayerById(id).getMoney());
+
+        view.addPlayerInLayout(model.getPlayers().get(model.getPlayers().size() - 1));
+
+      } catch (PokerModelException ex) {
+        view.alert(ex.getMessage());
+      } catch (GameException ex) {
+        view.alert(ex.getMessage());
+      }
+
     }
   }
+
   @Override
   public void allIn() {
-      try {
-          model.allIn();
-      } catch (GameException ex) {
-          view.alert(ex.getMessage());
-      }
+    try {
+      model.allIn();
+    } catch (GameException ex) {
+      view.alert(ex.getMessage());
+    }
   }
+
   @Override
   public void bigBlind() {
-      try {
-          model.bigBlind(view.getBetAmount());
-      } catch (GameException ex) {
-          view.alert(ex.getMessage());
-      }
+    try {
+      model.bigBlind(view.getBetAmount());
+    } catch (GameException ex) {
+      view.alert(ex.getMessage());
+    }
   }
-
-
 
   @Override
   public void call() {
@@ -68,7 +82,6 @@ public class PokerController implements ControllerInterface {
     }
   }
 
-
   @Override
   public void check() {
     try {
@@ -77,19 +90,20 @@ public class PokerController implements ControllerInterface {
       view.alert(ex.getMessage());
     }
   }
+
   @Override
   public void fold() {
-      try {
-          model.fold();
-      } catch (GameException ex) {
-          view.alert(ex.getMessage());
-      }
-  }
-  @Override
-  public PokerView getView() {
-      return view;
+    try {
+      model.fold();
+    } catch (GameException ex) {
+      view.alert(ex.getMessage());
+    }
   }
 
+  @Override
+  public PokerView getView() {
+    return view;
+  }
 
   @Override
   public void raise() {
@@ -100,7 +114,6 @@ public class PokerController implements ControllerInterface {
     }
   }
 
-
   @Override
   public void smallBlind() {
     try {
@@ -109,23 +122,25 @@ public class PokerController implements ControllerInterface {
       view.alert(ex.getMessage());
     }
   }
+
   @Override
   public void start() {
-      try {
-          model.start();
-          view.enableStartButton(false);
-          view.enableStopButton(false);
-          view.enableAddPlayerButton(false);
-          view.enableNewPlayerNameField(false);
-          view.enableNewPlayerMoneyField(false);
-      } catch (GameException ex) {
-          view.alert(ex.getMessage());
-      }
+    try {
+      model.start();
+      view.enableStartButton(false);
+      view.enableStopButton(false);
+      view.enableAddPlayerButton(false);
+      view.enableNewPlayerNameField(false);
+      view.enableNewPlayerMoneyField(false);
+    } catch (GameException ex) {
+      view.alert(ex.getMessage());
+    }
   }
+
   @Override
   public void stop() {
-      model.stop();
-      
+    model.stop();
+
   }
 
 }
