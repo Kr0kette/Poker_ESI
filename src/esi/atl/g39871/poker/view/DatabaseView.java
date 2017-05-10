@@ -87,6 +87,13 @@ public class DatabaseView extends VBox implements Initializable {
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+      
+      //todo A VIRER 
+      try {
+          FacadeDB.addGameHistory(2, "pol", 100, "flush");
+      } catch (PokerModelException ex) {
+          Logger.getLogger(DatabaseView.class.getName()).log(Level.SEVERE, null, ex);
+      }
 
     // initialize columns players list
     nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
@@ -130,10 +137,12 @@ public class DatabaseView extends VBox implements Initializable {
   @FXML
   private void searchInHistory() { // todo move cette methode dans un controleur
     try {
+ 
       dataHistory.clear();
       // gets corresponding records from the database
       ArrayList<GameHistoryDto> gameHistoryDto = new ArrayList<>(
           FacadeDB.getSelectedGamesHistory(new GameHistorySel(nameFilter.getText())));
+
 
       // Create playerData for each corresponding record in the database
       gameHistoryDto.forEach(p -> {

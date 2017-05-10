@@ -31,13 +31,14 @@ public class GameHistorySel {
   
   public GameHistorySel(String namePlayer) {
     this(0,namePlayer);
+    
   }
 
   public GameHistorySel(int idGame, String namePlayer) {
     this(0);
     this.idGame = idGame;
     this.namePlayer = namePlayer;
-    
+
   }
 
   public GameHistorySel(int idGame, String namePlayer, int gain) {

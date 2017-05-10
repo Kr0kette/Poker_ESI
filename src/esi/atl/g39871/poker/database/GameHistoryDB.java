@@ -31,6 +31,7 @@ public class GameHistoryDB {
             String where = "";
             if (sel.getId() != 0) {
                 where += " id = ? ";
+
             }
             if (sel.getIdGame() != 0) {
                 if (!where.equals("")) {
@@ -46,10 +47,13 @@ public class GameHistoryDB {
                 where += "namePlayer = ?";
             }
 
-            if (!where.equals("")) {
-                where += " AND ";
+            if (sel.getGain() != 0) {
+                if (!where.equals("")) {
+                    where += " AND ";
+                }
+
+                where += " Gain = ? ";
             }
-            where += " Gain = ? ";
 
             if (sel.getHandCategory() != null && !sel.getHandCategory().equals("")) {
                 if (!where.equals("")) {
@@ -82,9 +86,10 @@ public class GameHistoryDB {
                 stmt.setString(i, sel.getNamePlayer());
                 i++;
             }
-
-            stmt.setInt(i, sel.getGain());
-            i++;
+            if (sel.getGain() != 0) {
+                stmt.setInt(i, sel.getGain());
+                i++;
+            }
 
             if (sel.getHandCategory() != null && !sel.getHandCategory().equals("")) {
                 stmt.setString(i, sel.getHandCategory());
@@ -112,7 +117,7 @@ public class GameHistoryDB {
         try {
 
             //todo ici il faut voir pour avoir une sequence sur l'id et sur idgame, idgame 
-            int num = SequenceDB.getNextNum(SequenceDB.GAMEPLAYER);
+            int num = SequenceDB.getNextNum(SequenceDB.GAMEHISTORY);
             java.sql.Connection connexion = DBManager.getConnection();
             java.sql.PreparedStatement insert;
 

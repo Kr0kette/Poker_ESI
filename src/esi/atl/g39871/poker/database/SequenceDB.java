@@ -11,7 +11,7 @@ public class SequenceDB {
 
     static final String PLAYER = "Player";
 
-    static final String GAMEPLAYER = "GamePlayer";
+    static final String GAMEHISTORY = "GameHistory";
 
 
 

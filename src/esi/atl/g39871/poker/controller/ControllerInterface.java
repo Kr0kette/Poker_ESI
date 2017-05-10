@@ -42,6 +42,12 @@ public interface ControllerInterface {
    *
    */
   void fold();
+  
+  
+  /**
+   * Adds the player's gain to his money 
+   */
+  void addGains();
 
   /**
    * Returns the view's facade

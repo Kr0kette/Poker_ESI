@@ -31,6 +31,14 @@ public class PokerController implements ControllerInterface {
   }
 
   @Override
+    public void addGains() {
+        model.getPlayers().forEach(p -> {
+                FacadeDB.addGameHistory(0, namePlayer, 0, handCategory)
+        });
+        
+    }
+
+  @Override
   public void addPlayer() {
 
     String name = view.getNewPlayerName();
