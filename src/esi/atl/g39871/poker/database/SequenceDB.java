@@ -12,6 +12,7 @@ public class SequenceDB {
     public static final String PLAYER = "Player";
 
     public static final String GAMEHISTORY = "GameHistory";
+    public static final String GAMEID = "GameId";
 
 
 

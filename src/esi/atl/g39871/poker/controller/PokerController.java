@@ -1,5 +1,6 @@
 package esi.atl.g39871.poker.controller;
 
+import esi.atl.g39871.poker.exception.PokerDbException;
 import esi.atl.g39871.poker.exception.PokerModelException;
 import esi.atl.g39871.poker.model.FacadeDB;
 import esi.atl.g39871.poker.model.Game;
@@ -37,11 +38,19 @@ public class PokerController implements ControllerInterface {
 
   @Override
   public void addGains() {
+      System.out.println(model.getPlayers().size());
     model.getPlayers().forEach(p -> {
       try {
         FacadeDB.updatePlayer(new PlayerDto(p.getName(), p.getCurrentProfit()));
-       FacadeDB.addGameHistory(idGame, p.getName(), p.getCurrentProfit(),
-            p.getCategory().toString());
+        String hand;
+        if ( p.getCategory()==null){
+            hand="FOLDED";
+        }else {
+            hand =p.getCategory().toString();
+        }
+                
+       FacadeDB.addGameHistory(idGame, p.getName(), p.getCurrentProfit(), // it seems to bug when someone folds :( 
+            hand);
 
       } catch (PokerModelException ex) {
         Logger.getLogger(PokerController.class.getName()).log(Level.SEVERE, null, ex);
@@ -145,7 +154,11 @@ public class PokerController implements ControllerInterface {
   @Override
   public void start() {
 
-    idGame = FacadeDB.getNewIdGame();
+      try {
+          idGame = FacadeDB.getNewIdGame();
+      } catch (PokerDbException ex) {
+          Logger.getLogger(PokerController.class.getName()).log(Level.SEVERE, null, ex);
+      }
     try {
 
       model.start();

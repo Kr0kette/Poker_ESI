@@ -32,4 +32,6 @@ create table SEQUENCES (
 
 Insert Into SEQUENCES Values('Player', 0);
 Insert into SEQUENCES Values('GameHistory',1);
+Insert into SEQUENCES Values('GameId',2);
+
 

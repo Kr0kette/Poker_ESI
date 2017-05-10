@@ -19,7 +19,7 @@ import java.util.Collection;
 public class FacadeDB {
 
   public static int getNewIdGame() throws PokerDbException {
-    return SequenceDB.getNextNum(SequenceDB.GAMEHISTORY);
+    return SequenceDB.getNextNum(SequenceDB.GAMEID);
  
   }
 
