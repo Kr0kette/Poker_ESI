@@ -339,7 +339,7 @@ public class PokerView extends BorderPane implements PokerViewInterface, Initial
   @FXML
   private void showDatabase(){
      Stage dbStage=new Stage();
-     dbStage.setScene(new Scene(new SearchingPlayers()));
+     dbStage.setScene(new Scene(new DatabaseView()));
      dbStage.showAndWait();
   }
 

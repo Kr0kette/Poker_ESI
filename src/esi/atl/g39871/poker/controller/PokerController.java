@@ -35,15 +35,13 @@ public class PokerController implements ControllerInterface {
 
     String name = view.getNewPlayerName();
     String money = view.getNewPlayerMoney();
+
     if (!money.equals("") && !name.equals("")) {
 
       try {
+
         int id = AdminFacadeDB.addPlayer(name, Integer.parseInt(money));
-
-
-
         model.addPlayer(name, AdminFacadeDB.getPlayerById(id).getMoney());
-
         view.addPlayerInLayout(model.getPlayers().get(model.getPlayers().size() - 1));
 
       } catch (PokerModelException ex) {

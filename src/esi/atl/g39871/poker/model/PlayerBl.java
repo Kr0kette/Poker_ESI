@@ -23,17 +23,16 @@ public class PlayerBl {
             return null;
         }
 
-        /*
-         * peu de lignes suffiront
-         */
+
     }
-//
-//    static Collection<PlayerDto> findAll() throws PokerDbException {
-//        return PlayerDB.getAllPlayers();
-//    }
+
 
     static Collection<PlayerDto> find(PlayerSel sel) throws PokerDbException {
         return PlayerDB.getCollection(sel);
+    }
+    
+    static Collection<PlayerDto> findByName(PlayerSel sel) throws PokerDbException {
+        return PlayerDB.getCollectionByName(sel);
     }
 
     static int add(PlayerDto player) throws PokerModelException {

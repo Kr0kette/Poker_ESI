@@ -26,7 +26,7 @@ public class AdminFacadeDB {
     public static int addPlayer(String name, int money) throws PokerModelException {
         int i;
         try {
-            Collection<PlayerDto> playerFound = PlayerBl.find(new PlayerSel(name));
+            Collection<PlayerDto> playerFound = PlayerBl.findByName(new PlayerSel(name));
             
             if (playerFound.isEmpty()) {
                 PlayerDto player = new PlayerDto(name, money);
@@ -34,7 +34,7 @@ public class AdminFacadeDB {
                 i = PlayerBl.add(player);
                 DBManager.validateTransaction();
        
-            }else{
+            }else {
                 ArrayList<PlayerDto> al=new ArrayList<>(playerFound);
                 i=al.get(0).getId();
             }
@@ -73,7 +73,7 @@ public class AdminFacadeDB {
     }
 
     /**
-     * Returns the player by its name as a <code>PlayerDto</code>
+     * Returns the player by its id as a <code>PlayerDto</code>
      *
      * @param id the player's id to find
      * @return PlayerDto the player if found, null otherwise.
@@ -105,6 +105,7 @@ public class AdminFacadeDB {
      */
     public static void updatePlayer(PlayerDto player) throws PokerModelException {
         try {
+    
             DBManager.startTransaction();
             PlayerBl.update(player);
             DBManager.validateTransaction();

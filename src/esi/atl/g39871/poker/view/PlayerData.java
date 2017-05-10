@@ -15,8 +15,7 @@ public class PlayerData {
 
   private ObjectProperty<Date> lastConnection;
 
- // private final SimpleIntegerProperty money;
-  //private final SimpleStringProperty name;
+
   private final StringProperty money;
   private final StringProperty name;
 

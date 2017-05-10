@@ -19,6 +19,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+
         game = new Game();
         ControllerInterface controller = new PokerController(game);
 
@@ -34,26 +35,6 @@ public class Main extends Application {
      */
     public static void main(String[] args) throws ParseException  {
 
-        
-        
-//    System.out.println("");
-//    System.out.println("ajout d'un player *****************");
-//    System.out.println("");
-//    try {
-//
-//      
-//     // int catNum = AdminFacadeDB.addPlayer(new PlayerDto("krokro", 100,new Date() ));
-//      
-//      PlayerSel player= new PlayerSel("krokro");
-//      System.out.println("get player by name: " + (ArrayList)(AdminFacadeDB.getSelectedPlayers(player)));
-//      PlayerDto playerDto=new PlayerDto("krokro", 400,new Date());
-//      AdminFacadeDB.updatePlayer(playerDto);
-//      System.out.println("get player by name after update money : " + (ArrayList)(AdminFacadeDB.getSelectedPlayers(player)));
-//
-//
-//    } catch (PokerModelException ex) {
-//      System.out.println(ex.getMessage());
-//    }
 
         launch(args);
     }
