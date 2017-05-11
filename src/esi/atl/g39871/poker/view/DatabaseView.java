@@ -51,6 +51,43 @@ public class DatabaseView extends VBox implements Initializable {
   private TableColumn<PlayerData, Date> lastConnectionColumn;
 
   private ObservableList<PlayerData> dataPlayers = FXCollections.observableArrayList();
+  
+  
+  
+  
+  @FXML
+  private TextField gameFilter;
+  @FXML
+  private TableView<ReviewData> reviews;
+
+  @FXML
+  private TableColumn<ReviewData, String> idReviewGameColumn;
+
+  @FXML
+  private TableColumn<ReviewData, String> ReviewNamePlayerColumn;
+
+  @FXML
+  private TableColumn<ReviewData, String> ratingColumn;
+
+  @FXML
+  private TableColumn<ReviewData, String> detailsColumn;
+
+  private ObservableList<ReviewData> dataReview = FXCollections.observableArrayList();
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   @FXML
   private TableView<GameHistoryData> games;
