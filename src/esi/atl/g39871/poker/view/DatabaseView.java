@@ -66,7 +66,7 @@ public class DatabaseView extends VBox implements Initializable {
   private TableColumn<ReviewData, String> idReviewGameColumn;
 
   @FXML
-  private TableColumn<ReviewData, String> ReviewNamePlayerColumn;
+  private TableColumn<ReviewData, String> reviewNamePlayerColumn;
 
   @FXML
   private TableColumn<ReviewData, String> ratingColumn;
@@ -138,7 +138,7 @@ public class DatabaseView extends VBox implements Initializable {
     
     //initialize columns reviews
     idReviewGameColumn.setCellValueFactory(cellData -> cellData.getValue().idGameProperty());
-    namePlayerColumn.setCellValueFactory(cellData -> cellData.getValue().namePlayerProperty());
+    reviewNamePlayerColumn.setCellValueFactory(cellData -> cellData.getValue().namePlayerProperty());
     ratingColumn.setCellValueFactory(cellData -> cellData.getValue().ratingProperty());
     detailsColumn.setCellValueFactory(cellData -> cellData.getValue().detailsProperty());
 
