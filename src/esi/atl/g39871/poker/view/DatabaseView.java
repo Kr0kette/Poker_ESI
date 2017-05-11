@@ -4,8 +4,10 @@ import esi.atl.g39871.poker.exception.PokerModelException;
 import esi.atl.g39871.poker.model.FacadeDB;
 import esi.atl.g39871.poker.persistence.dto.GameHistoryDto;
 import esi.atl.g39871.poker.persistence.dto.PlayerDto;
+import esi.atl.g39871.poker.persistence.dto.ReviewDto;
 import esi.atl.g39871.poker.seldto.GameHistorySel;
 import esi.atl.g39871.poker.seldto.PlayerSel;
+import esi.atl.g39871.poker.seldto.ReviewSel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -54,7 +56,7 @@ public class DatabaseView extends VBox implements Initializable {
   
   
   
-  
+
   @FXML
   private TextField gameFilter;
   @FXML
@@ -77,17 +79,7 @@ public class DatabaseView extends VBox implements Initializable {
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
 
   @FXML
   private TableView<GameHistoryData> games;
@@ -142,6 +134,16 @@ public class DatabaseView extends VBox implements Initializable {
     handCategoryColumn.setCellValueFactory(cellData -> cellData.getValue().handCategoryProperty());
 
     games.setItems(dataHistory);
+    
+    
+    //initialize columns reviews
+    idReviewGameColumn.setCellValueFactory(cellData -> cellData.getValue().idGameProperty());
+    namePlayerColumn.setCellValueFactory(cellData -> cellData.getValue().namePlayerProperty());
+    ratingColumn.setCellValueFactory(cellData -> cellData.getValue().ratingProperty());
+    detailsColumn.setCellValueFactory(cellData -> cellData.getValue().detailsProperty());
+
+    reviews.setItems(dataReview);
+    
 
   }
 
@@ -181,6 +183,32 @@ public class DatabaseView extends VBox implements Initializable {
         GameHistoryData gameHistoryData =
             new GameHistoryData(p.getIdGame(), p.getNamePlayer(), p.getGain(), p.getHandCategory());
         dataHistory.add(gameHistoryData);
+
+      });
+
+    } catch (PokerModelException ex) {
+      Logger.getLogger(DatabaseView.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+  }
+  
+  
+  
+   @FXML
+  private void searchInReview() { // todo move cette methode dans un controleur
+    try {
+ 
+      dataReview.clear();
+      // gets corresponding records from the database
+      ArrayList<ReviewDto> reviewDto = new ArrayList<>(
+          FacadeDB.getSelectedReview(new ReviewSel(nameFilter.getText())));
+
+
+      // Create review Data for each corresponding record in the database
+      reviewDto.forEach(p -> {
+        ReviewData reviewData =
+            new ReviewData(p.getIdGame(), p.getNamePlayer(), p.getRating(), p.getDetails());
+        dataReview.add(reviewData);
 
       });
 

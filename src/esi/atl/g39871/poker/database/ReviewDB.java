@@ -14,7 +14,7 @@ public class ReviewDB {
       public static void deleteDb(ReviewSel sel) throws PokerDbException {
         try {
             java.sql.Statement stmt = DBManager.getConnection().createStatement();
-            stmt.execute("Delete from Review where name=" + sel.getIdGame()); //todo a revoir la secu de la requete
+            stmt.execute("Delete from Review where idGame=" + sel.getIdGame() + "AND namePlayer=" +sel.getNamePlayer()); //todo a revoir la secu de la requete
         } catch (Exception ex) {
             throw new PokerDbException("Review: deletion impossible \n" + ex.getMessage());
         }

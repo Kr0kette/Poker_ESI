@@ -42,7 +42,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </Text>
-                  <TextField fx:id="gameFilter" promptText="Filter reviews by Game" />
+                  <TextField fx:id="gameFilter" onKeyTyped="#numKeyEventFilter" promptText="Filter reviews by Game" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
