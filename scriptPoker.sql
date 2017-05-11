@@ -1,8 +1,10 @@
 
 
 drop table Player;
+drop table Review;
 drop table GameHistory;
 drop table Sequences;
+
 
 
 create table Player (
@@ -11,6 +13,19 @@ create table Player (
 	money integer default 0,
 	lastConnection text
 	);
+
+
+create table Review (
+        id integer not null,
+        idGame integer not null,
+        namePlayer text not null,
+        rating numeric(2) not null,
+        details text,
+        constraint pk_Review primary key(id),
+        constraint fk_FromPlayer foreign key(namePlayer) references Player(name),
+        constraint unq_Gm_Pl unique (idGame,namePlayer)
+
+        );
 
 
 create table GameHistory(
@@ -33,5 +48,6 @@ create table SEQUENCES (
 Insert Into SEQUENCES Values('Player', 0);
 Insert into SEQUENCES Values('GameHistory',1);
 Insert into SEQUENCES Values('GameId',2);
+Insert into SEQUENCES values('Review',3);
 
 

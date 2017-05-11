@@ -18,9 +18,64 @@ import java.util.Collection;
  */
 public class FacadeDB {
 
+  public static int addReview(int idGame, String namePlayer, int review, String details) {
+        throws PokerModelException {
+            int i;
+
+            try {
+                ReviewDto review = new ReviewDto(idGame, namePlayer, review, details);
+
+                DBManager.startTransaction();
+                i = ReviewBl.add(review);
+                DBManager.validateTransaction();
+                return i;
+
+            } catch (PokerDbException pDB) {
+                String msg = pDB.getMessage();
+                try {
+                    DBManager.cancelTransaction();
+                } catch (PokerDbException ex) {
+                    msg = ex.getMessage() + "\n" + msg;
+                } finally {
+                    throw new PokerModelException("Unable to add the Review! \n" + msg);
+                }
+            }
+        }
+  }
+
+
+
+  public static void deleteReview(int igGame, String namePlayer) {
+        throws PokerModelException {
+            int i;
+
+            try {
+                ReviewSel review = new ReviewSel(idGame, namePlayer);
+
+                DBManager.startTransaction();
+                i = ReviewBl.delete(review);
+                DBManager.validateTransaction();
+              
+
+            } catch (PokerDbException pDB) {
+                String msg = pDB.getMessage();
+                try {
+                    DBManager.cancelTransaction();
+                } catch (PokerDbException ex) {
+                    msg = ex.getMessage() + "\n" + msg;
+                } finally {
+                    throw new PokerModelException("Unable to delete the Review! \n" + msg);
+                }
+            }
+
+        }
+  }
+
+
+
   public static int getNewIdGame() throws PokerDbException {
     return SequenceDB.getNextNum(SequenceDB.GAMEID);
- 
+
   }
 
   public static int addGameHistory(int idGame, String namePlayer, int gain, String handCategory)
@@ -46,9 +101,9 @@ public class FacadeDB {
       }
     }
   }
-  
-  
-  public static Collection<GameHistoryDto> getSelectedGamesHistory(GameHistorySel sel) throws PokerModelException {
+
+  public static Collection<GameHistoryDto> getSelectedGamesHistory(GameHistorySel sel)
+      throws PokerModelException {
     try {
       DBManager.startTransaction();
       Collection<GameHistoryDto> col = GameHistoryBl.find(sel);
@@ -66,8 +121,7 @@ public class FacadeDB {
     }
 
   }
-  
-  
+
   public static Collection<PlayerDto> getSelectedPlayers(PlayerSel sel) throws PokerModelException {
     try {
       DBManager.startTransaction();
@@ -86,8 +140,6 @@ public class FacadeDB {
     }
 
   }
-  
-  
 
   /**
    * Adds a player with the given arguments to the database manager if it doesn't already exist
@@ -125,8 +177,6 @@ public class FacadeDB {
       }
     }
   }
-
-  
 
   /**
    * Returns the player by its id as a <code>PlayerDto</code>
