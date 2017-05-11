@@ -6,8 +6,10 @@ import esi.atl.g39871.poker.exception.PokerDbException;
 import esi.atl.g39871.poker.exception.PokerModelException;
 import esi.atl.g39871.poker.persistence.dto.GameHistoryDto;
 import esi.atl.g39871.poker.persistence.dto.PlayerDto;
+import esi.atl.g39871.poker.persistence.dto.ReviewDto;
 import esi.atl.g39871.poker.seldto.GameHistorySel;
 import esi.atl.g39871.poker.seldto.PlayerSel;
+import esi.atl.g39871.poker.seldto.ReviewSel;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -18,12 +20,12 @@ import java.util.Collection;
  */
 public class FacadeDB {
 
-  public static int addReview(int idGame, String namePlayer, int review, String details) {
+  public static int addReview(int idGame, String namePlayer, int rating, String details) 
         throws PokerModelException {
             int i;
 
             try {
-                ReviewDto review = new ReviewDto(idGame, namePlayer, review, details);
+                ReviewDto review = new ReviewDto(idGame, namePlayer, rating, details);
 
                 DBManager.startTransaction();
                 i = ReviewBl.add(review);
@@ -41,19 +43,19 @@ public class FacadeDB {
                 }
             }
         }
-  }
+  
 
 
 
-  public static void deleteReview(int igGame, String namePlayer) {
+  public static void deleteReview(int idGame, String namePlayer) 
         throws PokerModelException {
-            int i;
-
+     
             try {
-                ReviewSel review = new ReviewSel(idGame, namePlayer);
+                ReviewSel rating = new ReviewSel(idGame, namePlayer);
 
                 DBManager.startTransaction();
-                i = ReviewBl.delete(review);
+              //  i = ReviewBl.delete(rating);
+                ReviewBl.delete(rating);
                 DBManager.validateTransaction();
               
 
@@ -69,6 +71,26 @@ public class FacadeDB {
             }
 
         }
+  
+  
+   public static Collection<ReviewDto> getSelectedReview(ReviewSel sel)
+      throws PokerModelException {
+    try {
+      DBManager.startTransaction();
+      Collection<ReviewDto> col = ReviewBl.find(sel);
+      DBManager.validateTransaction();
+      return col;
+    } catch (PokerDbException eDB) {
+      String msg = eDB.getMessage();
+      try {
+        DBManager.cancelTransaction();
+      } catch (PokerDbException ex) {
+        msg = ex.getMessage() + "\n" + msg;
+      } finally {
+        throw new PokerModelException("List of review is  not accesible! \n" + msg);
+      }
+    }
+
   }
 
 

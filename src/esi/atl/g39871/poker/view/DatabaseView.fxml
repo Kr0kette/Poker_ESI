@@ -74,6 +74,21 @@
                   </TableView>
                </content>
             </Tab>
+            <Tab text="Reviews">
+               <content>
+                  <TableView fx:id="reviews">
+                     <columns>
+                        <TableColumn fx:id="idReviewGameColumn" text="Game" />
+                        <TableColumn fx:id="reviewNamePlayerColumn" text="Player" />
+                        <TableColumn fx:id="ratingColumn" text="Rating" />
+                        <TableColumn fx:id="detailsColumn" prefWidth="200.0" text="Detail" />
+                     </columns>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </TableView>
+               </content>
+            </Tab>
          </tabs>
       </TabPane>
    </children>
