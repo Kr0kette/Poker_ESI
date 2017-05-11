@@ -15,7 +15,7 @@ public interface CardViewInterface<T extends VBox> {
   /**
    * Set the card's color
    *
-   * @param color the card's color
+   * @param color the card's color.
    */
   void setColor(String color);
 
