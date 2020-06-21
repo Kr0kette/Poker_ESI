@@ -1,4 +1,5 @@
-#NOTE
+# NOTE  
+
 This is a project I had for a course during my 3rd bachelor's year at HE2B-ESI.
  The only purpose of this is to remember how I was coding in december 2018, during the middle of my last year.
 The files in this repository are as they were at the time. so it's normal that it doesn't look like a normal readme or whatever.
